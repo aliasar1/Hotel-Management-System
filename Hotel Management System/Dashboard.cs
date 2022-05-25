@@ -16,6 +16,7 @@ namespace Hotel_Management_System
         HotelsScreen hs = new HotelsScreen();
         RoomsScreen rs = new RoomsScreen();
         BookingsScreen resScreen = new BookingsScreen();
+        CheckoutScreen cs = new CheckoutScreen();
         public Dashboard()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Hotel_Management_System
         {
             hs.Hide();
             resScreen.Hide();
+            cs.Hide();
             rs.Show();
         }
 
@@ -37,6 +39,7 @@ namespace Hotel_Management_System
         {
             rs.Hide();
             resScreen.Hide();
+            cs.Hide();
             hs.Show();
         }
 
@@ -44,7 +47,16 @@ namespace Hotel_Management_System
         {
             rs.Hide();
             hs.Hide();
+            cs.Hide();
             resScreen.Show();
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            rs.Hide();
+            hs.Hide();
+            resScreen.Hide();
+            cs.Show();
         }
     }
 }
