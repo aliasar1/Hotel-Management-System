@@ -58,5 +58,16 @@ namespace Hotel_Management_System
             resScreen.Hide();
             cs.Show();
         }
+
+        private void guna2CircleButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            rs.Hide();
+            hs.Hide();
+            cs.Hide();
+            resScreen.Hide();
+            Login l = new Login();
+            l.Show();
+        }
     }
 }

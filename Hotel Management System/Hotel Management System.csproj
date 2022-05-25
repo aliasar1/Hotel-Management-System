@@ -65,6 +65,12 @@
     <Compile Include="Controllers\CheckoutScreen.Designer.cs">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\HotelChainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controllers\HotelChainPage.Designer.cs">
+      <DependentUpon>HotelChainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HotelsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,12 @@
     </Compile>
     <Compile Include="Controllers\RoomsScreen.Designer.cs">
       <DependentUpon>RoomsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SuperAdminLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controllers\SuperAdminLogin.Designer.cs">
+      <DependentUpon>SuperAdminLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
@@ -106,6 +118,9 @@
     <EmbeddedResource Include="Controllers\CheckoutScreen.resx">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\HotelChainPage.resx">
+      <DependentUpon>HotelChainPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controllers\HotelsScreen.resx">
       <DependentUpon>HotelsScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\RoomsScreen.resx">
       <DependentUpon>RoomsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\SuperAdminLogin.resx">
+      <DependentUpon>SuperAdminLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>

@@ -1,5 +1,4 @@
-﻿using Hotel_Management_System.Controllers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,28 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hotel_Management_System
+namespace Hotel_Management_System.Controllers
 {
-    public partial class Login : Form
+    public partial class SuperAdminLogin : Form
     {
-        public Login()
+        public SuperAdminLogin()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void SuperAdminScreen_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2ImageRadioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -42,16 +31,15 @@ namespace Hotel_Management_System
             else
             {
                 errorLabel.Visible = false;
-                Dashboard db = new Dashboard();
                 this.Hide();
-                db.Show();
+                HotelChainPage hotelChain = new HotelChainPage();
+                hotelChain.Show();
             }
         }
 
-        private void guna2CircleButton1_Click(object sender, EventArgs e)
+        private void backBtn_Click(object sender, EventArgs e)
         {
-            SuperAdminLogin superAdmin = new SuperAdminLogin();
-            superAdmin.Show();
+            this.Hide();
         }
     }
 }
