@@ -15,7 +15,7 @@ namespace Hotel_Management_System
     {
         HotelsScreen hs = new HotelsScreen();
         RoomsScreen rs = new RoomsScreen();
-        ReservationsScreen resScreen = new ReservationsScreen();
+        BookingsScreen resScreen = new BookingsScreen();
         public Dashboard()
         {
             InitializeComponent();
