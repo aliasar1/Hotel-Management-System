@@ -53,6 +53,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HotelsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controllers\HotelsScreen.Designer.cs">
+      <DependentUpon>HotelsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ReservationsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controllers\ReservationsScreen.Designer.cs">
+      <DependentUpon>ReservationsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\RoomsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controllers\RoomsScreen.Designer.cs">
+      <DependentUpon>RoomsScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +85,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controllers\HotelsScreen.resx">
+      <DependentUpon>HotelsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ReservationsScreen.resx">
+      <DependentUpon>ReservationsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\RoomsScreen.resx">
+      <DependentUpon>RoomsScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
