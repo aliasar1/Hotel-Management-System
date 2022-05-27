@@ -17,6 +17,8 @@ namespace Hotel_Management_System
         RoomsScreen rs = new RoomsScreen();
         BookingsScreen resScreen = new BookingsScreen();
         CheckoutScreen cs = new CheckoutScreen();
+        GuestsScreen gs = new GuestsScreen();
+        EmployeesScreen es = new EmployeesScreen();
         public Dashboard()
         {
             InitializeComponent();
@@ -32,6 +34,8 @@ namespace Hotel_Management_System
             hs.Hide();
             resScreen.Hide();
             cs.Hide();
+            gs.Hide();
+            es.Hide();
             rs.Show();
         }
 
@@ -40,6 +44,8 @@ namespace Hotel_Management_System
             rs.Hide();
             resScreen.Hide();
             cs.Hide();
+            es.Hide();
+            gs.Hide();
             hs.Show();
         }
 
@@ -47,6 +53,7 @@ namespace Hotel_Management_System
         {
             rs.Hide();
             hs.Hide();
+            gs.Hide();
             cs.Hide();
             resScreen.Show();
         }
@@ -55,6 +62,8 @@ namespace Hotel_Management_System
         {
             rs.Hide();
             hs.Hide();
+            es.Hide();
+            gs.Hide();
             resScreen.Hide();
             cs.Show();
         }
@@ -64,10 +73,32 @@ namespace Hotel_Management_System
             this.Hide();
             rs.Hide();
             hs.Hide();
+            es.Hide();
+            gs.Hide();
             cs.Hide();
             resScreen.Hide();
             Login l = new Login();
             l.Show();
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            rs.Hide();
+            hs.Hide();
+            es.Hide();
+            gs.Hide();
+            resScreen.Hide();
+            gs.Show();
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            rs.Hide();
+            hs.Hide();
+            gs.Hide();
+            resScreen.Hide();
+            gs.Hide();
+            es.Show();
         }
     }
 }

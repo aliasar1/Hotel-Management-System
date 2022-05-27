@@ -65,6 +65,24 @@
     <Compile Include="Controllers\CheckoutScreen.Designer.cs">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CreateEmployeeAccountScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controllers\CreateEmployeeAccountScreen.Designer.cs">
+      <DependentUpon>CreateEmployeeAccountScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EmployeesScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controllers\EmployeesScreen.Designer.cs">
+      <DependentUpon>EmployeesScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\GuestsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controllers\GuestsScreen.Designer.cs">
+      <DependentUpon>GuestsScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HotelChainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +135,15 @@
     </Compile>
     <EmbeddedResource Include="Controllers\CheckoutScreen.resx">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\CreateEmployeeAccountScreen.resx">
+      <DependentUpon>CreateEmployeeAccountScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\EmployeesScreen.resx">
+      <DependentUpon>EmployeesScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\GuestsScreen.resx">
+      <DependentUpon>GuestsScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\HotelChainPage.resx">
       <DependentUpon>HotelChainPage.cs</DependentUpon>
