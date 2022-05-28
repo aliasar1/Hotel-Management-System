@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_Management_System.Screens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,6 +46,12 @@ namespace Hotel_Management_System.Controllers
         private void guna2CircleButton2_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        {
+            DepartmentsScreen dep = new DepartmentsScreen();
+            dep.Show();
         }
     }
 }

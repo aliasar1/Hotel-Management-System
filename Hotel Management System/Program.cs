@@ -1,4 +1,5 @@
 ﻿using Hotel_Management_System.Controllers;
+using Hotel_Management_System.Screens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Hotel_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HotelsScreen());
+            Application.Run(new SplashScreen());
         }
     }
 }

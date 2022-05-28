@@ -59,58 +59,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\CheckoutScreen.cs">
+    <Compile Include="Screens\CheckoutScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\CheckoutScreen.Designer.cs">
+    <Compile Include="Screens\CheckoutScreen.Designer.cs">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\CreateEmployeeAccountScreen.cs">
+    <Compile Include="Screens\CreateEmployeeAccountScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\CreateEmployeeAccountScreen.Designer.cs">
+    <Compile Include="Screens\CreateEmployeeAccountScreen.Designer.cs">
       <DependentUpon>CreateEmployeeAccountScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\EmployeesScreen.cs">
+    <Compile Include="Screens\DepartmentsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\EmployeesScreen.Designer.cs">
+    <Compile Include="Screens\DepartmentsScreen.Designer.cs">
+      <DependentUpon>DepartmentsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\EmployeesScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\EmployeesScreen.Designer.cs">
       <DependentUpon>EmployeesScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\GuestsScreen.cs">
+    <Compile Include="Screens\GuestsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\GuestsScreen.Designer.cs">
+    <Compile Include="Screens\GuestsScreen.Designer.cs">
       <DependentUpon>GuestsScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HotelChainPage.cs">
+    <Compile Include="Screens\HotelChainPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\HotelChainPage.Designer.cs">
+    <Compile Include="Screens\HotelChainPage.Designer.cs">
       <DependentUpon>HotelChainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HotelsScreen.cs">
+    <Compile Include="Screens\HotelsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\HotelsScreen.Designer.cs">
+    <Compile Include="Screens\HotelsScreen.Designer.cs">
       <DependentUpon>HotelsScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\BookingsScreen.cs">
+    <Compile Include="Screens\BookingsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\BookingsScreen.Designer.cs">
+    <Compile Include="Screens\BookingsScreen.Designer.cs">
       <DependentUpon>BookingsScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\RoomsScreen.cs">
+    <Compile Include="Screens\RoomsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\RoomsScreen.Designer.cs">
+    <Compile Include="Screens\RoomsScreen.Designer.cs">
       <DependentUpon>RoomsScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\SuperAdminLogin.cs">
+    <Compile Include="Screens\SuperAdminLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\SuperAdminLogin.Designer.cs">
+    <Compile Include="Screens\SuperAdminLogin.Designer.cs">
       <DependentUpon>SuperAdminLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.cs">
@@ -134,31 +140,34 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controllers\CheckoutScreen.resx">
+    <EmbeddedResource Include="Screens\CheckoutScreen.resx">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\CreateEmployeeAccountScreen.resx">
+    <EmbeddedResource Include="Screens\CreateEmployeeAccountScreen.resx">
       <DependentUpon>CreateEmployeeAccountScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\EmployeesScreen.resx">
+    <EmbeddedResource Include="Screens\DepartmentsScreen.resx">
+      <DependentUpon>DepartmentsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\EmployeesScreen.resx">
       <DependentUpon>EmployeesScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\GuestsScreen.resx">
+    <EmbeddedResource Include="Screens\GuestsScreen.resx">
       <DependentUpon>GuestsScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\HotelChainPage.resx">
+    <EmbeddedResource Include="Screens\HotelChainPage.resx">
       <DependentUpon>HotelChainPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\HotelsScreen.resx">
+    <EmbeddedResource Include="Screens\HotelsScreen.resx">
       <DependentUpon>HotelsScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\BookingsScreen.resx">
+    <EmbeddedResource Include="Screens\BookingsScreen.resx">
       <DependentUpon>BookingsScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\RoomsScreen.resx">
+    <EmbeddedResource Include="Screens\RoomsScreen.resx">
       <DependentUpon>RoomsScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\SuperAdminLogin.resx">
+    <EmbeddedResource Include="Screens\SuperAdminLogin.resx">
       <DependentUpon>SuperAdminLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">

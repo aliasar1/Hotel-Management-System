@@ -69,10 +69,11 @@
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.addButton = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.updateButton = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.deleteButton = new Guna.UI2.WinForms.Guna2CircleButton();
             this.searchButton = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.deleteButton = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.updateButton = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.addButton = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +83,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(21, 18);
+            this.label1.Location = new System.Drawing.Point(25, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 27);
             this.label1.TabIndex = 37;
@@ -757,6 +758,58 @@
             this.guna2Panel1.Size = new System.Drawing.Size(48, 220);
             this.guna2Panel1.TabIndex = 112;
             // 
+            // searchButton
+            // 
+            this.searchButton.BorderThickness = 2;
+            this.searchButton.CheckedState.Parent = this.searchButton;
+            this.searchButton.CustomImages.Parent = this.searchButton;
+            this.searchButton.FillColor = System.Drawing.Color.Gainsboro;
+            this.searchButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchButton.ForeColor = System.Drawing.Color.White;
+            this.searchButton.HoverState.Parent = this.searchButton;
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(4, 167);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.searchButton.ShadowDecoration.Parent = this.searchButton;
+            this.searchButton.Size = new System.Drawing.Size(40, 38);
+            this.searchButton.TabIndex = 116;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.BorderThickness = 2;
+            this.deleteButton.CheckedState.Parent = this.deleteButton;
+            this.deleteButton.CustomImages.Parent = this.deleteButton;
+            this.deleteButton.FillColor = System.Drawing.Color.Gainsboro;
+            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.deleteButton.ForeColor = System.Drawing.Color.White;
+            this.deleteButton.HoverState.Parent = this.deleteButton;
+            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.Location = new System.Drawing.Point(4, 116);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.deleteButton.ShadowDecoration.Parent = this.deleteButton;
+            this.deleteButton.Size = new System.Drawing.Size(40, 38);
+            this.deleteButton.TabIndex = 117;
+            // 
+            // updateButton
+            // 
+            this.updateButton.BorderThickness = 2;
+            this.updateButton.CheckedState.Parent = this.updateButton;
+            this.updateButton.CustomImages.Parent = this.updateButton;
+            this.updateButton.FillColor = System.Drawing.Color.Gainsboro;
+            this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.updateButton.ForeColor = System.Drawing.Color.White;
+            this.updateButton.HoverState.Parent = this.updateButton;
+            this.updateButton.Image = ((System.Drawing.Image)(resources.GetObject("updateButton.Image")));
+            this.updateButton.Location = new System.Drawing.Point(5, 62);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.updateButton.ShadowDecoration.Parent = this.updateButton;
+            this.updateButton.Size = new System.Drawing.Size(40, 38);
+            this.updateButton.TabIndex = 118;
+            // 
             // addButton
             // 
             this.addButton.BackColor = System.Drawing.Color.Transparent;
@@ -776,63 +829,31 @@
             this.addButton.TabIndex = 119;
             this.addButton.Click += new System.EventHandler(this.guna2CircleButton6_Click);
             // 
-            // updateButton
+            // guna2GradientButton1
             // 
-            this.updateButton.BorderThickness = 2;
-            this.updateButton.CheckedState.Parent = this.updateButton;
-            this.updateButton.CustomImages.Parent = this.updateButton;
-            this.updateButton.FillColor = System.Drawing.Color.Gainsboro;
-            this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.updateButton.ForeColor = System.Drawing.Color.White;
-            this.updateButton.HoverState.Parent = this.updateButton;
-            this.updateButton.Image = ((System.Drawing.Image)(resources.GetObject("updateButton.Image")));
-            this.updateButton.Location = new System.Drawing.Point(5, 62);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.updateButton.ShadowDecoration.Parent = this.updateButton;
-            this.updateButton.Size = new System.Drawing.Size(40, 38);
-            this.updateButton.TabIndex = 118;
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.BorderThickness = 2;
-            this.deleteButton.CheckedState.Parent = this.deleteButton;
-            this.deleteButton.CustomImages.Parent = this.deleteButton;
-            this.deleteButton.FillColor = System.Drawing.Color.Gainsboro;
-            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.HoverState.Parent = this.deleteButton;
-            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
-            this.deleteButton.Location = new System.Drawing.Point(4, 116);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.deleteButton.ShadowDecoration.Parent = this.deleteButton;
-            this.deleteButton.Size = new System.Drawing.Size(40, 38);
-            this.deleteButton.TabIndex = 117;
-            // 
-            // searchButton
-            // 
-            this.searchButton.BorderThickness = 2;
-            this.searchButton.CheckedState.Parent = this.searchButton;
-            this.searchButton.CustomImages.Parent = this.searchButton;
-            this.searchButton.FillColor = System.Drawing.Color.Gainsboro;
-            this.searchButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.searchButton.ForeColor = System.Drawing.Color.White;
-            this.searchButton.HoverState.Parent = this.searchButton;
-            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
-            this.searchButton.Location = new System.Drawing.Point(4, 167);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.searchButton.ShadowDecoration.Parent = this.searchButton;
-            this.searchButton.Size = new System.Drawing.Size(40, 38);
-            this.searchButton.TabIndex = 116;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.guna2GradientButton1.BorderRadius = 20;
+            this.guna2GradientButton1.CheckedState.Parent = this.guna2GradientButton1;
+            this.guna2GradientButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2GradientButton1.CustomImages.Parent = this.guna2GradientButton1;
+            this.guna2GradientButton1.FillColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2GradientButton1.Font = new System.Drawing.Font("Cooper Black", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientButton1.HoverState.Parent = this.guna2GradientButton1;
+            this.guna2GradientButton1.Location = new System.Drawing.Point(191, 8);
+            this.guna2GradientButton1.Name = "guna2GradientButton1";
+            this.guna2GradientButton1.ShadowDecoration.Parent = this.guna2GradientButton1;
+            this.guna2GradientButton1.Size = new System.Drawing.Size(159, 34);
+            this.guna2GradientButton1.TabIndex = 113;
+            this.guna2GradientButton1.Text = "Add Departments";
+            this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
             // 
             // EmployeesScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 560);
+            this.Controls.Add(this.guna2GradientButton1);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2DateTimePicker1);
             this.Controls.Add(this.guna2ComboBox1);
@@ -925,5 +946,6 @@
         private Guna.UI2.WinForms.Guna2CircleButton deleteButton;
         private Guna.UI2.WinForms.Guna2CircleButton updateButton;
         private Guna.UI2.WinForms.Guna2CircleButton addButton;
+        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
     }
 }
