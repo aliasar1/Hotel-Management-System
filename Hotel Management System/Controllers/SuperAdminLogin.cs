@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,10 @@ namespace Hotel_Management_System.Controllers
 {
     public partial class SuperAdminLogin : Form
     {
+
+        DatabaseConnection dc = new DatabaseConnection();
+        String query;
+
         public SuperAdminLogin()
         {
             InitializeComponent();
@@ -24,8 +29,23 @@ namespace Hotel_Management_System.Controllers
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            query = "SELECT AdminId FROM Authentication.Admin WHERE Username = @username AND Password = @password";
+            SqlConnection connection = dc.getConnection();
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@username", usernameTextField.Text);
+            cmd.Parameters.AddWithValue("@password", passwordTextField.Text);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
             if (String.IsNullOrEmpty(usernameTextField.Text) || String.IsNullOrEmpty(passwordTextField.Text))
             {
+                errorLabel.Text = "        All fields are required.";
+                errorLabel.Visible = true;
+            }
+            else if (!reader.HasRows)
+            {
+                errorLabel.Text = "Incorrect username or password.";
                 errorLabel.Visible = true;
             }
             else
@@ -35,11 +55,14 @@ namespace Hotel_Management_System.Controllers
                 HotelChainPage hotelChain = new HotelChainPage();
                 hotelChain.Show();
             }
+            connection.Close();
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Login l = new Login();
+            l.Show();
         }
     }
 }
