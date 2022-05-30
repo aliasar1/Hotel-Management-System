@@ -49,7 +49,7 @@ namespace Hotel_Management_System.Controllers
             findDepUsingId();
         }
 
-        private void populateTable()
+        public void populateTable()
         {
             SqlConnection con = dc.getConnection();
             con.Open();
@@ -130,16 +130,16 @@ namespace Hotel_Management_System.Controllers
                     }
                     CreateEmployeeAccountScreen createEmployee = new CreateEmployeeAccountScreen();
                     createEmployee.Show();
-                    
+                    populateTable();
                 }
                 else
                 {
                     getFieldsData();
                     query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoingDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + 4 + ", '" + cnic + "')";
                     dc.setData(query, "Employee record inserted successfully!");
+                    populateTable();
                 }
                 clearFields();
-                populateTable();
             }
             else
             {
@@ -150,6 +150,7 @@ namespace Hotel_Management_System.Controllers
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
+            fetchEmployeeRecord(0);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -176,6 +177,93 @@ namespace Hotel_Management_System.Controllers
         private void clearButton_Click(object sender, EventArgs e)
         {
             clearFields();
+        }
+
+        private void employeeTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            fetchEmployeeRecord(1);
+           
+        }
+
+        private void fetchEmployeeRecord(int i)
+        {
+            String idEmp;
+            if (i == 1)
+            {
+                idEmp = employeeTable.SelectedRows[0].Cells[0].Value.ToString();
+            }
+            else
+            {
+                idEmp = employeeIdField.Text;
+            }
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT * FROM Hotels.Employees WHERE EmployeeId = " + idEmp;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                employeeIdField.Text = idEmp;
+                fnameField.Text = dr.GetString(1);
+                lnameField.Text = dr.GetString(2);
+                designationCMBox.Text = dr.GetString(3);
+                contactField.Text = dr.GetString(4);
+                Console.WriteLine(dr.GetString(5));
+                emailField.Text = dr.GetString(5);
+                joiningDatePicker.Value = Convert.ToDateTime(dr["EmployeeJoingDate"]);
+                addressField.Text = dr.GetString(7);
+                streetField.Text = dr.GetString(8);
+                cityField.Text = dr.GetString(9);
+                zipField.Text = dr.GetString(10);
+                depIdCMBox.Text = findDepUsingId(dr.GetValue(11).ToString());
+                cnicField.Text = dr.GetString(13);
+            }
+
+        }
+
+        public String findDepUsingId(String s)
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            String str = "";
+            query = "SELECT DepartmentName from Hotels.Departments WHERE DepartmentId = " +  s;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                str = dr.GetString(0);
+            }
+            return str;
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            if (employeeIdField.Text == "")
+            {
+                MessageBox.Show("Please enter id to update record.", "Missing Info", MessageBoxButtons.OK);
+            }
+            else
+            {
+                query = "UPDATE Hotels.Employees SET EmployeeFirstName = '" + fnameField.Text + "', EmployeeLastName = '" + lnameField.Text + "', EmployeeDesignation = '" + designationCMBox.Text + "', EmployeeContactNumber = '" + contactField.Text + "', EmployeeEmailAddress = '" + emailField.Text + "', EmployeeJoingDate = '" + joiningDatePicker.Text + "', AddressLine = '" + addressField.Text + "', Street = '" + streetField.Text + "', City = '" + cityField.Text + "', Zip = '" + zipField.Text + "', CNIC = '" + cnicField.Text + "' WHERE EmployeeId = " + int.Parse(employeeIdField.Text);
+                dc.setData(query, "Record updated successfully.");
+                clearFields();
+                populateTable();
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (employeeIdField.Text == "")
+            {
+                MessageBox.Show("Please enter id to delete.", "Missing Info", MessageBoxButtons.OK);
+            }
+            else
+            {
+                query = "DELETE FROM Hotels.Employees WHERE EmployeeId = " + int.Parse(employeeIdField.Text);
+                dc.setData(query, "Record deleted successfully.");
+                clearFields();
+                populateTable();
+            }
         }
     }
 }

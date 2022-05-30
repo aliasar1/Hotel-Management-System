@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeesScreen));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.zipField = new Guna.UI2.WinForms.Guna2TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.fnameField = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.searchBtn = new Guna.UI2.WinForms.Guna2CircleButton();
             this.employeeIdField = new Guna.UI2.WinForms.Guna2TextBox();
             this.GuestId = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -372,23 +372,23 @@
             this.label2.TabIndex = 79;
             this.label2.Text = "First Name";
             // 
-            // guna2CircleButton1
+            // searchBtn
             // 
-            this.guna2CircleButton1.BorderThickness = 2;
-            this.guna2CircleButton1.CheckedState.Parent = this.guna2CircleButton1;
-            this.guna2CircleButton1.CustomImages.Parent = this.guna2CircleButton1;
-            this.guna2CircleButton1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.HoverState.Parent = this.guna2CircleButton1;
-            this.guna2CircleButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CircleButton1.Image")));
-            this.guna2CircleButton1.Location = new System.Drawing.Point(934, 62);
-            this.guna2CircleButton1.Name = "guna2CircleButton1";
-            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.ShadowDecoration.Parent = this.guna2CircleButton1;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(40, 35);
-            this.guna2CircleButton1.TabIndex = 78;
-            this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
+            this.searchBtn.BorderThickness = 2;
+            this.searchBtn.CheckedState.Parent = this.searchBtn;
+            this.searchBtn.CustomImages.Parent = this.searchBtn;
+            this.searchBtn.FillColor = System.Drawing.Color.Transparent;
+            this.searchBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchBtn.ForeColor = System.Drawing.Color.White;
+            this.searchBtn.HoverState.Parent = this.searchBtn;
+            this.searchBtn.Image = ((System.Drawing.Image)(resources.GetObject("searchBtn.Image")));
+            this.searchBtn.Location = new System.Drawing.Point(934, 62);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.searchBtn.ShadowDecoration.Parent = this.searchBtn;
+            this.searchBtn.Size = new System.Drawing.Size(40, 35);
+            this.searchBtn.TabIndex = 78;
+            this.searchBtn.Click += new System.EventHandler(this.guna2CircleButton1_Click);
             // 
             // employeeIdField
             // 
@@ -409,7 +409,6 @@
             this.employeeIdField.Name = "employeeIdField";
             this.employeeIdField.PasswordChar = '\0';
             this.employeeIdField.PlaceholderText = "";
-            this.employeeIdField.ReadOnly = true;
             this.employeeIdField.SelectedText = "";
             this.employeeIdField.ShadowDecoration.Parent = this.employeeIdField;
             this.employeeIdField.Size = new System.Drawing.Size(95, 22);
@@ -529,9 +528,10 @@
             this.joiningDatePicker.BackColor = System.Drawing.Color.Transparent;
             this.joiningDatePicker.BorderRadius = 15;
             this.joiningDatePicker.CheckedState.Parent = this.joiningDatePicker;
+            this.joiningDatePicker.CustomFormat = "yyyy-MM-dd";
             this.joiningDatePicker.FillColor = System.Drawing.Color.DimGray;
             this.joiningDatePicker.ForeColor = System.Drawing.Color.Gainsboro;
-            this.joiningDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.joiningDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.joiningDatePicker.HoverState.Parent = this.joiningDatePicker;
             this.joiningDatePicker.Location = new System.Drawing.Point(898, 453);
             this.joiningDatePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -573,6 +573,7 @@
             this.deleteButton.ShadowDecoration.Parent = this.deleteButton;
             this.deleteButton.Size = new System.Drawing.Size(40, 38);
             this.deleteButton.TabIndex = 117;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // updateButton
             // 
@@ -590,6 +591,7 @@
             this.updateButton.ShadowDecoration.Parent = this.updateButton;
             this.updateButton.Size = new System.Drawing.Size(40, 38);
             this.updateButton.TabIndex = 118;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // addButton
             // 
@@ -631,30 +633,30 @@
             // 
             // employeeTable
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.employeeTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            this.employeeTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.employeeTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.employeeTable.BackgroundColor = System.Drawing.Color.White;
             this.employeeTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.employeeTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.employeeTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.employeeTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeeTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.employeeTable.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.employeeTable.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.employeeTable.DefaultCellStyle = dataGridViewCellStyle18;
             this.employeeTable.EnableHeadersVisualStyles = false;
             this.employeeTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.employeeTable.Location = new System.Drawing.Point(19, 50);
@@ -687,6 +689,7 @@
             this.employeeTable.ThemeStyle.RowsStyle.Height = 35;
             this.employeeTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.employeeTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.employeeTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeeTable_CellContentClick);
             // 
             // contactField
             // 
@@ -777,7 +780,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.fnameField);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.guna2CircleButton1);
+            this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.employeeIdField);
             this.Controls.Add(this.GuestId);
             this.Controls.Add(this.label1);
@@ -813,7 +816,7 @@
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2TextBox fnameField;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2CircleButton searchBtn;
         private Guna.UI2.WinForms.Guna2TextBox employeeIdField;
         private System.Windows.Forms.Label GuestId;
         private System.Windows.Forms.Label label14;
