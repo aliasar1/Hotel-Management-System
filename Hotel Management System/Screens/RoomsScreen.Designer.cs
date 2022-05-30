@@ -124,6 +124,7 @@
             this.updateButton.Size = new System.Drawing.Size(96, 45);
             this.updateButton.TabIndex = 29;
             this.updateButton.Text = "UPDATE";
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // deleteButton
             // 
@@ -142,6 +143,7 @@
             this.deleteButton.Size = new System.Drawing.Size(96, 45);
             this.deleteButton.TabIndex = 28;
             this.deleteButton.Text = "DELETE";
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // addButton
             // 
@@ -392,6 +394,7 @@
             this.roomTable.ThemeStyle.RowsStyle.Height = 35;
             this.roomTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.roomTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.roomTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.roomTable_CellContentClick);
             // 
             // RoomsScreen
             // 

@@ -23,6 +23,7 @@ namespace Hotel_Management_System.Controllers
         public RoomsScreen()
         {
             InitializeComponent();
+            roomIdField.ReadOnly = false;
             costField.ReadOnly = true;
         }
 
@@ -47,10 +48,36 @@ namespace Hotel_Management_System.Controllers
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
+            addButton.Enabled = false;
+            if (roomIdField.Text == "")
+            {
+                MessageBox.Show("Please enter id to search record.", "Missing Info", MessageBoxButtons.OK);
+            }
+            else
+            {
+                bool temp = false;
+                SqlConnection con = dc.getConnection();
+                con.Open();
+                query = "SELECT * FROM Rooms.Room WHERE RoomTypeId = " + int.Parse(roomIdField.Text);
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    roomNoField.Text = dr.GetString(1);
+                    typeCmbox.Text = getNameFromId(dr.GetInt32(3));
+                    findCost();
+                    temp = true;
+                }
+                if (temp == false)
+                    MessageBox.Show("No record found.");
+                con.Close();
+            }
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            addButton.Enabled = true;
+            clearFields();
         }
 
         private void guna2CircleButton2_Click(object sender, EventArgs e)
@@ -102,6 +129,22 @@ namespace Hotel_Management_System.Controllers
             return roomId;
         }
 
+        String name;
+
+        private String getNameFromId(int id)
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT Name from Rooms.RoomType WHERE RoomTypeId = " + id + "";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                name = dr.GetString(0);
+            }
+            return name;
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             int id = getIdFromTypeName();
@@ -117,8 +160,13 @@ namespace Hotel_Management_System.Controllers
                 MessageBox.Show("All fields must be filled.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        
         private void typeCmbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            findCost();
+        }
+
+        private void findCost()
         {
             SqlConnection con = dc.getConnection();
             con.Open();
@@ -131,6 +179,47 @@ namespace Hotel_Management_System.Controllers
                 cost = dr.GetInt32(0);
             }
             costField.Text = cost.ToString();
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            addButton.Enabled = true;
+            if (roomIdField.Text == "")
+            {
+                MessageBox.Show("Please enter id to update record.", "Missing Info", MessageBoxButtons.OK);
+            }
+            else
+            {
+                query = "UPDATE Rooms.Room SET RoomNumber = '" + roomNoField.Text + "', RoomType = '" + typeCmbox.Text + "' WHERE RoomId = " + int.Parse(roomIdField.Text);
+                dc.setData(query, "Record updated successfully.");
+                clearFields();
+                populateTable();
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            addButton.Enabled = true;
+            if (roomIdField.Text == "")
+            {
+                MessageBox.Show("Please enter id to delete.", "Missing Info", MessageBoxButtons.OK);
+            }
+            else
+            {
+                query = "DELETE FROM Rooms.Room WHERE RoomId = " + int.Parse(roomIdField.Text);
+                dc.setData(query, "Record deleted successfully.");
+                clearFields();
+                populateTable();
+            }
+        }
+
+        private void roomTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            addButton.Enabled = false;
+            roomIdField.Text = roomTable.SelectedRows[0].Cells[0].Value.ToString();
+            roomNoField.Text = roomTable.SelectedRows[0].Cells[1].Value.ToString();
+            typeCmbox.Text = getNameFromId(int.Parse(roomTable.SelectedRows[0].Cells[1].Value.ToString()));
+            findCost();
         }
     }
 }
