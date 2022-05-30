@@ -140,6 +140,7 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Statics.cs" />
     <EmbeddedResource Include="Screens\CheckoutScreen.resx">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
     </EmbeddedResource>

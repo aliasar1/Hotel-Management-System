@@ -23,9 +23,12 @@ namespace Hotel_Management_System.Controllers
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
+            
             query = "DELETE FROM Hotels.Employees WHERE EmployeeId = " + EmployeesScreen.maxId;
             dc.setData(query, "Failed to insert as this employee must create account to register.");
             this.Hide();
+            EmployeesScreen es = new EmployeesScreen();
+            es.Show();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

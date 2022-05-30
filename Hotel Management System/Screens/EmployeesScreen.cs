@@ -112,11 +112,11 @@ namespace Hotel_Management_System.Controllers
                 cnicField.Text != "" || zipField.Text != "" || addressField.Text != "" || cityField.Text != "" || streetField.Text != ""
                 || designationCMBox.SelectedIndex != -1 || contactField.Text != "")
             {
-                Console.WriteLine(depIdCMBox.Text);
                 if (designationCMBox.Text == "Manager" || depIdCMBox.Text == "HR" || depIdCMBox.Text == "Accounts")
                 {
+                    Console.WriteLine(Statics.hotelIdTKN);
                     getFieldsData();
-                    query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoingDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + 4 + ", '" + cnic + "')";
+                    query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoingDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + Statics.hotelIdTKN + ", '" + cnic + "')";
                     dc.setData(query, "You are required to create account in order to register.!");
                    
                     SqlConnection con = dc.getConnection();
@@ -128,6 +128,7 @@ namespace Hotel_Management_System.Controllers
                     {
                         maxId = dr.GetInt32(0);
                     }
+                    this.Hide();
                     CreateEmployeeAccountScreen createEmployee = new CreateEmployeeAccountScreen();
                     createEmployee.Show();
                     populateTable();
@@ -135,7 +136,7 @@ namespace Hotel_Management_System.Controllers
                 else
                 {
                     getFieldsData();
-                    query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoingDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + 4 + ", '" + cnic + "')";
+                    query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoingDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + Statics.hotelIdTKN + ", '" + cnic + "')";
                     dc.setData(query, "Employee record inserted successfully!");
                     populateTable();
                 }
