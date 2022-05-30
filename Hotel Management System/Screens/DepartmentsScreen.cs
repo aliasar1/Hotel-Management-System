@@ -25,7 +25,6 @@ namespace Hotel_Management_System.Screens
         {
             InitializeComponent();
             depIdField.ReadOnly = false;
-            
         }
 
         private void GuestId_Click(object sender, EventArgs e)
