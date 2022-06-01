@@ -70,6 +70,7 @@ namespace Hotel_Management_System.Controllers
                 {
                     roomNoField.Text = dr.GetInt32(1).ToString();
                     typeCmbox.Text = getNameFromId(dr.GetInt32(3));
+                    availableField.Text = dr.GetString(4).ToString();
                     findCost();
                     temp = true;
                 }
@@ -153,9 +154,9 @@ namespace Hotel_Management_System.Controllers
         private void addButton_Click(object sender, EventArgs e)
         {
             int id = getIdFromTypeName();
-            if (roomIdField.Text != "" || roomNoField.Text != "" || typeCmbox.Text != "" || costField.Text != "")
+            if (roomIdField.Text != "" || roomNoField.Text != "" || typeCmbox.Text != "" || costField.Text != "" || availableField.Text != "")
             {
-                query = "INSERT INTO Rooms.Room (RoomNumber, HotelId, RoomTypeId) VALUES (" + roomNoField.Text + ", " + Statics.hotelIdTKN + ", " + id + ")";
+                query = "INSERT INTO Rooms.Room (RoomNumber, HotelId, RoomTypeId, Available) VALUES (" + roomNoField.Text + ", " + Statics.hotelIdTKN + ", " + id + ", '" + availableField.Text + "')";
                 dc.setData(query, "Room inserted successfully!");
                 clearFields();
                 populateTable();
@@ -196,7 +197,7 @@ namespace Hotel_Management_System.Controllers
             else
             {
                 getIdFromTypeName();
-                query = "UPDATE Rooms.Room SET RoomNumber = " + roomNoField.Text + ", RoomTypeId = " + roomId + " WHERE RoomId = " + int.Parse(roomIdField.Text);
+                query = "UPDATE Rooms.Room SET RoomNumber = " + roomNoField.Text + ", RoomTypeId = " + roomId + ", Available = '" + availableField.Text + "' WHERE RoomId = " + int.Parse(roomIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
                 populateTable();
@@ -224,7 +225,8 @@ namespace Hotel_Management_System.Controllers
             addButton.Enabled = false;
             roomIdField.Text = roomsTable.SelectedRows[0].Cells[0].Value.ToString();
             roomNoField.Text = roomsTable.SelectedRows[0].Cells[1].Value.ToString();
-            typeCmbox.SelectedItem = getNameFromId(int.Parse(roomsTable.SelectedRows[0].Cells[2].Value.ToString()));
+            availableField.Text = roomsTable.SelectedRows[0].Cells[2].Value.ToString();
+            typeCmbox.SelectedItem = getNameFromId(int.Parse(roomsTable.SelectedRows[0].Cells[3].Value.ToString()));
             findCost();
         }
     }

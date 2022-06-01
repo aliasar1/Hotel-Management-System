@@ -53,7 +53,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            String query = "SELECT EmployeeId AS ID, EmployeeFirstName AS FName, EmployeeLastName AS LName, CNIC, EmployeeDesignation AS Designation, EmployeeContactNumber AS Contact, EmployeeEmailAddress AS Email, EmployeeJoingDate AS JDate, DepartmentId AS DepId, HotelId FROM Hotels.Employees";
+            String query = "SELECT EmployeeId AS ID, EmployeeFirstName AS FName, EmployeeLastName AS LName, CNIC, EmployeeDesignation AS Designation, EmployeeContactNumber AS Contact, EmployeeEmailAddress AS Email, EmployeeJoingDate AS JDate, DepartmentId AS DepId, HotelId FROM Hotels.Employees WHERE HotelId = " + Statics.hotelIdTKN;
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
