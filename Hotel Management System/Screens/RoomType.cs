@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_Management_System.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -114,6 +115,8 @@ namespace Hotel_Management_System.Screens
 
         private void guna2CircleButton2_Click(object sender, EventArgs e)
         {
+            RoomsScreen rs = new RoomsScreen();
+            rs.populate(); 
             this.Hide();
         }
 

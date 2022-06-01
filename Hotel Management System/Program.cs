@@ -18,7 +18,8 @@ namespace Hotel_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SplashScreen());
+            Application.Run(new RoomsScreen());
+
         }
     }
 }

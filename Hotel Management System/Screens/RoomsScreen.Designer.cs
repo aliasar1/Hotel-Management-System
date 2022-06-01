@@ -48,8 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.roomTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.roomTable)).BeginInit();
+            this.roomsTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsTable)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CircleButton2
@@ -336,15 +336,15 @@
             this.guna2GradientButton1.Text = "Add Room Types";
             this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
             // 
-            // roomTable
+            // roomsTable
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.roomTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.roomTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.roomTable.BackgroundColor = System.Drawing.Color.White;
-            this.roomTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.roomTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.roomTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.roomsTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.roomsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.roomsTable.BackgroundColor = System.Drawing.Color.White;
+            this.roomsTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.roomsTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.roomsTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -352,8 +352,8 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.roomTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.roomTable.ColumnHeadersHeight = 40;
+            this.roomsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.roomsTable.ColumnHeadersHeight = 40;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -361,40 +361,40 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.roomTable.DefaultCellStyle = dataGridViewCellStyle3;
-            this.roomTable.EnableHeadersVisualStyles = false;
-            this.roomTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.roomTable.Location = new System.Drawing.Point(42, 75);
-            this.roomTable.Name = "roomTable";
-            this.roomTable.ReadOnly = true;
-            this.roomTable.RowHeadersVisible = false;
-            this.roomTable.RowTemplate.Height = 35;
-            this.roomTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.roomTable.Size = new System.Drawing.Size(722, 473);
-            this.roomTable.TabIndex = 115;
-            this.roomTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.roomTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.roomTable.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.roomTable.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.roomTable.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.roomTable.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.roomTable.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.roomTable.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.roomTable.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.roomTable.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.roomTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomTable.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.roomTable.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.roomTable.ThemeStyle.HeaderStyle.Height = 40;
-            this.roomTable.ThemeStyle.ReadOnly = true;
-            this.roomTable.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.roomTable.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.roomTable.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomTable.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.roomTable.ThemeStyle.RowsStyle.Height = 35;
-            this.roomTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.roomTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.roomTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.roomTable_CellContentClick);
+            this.roomsTable.DefaultCellStyle = dataGridViewCellStyle3;
+            this.roomsTable.EnableHeadersVisualStyles = false;
+            this.roomsTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.roomsTable.Location = new System.Drawing.Point(42, 67);
+            this.roomsTable.Name = "roomsTable";
+            this.roomsTable.ReadOnly = true;
+            this.roomsTable.RowHeadersVisible = false;
+            this.roomsTable.RowTemplate.Height = 35;
+            this.roomsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.roomsTable.Size = new System.Drawing.Size(708, 491);
+            this.roomsTable.TabIndex = 115;
+            this.roomsTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.roomsTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.roomsTable.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.roomsTable.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.roomsTable.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.roomsTable.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.roomsTable.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.roomsTable.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.roomsTable.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.roomsTable.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.roomsTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomsTable.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.roomsTable.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.roomsTable.ThemeStyle.HeaderStyle.Height = 40;
+            this.roomsTable.ThemeStyle.ReadOnly = true;
+            this.roomsTable.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.roomsTable.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.roomsTable.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomsTable.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.roomsTable.ThemeStyle.RowsStyle.Height = 35;
+            this.roomsTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.roomsTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.roomsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RoomsTable_CellContentClick);
             // 
             // RoomsScreen
             // 
@@ -402,7 +402,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1133, 560);
-            this.Controls.Add(this.roomTable);
+            this.Controls.Add(this.roomsTable);
             this.Controls.Add(this.guna2GradientButton1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2CircleButton2);
@@ -425,7 +425,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Rooms";
             this.Load += new System.EventHandler(this.Rooms_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.roomTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,6 +449,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
-        private Guna.UI2.WinForms.Guna2DataGridView roomTable;
+        private Guna.UI2.WinForms.Guna2DataGridView roomsTable;
     }
 }

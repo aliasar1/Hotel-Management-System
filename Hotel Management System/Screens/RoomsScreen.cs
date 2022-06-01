@@ -31,19 +31,24 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            String query = "SELECT * FROM Rooms.Room";
+            String query = "SELECT * FROM Rooms.Room WHERE HotelId = " + Statics.hotelIdTKN;
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
             sda.Fill(ds);
-            roomTable.DataSource = ds.Tables[0];
+            roomsTable.DataSource = ds.Tables[0];
             con.Close();
+        }
+
+        public void populate()
+        {
+            populateTable();
+            populateTypeComboBox();
         }
 
         private void Rooms_Load(object sender, EventArgs e)
         {
-            populateTable();
-            populateTypeComboBox();
+            populate();
         }
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
@@ -58,12 +63,12 @@ namespace Hotel_Management_System.Controllers
                 bool temp = false;
                 SqlConnection con = dc.getConnection();
                 con.Open();
-                query = "SELECT * FROM Rooms.Room WHERE RoomTypeId = " + int.Parse(roomIdField.Text);
+                query = "SELECT * FROM Rooms.Room WHERE RoomId = " + int.Parse(roomIdField.Text);
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    roomNoField.Text = dr.GetString(1);
+                    roomNoField.Text = dr.GetInt32(1).ToString();
                     typeCmbox.Text = getNameFromId(dr.GetInt32(3));
                     findCost();
                     temp = true;
@@ -190,7 +195,8 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
-                query = "UPDATE Rooms.Room SET RoomNumber = '" + roomNoField.Text + "', RoomType = '" + typeCmbox.Text + "' WHERE RoomId = " + int.Parse(roomIdField.Text);
+                getIdFromTypeName();
+                query = "UPDATE Rooms.Room SET RoomNumber = " + roomNoField.Text + ", RoomTypeId = " + roomId + " WHERE RoomId = " + int.Parse(roomIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
                 populateTable();
@@ -213,12 +219,12 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
-        private void roomTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void RoomsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             addButton.Enabled = false;
-            roomIdField.Text = roomTable.SelectedRows[0].Cells[0].Value.ToString();
-            roomNoField.Text = roomTable.SelectedRows[0].Cells[1].Value.ToString();
-            typeCmbox.Text = getNameFromId(int.Parse(roomTable.SelectedRows[0].Cells[1].Value.ToString()));
+            roomIdField.Text = roomsTable.SelectedRows[0].Cells[0].Value.ToString();
+            roomNoField.Text = roomsTable.SelectedRows[0].Cells[1].Value.ToString();
+            typeCmbox.SelectedItem = getNameFromId(int.Parse(roomsTable.SelectedRows[0].Cells[2].Value.ToString()));
             findCost();
         }
     }

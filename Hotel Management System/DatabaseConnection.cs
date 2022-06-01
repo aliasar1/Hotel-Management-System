@@ -46,10 +46,5 @@ namespace Hotel_Management_System
             MessageBox.Show("'" + message + "'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-
-
-
-
-
     }
 }
