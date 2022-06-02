@@ -28,7 +28,6 @@ namespace Hotel_Management_System
             DataSet ds = new DataSet();
             da.Fill(ds);
             connection.Close();
-            Console.WriteLine("I AM HERE 1");
             return ds;
         }
 

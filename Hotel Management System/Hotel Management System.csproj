@@ -119,6 +119,12 @@
     <Compile Include="Screens\RoomType.Designer.cs">
       <DependentUpon>RoomType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\ServicesScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\ServicesScreen.Designer.cs">
+      <DependentUpon>ServicesScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\SuperAdminLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\RoomType.resx">
       <DependentUpon>RoomType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\ServicesScreen.resx">
+      <DependentUpon>ServicesScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\SuperAdminLogin.resx">
       <DependentUpon>SuperAdminLogin.cs</DependentUpon>

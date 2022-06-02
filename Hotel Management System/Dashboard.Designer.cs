@@ -46,6 +46,7 @@
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ImageRadioButton1 = new Guna.UI2.WinForms.Guna2ImageRadioButton();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.servicesBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -139,16 +140,17 @@
             // 
             // guna2Panel2
             // 
+            this.guna2Panel2.Controls.Add(this.servicesBtn);
             this.guna2Panel2.Controls.Add(this.guna2Button6);
             this.guna2Panel2.Controls.Add(this.guna2Button5);
             this.guna2Panel2.Controls.Add(this.guna2Button4);
             this.guna2Panel2.Controls.Add(this.guna2Button3);
             this.guna2Panel2.Controls.Add(this.guna2Button2);
             this.guna2Panel2.Controls.Add(this.guna2Button1);
-            this.guna2Panel2.Location = new System.Drawing.Point(27, 12);
+            this.guna2Panel2.Location = new System.Drawing.Point(24, 20);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
-            this.guna2Panel2.Size = new System.Drawing.Size(1141, 66);
+            this.guna2Panel2.Size = new System.Drawing.Size(1144, 61);
             this.guna2Panel2.TabIndex = 0;
             // 
             // guna2Button6
@@ -166,10 +168,10 @@
             this.guna2Button6.HoverState.Parent = this.guna2Button6;
             this.guna2Button6.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button6.Image")));
             this.guna2Button6.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button6.Location = new System.Drawing.Point(398, 3);
+            this.guna2Button6.Location = new System.Drawing.Point(321, 6);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.ShadowDecoration.Parent = this.guna2Button6;
-            this.guna2Button6.Size = new System.Drawing.Size(156, 60);
+            this.guna2Button6.Size = new System.Drawing.Size(139, 44);
             this.guna2Button6.TabIndex = 7;
             this.guna2Button6.Text = "Guests";
             this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click);
@@ -189,10 +191,10 @@
             this.guna2Button5.HoverState.Parent = this.guna2Button5;
             this.guna2Button5.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button5.Image")));
             this.guna2Button5.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button5.Location = new System.Drawing.Point(777, 6);
+            this.guna2Button5.Location = new System.Drawing.Point(796, 6);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.ShadowDecoration.Parent = this.guna2Button5;
-            this.guna2Button5.Size = new System.Drawing.Size(156, 60);
+            this.guna2Button5.Size = new System.Drawing.Size(153, 44);
             this.guna2Button5.TabIndex = 6;
             this.guna2Button5.Text = "Checkout";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
@@ -212,10 +214,10 @@
             this.guna2Button4.HoverState.Parent = this.guna2Button4;
             this.guna2Button4.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button4.Image")));
             this.guna2Button4.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button4.Location = new System.Drawing.Point(587, 3);
+            this.guna2Button4.Location = new System.Drawing.Point(631, 6);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.ShadowDecoration.Parent = this.guna2Button4;
-            this.guna2Button4.Size = new System.Drawing.Size(157, 60);
+            this.guna2Button4.Size = new System.Drawing.Size(149, 44);
             this.guna2Button4.TabIndex = 5;
             this.guna2Button4.Text = "Bookings";
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
@@ -235,10 +237,10 @@
             this.guna2Button3.HoverState.Parent = this.guna2Button3;
             this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
             this.guna2Button3.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button3.Location = new System.Drawing.Point(206, 3);
+            this.guna2Button3.Location = new System.Drawing.Point(164, 6);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.ShadowDecoration.Parent = this.guna2Button3;
-            this.guna2Button3.Size = new System.Drawing.Size(156, 60);
+            this.guna2Button3.Size = new System.Drawing.Size(141, 44);
             this.guna2Button3.TabIndex = 4;
             this.guna2Button3.Text = "Rooms";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
@@ -258,10 +260,10 @@
             this.guna2Button2.HoverState.Parent = this.guna2Button2;
             this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
             this.guna2Button2.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button2.Location = new System.Drawing.Point(962, 6);
+            this.guna2Button2.Location = new System.Drawing.Point(959, 6);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(156, 60);
+            this.guna2Button2.Size = new System.Drawing.Size(165, 44);
             this.guna2Button2.TabIndex = 3;
             this.guna2Button2.Text = "Employee";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
@@ -281,10 +283,10 @@
             this.guna2Button1.HoverState.Parent = this.guna2Button1;
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
             this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button1.Location = new System.Drawing.Point(15, 3);
+            this.guna2Button1.Location = new System.Drawing.Point(18, 6);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(156, 60);
+            this.guna2Button1.Size = new System.Drawing.Size(130, 44);
             this.guna2Button1.TabIndex = 2;
             this.guna2Button1.Text = "Hotel";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -324,6 +326,29 @@
             this.guna2CircleButton1.Size = new System.Drawing.Size(37, 24);
             this.guna2CircleButton1.TabIndex = 2;
             this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
+            // 
+            // servicesBtn
+            // 
+            this.servicesBtn.BorderRadius = 15;
+            this.servicesBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.servicesBtn.CheckedState.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.servicesBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.servicesBtn.CheckedState.Parent = this.servicesBtn;
+            this.servicesBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.servicesBtn.CustomImages.Parent = this.servicesBtn;
+            this.servicesBtn.FillColor = System.Drawing.Color.DimGray;
+            this.servicesBtn.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.servicesBtn.ForeColor = System.Drawing.Color.White;
+            this.servicesBtn.HoverState.Parent = this.servicesBtn;
+            this.servicesBtn.Image = ((System.Drawing.Image)(resources.GetObject("servicesBtn.Image")));
+            this.servicesBtn.ImageSize = new System.Drawing.Size(30, 30);
+            this.servicesBtn.Location = new System.Drawing.Point(476, 6);
+            this.servicesBtn.Name = "servicesBtn";
+            this.servicesBtn.ShadowDecoration.Parent = this.servicesBtn;
+            this.servicesBtn.Size = new System.Drawing.Size(138, 44);
+            this.servicesBtn.TabIndex = 8;
+            this.servicesBtn.Text = "Services";
+            this.servicesBtn.Click += new System.EventHandler(this.servicesBtn_Click);
             // 
             // Dashboard
             // 
@@ -365,5 +390,6 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2Button servicesBtn;
     }
 }

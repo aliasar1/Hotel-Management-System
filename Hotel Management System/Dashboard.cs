@@ -1,4 +1,5 @@
 ﻿using Hotel_Management_System.Controllers;
+using Hotel_Management_System.Screens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace Hotel_Management_System
         CheckoutScreen cs = new CheckoutScreen();
         GuestsScreen gs = new GuestsScreen();
         EmployeesScreen es = new EmployeesScreen();
+        ServicesScreen ss = new ServicesScreen();
         public Dashboard()
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace Hotel_Management_System
             resScreen.Hide();
             cs.Hide();
             gs.Hide();
+            ss.Hide();
             es.Hide();
             rs.Show();
         }
@@ -46,12 +49,14 @@ namespace Hotel_Management_System
             cs.Hide();
             es.Hide();
             gs.Hide();
+            ss.Hide();
             hs.Show();
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             rs.Hide();
+            ss.Hide();
             hs.Hide();
             gs.Hide();
             cs.Hide();
@@ -63,6 +68,7 @@ namespace Hotel_Management_System
             rs.Hide();
             hs.Hide();
             es.Hide();
+            ss.Hide();
             gs.Hide();
             resScreen.Hide();
             cs.Show();
@@ -76,6 +82,7 @@ namespace Hotel_Management_System
             es.Hide();
             gs.Hide();
             cs.Hide();
+            ss.Hide();
             resScreen.Hide();
             Login l = new Login();
             l.Show();
@@ -86,6 +93,7 @@ namespace Hotel_Management_System
             rs.Hide();
             hs.Hide();
             es.Hide();
+            ss.Hide();
             gs.Hide();
             resScreen.Hide();
             gs.Show();
@@ -96,9 +104,21 @@ namespace Hotel_Management_System
             rs.Hide();
             hs.Hide();
             gs.Hide();
+            ss.Hide();
             resScreen.Hide();
             gs.Hide();
             es.Show();
+        }
+
+        private void servicesBtn_Click(object sender, EventArgs e)
+        {
+            rs.Hide();
+            hs.Hide();
+            gs.Hide();
+            resScreen.Hide();
+            gs.Hide();
+            es.Hide();
+            ss.Show();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Hotel_Management_System
         DatabaseConnection dc = new DatabaseConnection();
         String query;
         public int hotelIdToken;
+        public int employeeIdToken;
 
         public Login()
         {
@@ -65,11 +66,26 @@ namespace Hotel_Management_System
                 errorLabel.Visible = false;
                 TokenHotelId();
                 Statics.setHotelId(hotelIdToken);
+                TokenEployeeId();
+                Statics.setEmployeeId(employeeIdToken);
                 this.Hide();
                 Dashboard db = new Dashboard();
                 db.Show();
             }
             connection.Close();
+        }
+
+        private void TokenEployeeId()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT EmployeeId FROM Authentication.Login WHERE username = '" + usernameTextField.Text + "' AND password = '" + passwordTextField.Text + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                employeeIdToken = dr.GetInt32(0);
+            }
         }
 
         private void TokenHotelId()
