@@ -191,6 +191,7 @@ namespace Hotel_Management_System.Controllers
                 dc.setData(query, "Hotel inserted successfully!");
                 int j = getRecentBookingId();
                 insertInRoomBooked(j, int.Parse(roomIdCMBox.Text));
+                readServiceCmbox(j);
                 clearFields();
                 populateTable();
             }
@@ -198,6 +199,26 @@ namespace Hotel_Management_System.Controllers
             {
                 MessageBox.Show("All fields must be filled.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void readServiceCmbox(int a)
+        {
+            foreach(var item in checkListBox.CheckedItems)
+            {
+                insertServiceUsed(a, int.Parse(item.ToString()));
+            }
+        }
+
+        private void insertServiceUsed(int a, int b)
+        {
+            SqlConnection connection = dc.getConnection();
+            connection.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            String q = "INSERT INTO HotelService.ServicesUsed VALUES (" + a + ", " + b + ")";
+            cmd.CommandText = q;
+            cmd.ExecuteNonQuery();
+            connection.Close();
         }
 
         private int getRecentBookingId()
