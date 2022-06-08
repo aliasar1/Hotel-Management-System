@@ -104,12 +104,6 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
-        private void guestTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            guestIdField.Text = guestTable.SelectedRows[0].Cells[0].Value.ToString();
-            retrieveData(int.Parse(guestIdField.Text));
-        }
-
         private void retrieveData(int id)
         {
             if (guestIdField.Text == "")
@@ -183,6 +177,12 @@ namespace Hotel_Management_System.Controllers
                 clearFields();
                 populateTable();
             }
+        }
+
+        private void guestTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            guestIdField.Text = guestTable.SelectedRows[0].Cells[0].Value.ToString();
+            retrieveData(int.Parse(guestIdField.Text));
         }
     }
 }

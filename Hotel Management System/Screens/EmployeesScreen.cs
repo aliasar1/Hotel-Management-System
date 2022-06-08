@@ -53,7 +53,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            String query = "SELECT EmployeeId AS ID, EmployeeFirstName AS FName, EmployeeLastName AS LName, CNIC, EmployeeDesignation AS Designation, EmployeeContactNumber AS Contact, EmployeeEmailAddress AS Email, EmployeeJoingDate AS JDate, DepartmentId AS DepId, HotelId FROM Hotels.Employees WHERE HotelId = " + Statics.hotelIdTKN;
+            String query = "SELECT EmployeeId AS ID, EmployeeFirstName AS FName, EmployeeLastName AS LName, CNIC, EmployeeDesignation AS Designation, EmployeeContactNumber AS Contact, EmployeeEmailAddress AS Email, EmployeeJoiningDate AS JDate, DepartmentId AS DepId, HotelId FROM Hotels.Employees WHERE HotelId = " + Statics.hotelIdTKN;
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
@@ -92,11 +92,11 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
-        private void populateDepartmentComboBox()
+        public void populateDepartmentComboBox()
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT DepartmentName from Hotels.Departments";
+            query = "SELECT DepartmentName from Hotels.Departments WHERE HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -116,7 +116,7 @@ namespace Hotel_Management_System.Controllers
                 {
                     Console.WriteLine(Statics.hotelIdTKN);
                     getFieldsData();
-                    query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoingDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + Statics.hotelIdTKN + ", '" + cnic + "')";
+                    query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoiningDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + Statics.hotelIdTKN + ", '" + cnic + "')";
                     dc.setData(query, "You are required to create account in order to register.!");
                    
                     SqlConnection con = dc.getConnection();
@@ -128,15 +128,17 @@ namespace Hotel_Management_System.Controllers
                     {
                         maxId = dr.GetInt32(0);
                     }
-                    this.Hide();
-                    CreateEmployeeAccountScreen createEmployee = new CreateEmployeeAccountScreen();
-                    createEmployee.Show();
+                    Statics.setTempEmplId(maxId);
+                    Statics.EmployeeNameId(maxId, fnameField.Text);
+             
+                    ShowDefaultScreen screen = new ShowDefaultScreen(true);
+                    screen.Show();
                     populateTable();
                 }
                 else
                 {
                     getFieldsData();
-                    query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoingDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + Statics.hotelIdTKN + ", '" + cnic + "')";
+                    query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoiningDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + Statics.hotelIdTKN + ", '" + cnic + "')";
                     dc.setData(query, "Employee record inserted successfully!");
                     populateTable();
                 }
@@ -148,6 +150,20 @@ namespace Hotel_Management_System.Controllers
             }
             
         }
+
+        private void getRecenetEmpId()
+        {
+            query = "SELECT MAX(EmployeeId) FROM Hotels.Employees";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                maxId = dr.GetInt32(0);
+            }
+        }
+
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
@@ -211,7 +227,7 @@ namespace Hotel_Management_System.Controllers
                 contactField.Text = dr.GetString(4);
                 Console.WriteLine(dr.GetString(5));
                 emailField.Text = dr.GetString(5);
-                joiningDatePicker.Value = Convert.ToDateTime(dr["EmployeeJoingDate"]);
+                joiningDatePicker.Value = Convert.ToDateTime(dr["EmployeeJoiningDate"]);
                 addressField.Text = dr.GetString(7);
                 streetField.Text = dr.GetString(8);
                 cityField.Text = dr.GetString(9);
@@ -224,17 +240,22 @@ namespace Hotel_Management_System.Controllers
 
         public String findDepUsingId(String s)
         {
-            SqlConnection con = dc.getConnection();
-            con.Open();
-            String str = "";
-            query = "SELECT DepartmentName from Hotels.Departments WHERE DepartmentId = " +  s;
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
+            if (!s.Equals(""))
             {
-                str = dr.GetString(0);
+                SqlConnection con = dc.getConnection();
+                con.Open();
+                String str = "";
+                query = "SELECT DepartmentName from Hotels.Departments WHERE DepartmentId = " + s;
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    str = dr.GetString(0);
+                }
+                return str;
             }
-            return str;
+            return "null";
+            
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -245,7 +266,7 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
-                query = "UPDATE Hotels.Employees SET EmployeeFirstName = '" + fnameField.Text + "', EmployeeLastName = '" + lnameField.Text + "', EmployeeDesignation = '" + designationCMBox.Text + "', EmployeeContactNumber = '" + contactField.Text + "', EmployeeEmailAddress = '" + emailField.Text + "', EmployeeJoingDate = '" + joiningDatePicker.Text + "', AddressLine = '" + addressField.Text + "', Street = '" + streetField.Text + "', City = '" + cityField.Text + "', Zip = '" + zipField.Text + "', CNIC = '" + cnicField.Text + "' WHERE EmployeeId = " + int.Parse(employeeIdField.Text);
+                query = "UPDATE Hotels.Employees SET EmployeeFirstName = '" + fnameField.Text + "', EmployeeLastName = '" + lnameField.Text + "', EmployeeDesignation = '" + designationCMBox.Text + "', EmployeeContactNumber = '" + contactField.Text + "', EmployeeEmailAddress = '" + emailField.Text + "', EmployeeJoiningDate = '" + joiningDatePicker.Text + "', AddressLine = '" + addressField.Text + "', Street = '" + streetField.Text + "', City = '" + cityField.Text + "', Zip = '" + zipField.Text + "', CNIC = '" + cnicField.Text + "' WHERE EmployeeId = " + int.Parse(employeeIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
                 populateTable();
@@ -266,5 +287,6 @@ namespace Hotel_Management_System.Controllers
                 populateTable();
             }
         }
+
     }
 }

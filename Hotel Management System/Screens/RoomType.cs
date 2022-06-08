@@ -27,7 +27,7 @@ namespace Hotel_Management_System.Screens
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            String query = "SELECT RoomTypeId AS ID, Name, Cost, SmokeFriendly, PetFriendly FROM Rooms.RoomType";
+            String query = "SELECT RoomTypeId AS ID, Name, Cost, SmokeFriendly, PetFriendly FROM Rooms.RoomType WHERE HotelId = " + Statics.hotelIdTKN;
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
@@ -52,9 +52,10 @@ namespace Hotel_Management_System.Screens
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (typeIdField.Text != "" || typeNameField.Text != "" || costField.Text != "" || smokeCMBox.SelectedIndex == -1 || petCMBox.SelectedIndex == -1)
+            if (typeNameField.Text != "" && costField.Text != "" && smokeCMBox.SelectedIndex != -1 && petCMBox.SelectedIndex != -1)
             {
-                query = "INSERT INTO Rooms.RoomType (Name, Cost, SmokeFriendly, PetFriendly) VALUES ('" + typeNameField.Text + "' , " + costField.Text + ", '" + smokeCMBox.Text + "', '" + petCMBox.Text + "')";
+                query = "INSERT INTO Rooms.RoomType (Name, Cost, SmokeFriendly, PetFriendly, HotelId) VALUES ('" + typeNameField.Text + "' , " + costField.Text + ", '" + smokeCMBox.Text + "', '" + petCMBox.Text + "', " + Statics.hotelIdTKN + ")";
+                Console.WriteLine(query);
                 dc.setData(query, "RoomType inserted successfully!");
                 clearFields();
                 populateTable();
@@ -132,7 +133,7 @@ namespace Hotel_Management_System.Screens
                 bool temp = false;
                 SqlConnection con = dc.getConnection();
                 con.Open();
-                query = "SELECT * FROM Rooms.RoomType WHERE RoomTypeId = " + int.Parse(typeIdField.Text);
+                query = "SELECT * FROM Rooms.RoomType WHERE RoomTypeId = " + int.Parse(typeIdField.Text) + " AND HotelId = " + Statics.hotelIdTKN;
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())

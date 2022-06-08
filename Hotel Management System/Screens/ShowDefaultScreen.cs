@@ -19,9 +19,16 @@ namespace Hotel_Management_System.Screens
         DatabaseConnection dc = new DatabaseConnection();
         String uname;
         String password;
+        bool isEmployee = false;
         public ShowDefaultScreen()
         {
             InitializeComponent();
+        }
+
+        public ShowDefaultScreen(bool isEmployee)
+        {
+            InitializeComponent();
+            this.isEmployee = isEmployee;
         }
 
         public static string randomPassoword()
@@ -33,7 +40,14 @@ namespace Hotel_Management_System.Screens
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            query = "INSERT INTO Authentication.Login (Username, Password, HotelId) VALUES ('" + uname + "', '" + password + "', " + Statics.hotelIdTKN + ")";
+            if (isEmployee)
+            {
+                query = "INSERT INTO Authentication.Login (Username, Password, HotelId, EmployeeId) VALUES ('" + uname + "', '" + password + "', " + Statics.hotelIdTKN + ", " + Statics.tempEmpId + ")";
+            }
+            else
+            {
+                query = "INSERT INTO Authentication.Login (Username, Password, HotelId) VALUES ('" + uname + "', '" + password + "', " + Statics.hotelIdTKN + ")";
+            }
             SqlConnection connection = dc.getConnection();
             connection.Open();
             SqlCommand cmd = new SqlCommand();
@@ -46,11 +60,22 @@ namespace Hotel_Management_System.Screens
 
         private void ShowDefaultScreen_Load(object sender, EventArgs e)
         {
-            uname = Statics.hotelNameAndId;
-            uname = uname.Replace(" ", String.Empty);
-            password = randomPassoword();
-            usernameTextField.Text = uname;
-            passwordTextField.Text = password;
+            if (isEmployee)
+            {
+                uname = Statics.employeeNameAndId;
+                uname = uname.Replace(" ", String.Empty);
+                password = randomPassoword();
+                usernameTextField.Text = uname;
+                passwordTextField.Text = password;
+            }
+            else
+            {
+                uname = Statics.hotelNameAndId;
+                uname = uname.Replace(" ", String.Empty);
+                password = randomPassoword();
+                usernameTextField.Text = uname;
+                passwordTextField.Text = password;
+            }
         }
     }
 }

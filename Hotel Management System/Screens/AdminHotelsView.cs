@@ -202,6 +202,18 @@ namespace Hotel_Management_System.Controllers
 
         }
 
+        private void deleteRoomType()
+        {
+            query = "DELETE FROM Rooms.RoomType WHERE HotelId = " + int.Parse(hotelIdField.Text);
+            dc.setData(query, "");
+        }
+
+        private void deleteRooms()
+        {
+            query = "DELETE FROM Rooms.Room WHERE HotelId = " + int.Parse(hotelIdField.Text);
+            dc.setData(query, "");
+        }
+
         private void deleteHotelLogin()
         {
             query = "DELETE FROM Authentication.Login WHERE HotelId = " + int.Parse(hotelIdField.Text);
@@ -224,11 +236,27 @@ namespace Hotel_Management_System.Controllers
             else
             {
                 deleteHotelLogin();
+                deleteDepartments();
+                deleteEmployees();
+                deleteRoomType();
+                deleteRooms();
                 query = "DELETE FROM Hotels.Hotel WHERE HotelId = " + int.Parse(hotelIdField.Text);
                 dc.setData(query, "Record deleted successfully.");
                 clearFields();
                 populateTable();
             }
+        }
+
+        private void deleteEmployees()
+        {
+            query = "DELETE FROM Hotels.Employees WHERE HotelId = " + int.Parse(hotelIdField.Text);
+            dc.setData(query, "");
+        }
+
+        private void deleteDepartments()
+        {
+            query = "DELETE FROM Hotels.Departments WHERE HotelId = " + int.Parse(hotelIdField.Text);
+            dc.setData(query, "");
         }
 
         private void updateButton_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_Management_System.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,7 +45,7 @@ namespace Hotel_Management_System.Screens
                 bool temp = false;
                 SqlConnection con = dc.getConnection();
                 con.Open();
-                query = "SELECT * FROM Hotels.Departments WHERE DepartmentId = " + int.Parse(depIdField.Text);
+                query = "SELECT * FROM Hotels.Departments WHERE DepartmentId = " + int.Parse(depIdField.Text) + " AND HotelId = " + Statics.hotelIdTKN;
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -69,7 +70,7 @@ namespace Hotel_Management_System.Screens
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            String query = "SELECT DepartmentId AS ID, DepartmentName AS Name, DepartmentDescription AS Description, InitialSalary FROM Hotels.Departments";
+            String query = "SELECT DepartmentId AS ID, DepartmentName AS Name, DepartmentDescription AS Description, InitialSalary FROM Hotels.Departments WHERE HotelId = " + Statics.hotelIdTKN ;
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
@@ -114,7 +115,7 @@ namespace Hotel_Management_System.Screens
             if (depIdField.Text != "" || departmentNameField.Text != "" || descriptionField.Text != "" || salaryField.Text != "")
             {
                 getFieldsData();
-                query = "INSERT INTO Hotels.Departments (DepartmentName, DepartmentDescription, InitialSalary) VALUES ('" + name + "' , '" + description + "', " + salary + ")";
+                query = "INSERT INTO Hotels.Departments (DepartmentName, DepartmentDescription, InitialSalary, HotelId) VALUES ('" + name + "' , '" + description + "', " + salary + ", " + Statics.hotelIdTKN + ")";
                 dc.setData(query, "Department inserted successfully!");
                 clearFields();
                 populateTable();
@@ -141,11 +142,18 @@ namespace Hotel_Management_System.Screens
             }
             else
             {
-                query = "DELETE FROM Hotels.Departments WHERE DepartmentId = " + int.Parse(depIdField.Text);
+                setNullEmployeeDept();
+                query = "DELETE FROM Hotels.Departments WHERE DepartmentId = " + int.Parse(depIdField.Text) + " AND HotelId = " + Statics.hotelIdTKN;
                 dc.setData(query, "Record deleted successfully.");
                 clearFields();
                 populateTable();
             }
+        }
+
+        private void setNullEmployeeDept()
+        {
+            query = "UPDATE Hotels.Employees SET DepartmentId = NULL WHERE DepartmentId = " + depIdField.Text;
+            dc.setData(query, "");
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -158,7 +166,7 @@ namespace Hotel_Management_System.Screens
             else
             {
                 getFieldsData();
-                query = "UPDATE Hotels.Departments SET DepartmentName = '" + name + "', DepartmentDescription = '" + description + "', InitialSalary= " + salary + " WHERE DepartmentId = " + int.Parse(depIdField.Text);
+                query = "UPDATE Hotels.Departments SET DepartmentName = '" + name + "', DepartmentDescription = '" + description + "', InitialSalary= " + salary + " WHERE DepartmentId = " + int.Parse(depIdField.Text) + " AND HotelId = " + Statics.hotelIdTKN;
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
                 populateTable();
@@ -168,6 +176,8 @@ namespace Hotel_Management_System.Screens
         private void guna2CircleButton2_Click(object sender, EventArgs e)
         {
             this.Hide();
+            EmployeesScreen es = new EmployeesScreen();
+            es.populateDepartmentComboBox();
         }
     }
 }

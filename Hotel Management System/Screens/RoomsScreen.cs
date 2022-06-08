@@ -68,7 +68,7 @@ namespace Hotel_Management_System.Controllers
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    roomNoField.Text = dr.GetInt32(1).ToString();
+                    roomNoField.Text = dr.GetValue(1).ToString();
                     typeCmbox.Text = getNameFromId(dr.GetInt32(3));
                     availableField.Text = dr.GetString(4).ToString();
                     findCost();
@@ -225,7 +225,7 @@ namespace Hotel_Management_System.Controllers
             addButton.Enabled = false;
             roomIdField.Text = roomsTable.SelectedRows[0].Cells[0].Value.ToString();
             roomNoField.Text = roomsTable.SelectedRows[0].Cells[1].Value.ToString();
-            availableField.Text = roomsTable.SelectedRows[0].Cells[2].Value.ToString();
+            availableField.Text = roomsTable.SelectedRows[0].Cells[4].Value.ToString();
             typeCmbox.SelectedItem = getNameFromId(int.Parse(roomsTable.SelectedRows[0].Cells[3].Value.ToString()));
             findCost();
         }

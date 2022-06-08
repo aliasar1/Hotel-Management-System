@@ -60,7 +60,6 @@ namespace Hotel_Management_System
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             String isNewUser = checkNewUser().Trim();
-            Console.WriteLine(isNewUser);
             query = "SELECT LoginId FROM Authentication.Login WHERE Username = @username AND Password = @password";
             SqlConnection connection = dc.getConnection();
             connection.Open();
@@ -83,20 +82,16 @@ namespace Hotel_Management_System
                 errorLabel.Text = "Incorrect username or password.";
                 errorLabel.Visible = true;
             }
-            else if(isNewUser.Equals("Yes"))
+            else if(reader.HasRows && isNewUser.Equals("Yes"))
             {
-                Console.WriteLine(reader.HasRows);
-                Console.WriteLine(isNewUser.Equals("Yes"));
                 Statics.setUname(usernameTextField.Text);
                 Statics.setPass(passwordTextField.Text);
                 PasswordResetScreen reset = new PasswordResetScreen();
                 reset.Show();
                 this.Hide();
             }
-            else if (isNewUser.Equals("NO"))
+            else if (reader.HasRows && isNewUser.Equals("NO"))
             {
-                Console.WriteLine(reader.HasRows);
-                Console.WriteLine(isNewUser.Equals("NO"));
                 errorLabel.Visible = false;
                 this.Hide();
                 Dashboard db = new Dashboard();

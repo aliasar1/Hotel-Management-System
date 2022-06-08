@@ -66,17 +66,17 @@
     <Compile Include="Screens\CheckoutScreen.Designer.cs">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\CreateEmployeeAccountScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Screens\CreateEmployeeAccountScreen.Designer.cs">
-      <DependentUpon>CreateEmployeeAccountScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Screens\DepartmentsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screens\DepartmentsScreen.Designer.cs">
       <DependentUpon>DepartmentsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DiscountScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DiscountScreen.Designer.cs">
+      <DependentUpon>DiscountScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\EmployeesScreen.cs">
       <SubType>Form</SubType>
@@ -175,11 +175,11 @@
     <EmbeddedResource Include="Screens\CheckoutScreen.resx">
       <DependentUpon>CheckoutScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\CreateEmployeeAccountScreen.resx">
-      <DependentUpon>CreateEmployeeAccountScreen.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Screens\DepartmentsScreen.resx">
       <DependentUpon>DepartmentsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DiscountScreen.resx">
+      <DependentUpon>DiscountScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\EmployeesScreen.resx">
       <DependentUpon>EmployeesScreen.cs</DependentUpon>

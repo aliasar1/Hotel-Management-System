@@ -28,16 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotelsScreen));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.hotelNameField = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.hotelIdField = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.contactField = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.webField = new Guna.UI2.WinForms.Guna2TextBox();
@@ -57,17 +50,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.zipField = new Guna.UI2.WinForms.Guna2TextBox();
             this.updateButton = new Guna.UI2.WinForms.Guna2Button();
-            this.deleteButton = new Guna.UI2.WinForms.Guna2Button();
-            this.addButton = new Guna.UI2.WinForms.Guna2Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.chainIdField = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.descriptionFIeld = new Guna.UI2.WinForms.Guna2TextBox();
-            this.hotelsTable = new Guna.UI2.WinForms.Guna2DataGridView();
             this.emailField = new Guna.UI2.WinForms.Guna2TextBox();
             this.label32 = new System.Windows.Forms.Label();
-            this.clearButton = new Guna.UI2.WinForms.Guna2Button();
-            ((System.ComponentModel.ISupportInitialize)(this.hotelsTable)).BeginInit();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // label1
@@ -80,24 +67,6 @@
             this.label1.Size = new System.Drawing.Size(89, 27);
             this.label1.TabIndex = 34;
             this.label1.Text = "Hotels";
-            // 
-            // guna2CircleButton1
-            // 
-            this.guna2CircleButton1.BorderThickness = 2;
-            this.guna2CircleButton1.CheckedState.Parent = this.guna2CircleButton1;
-            this.guna2CircleButton1.CustomImages.Parent = this.guna2CircleButton1;
-            this.guna2CircleButton1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.HoverState.Parent = this.guna2CircleButton1;
-            this.guna2CircleButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CircleButton1.Image")));
-            this.guna2CircleButton1.Location = new System.Drawing.Point(947, 17);
-            this.guna2CircleButton1.Name = "guna2CircleButton1";
-            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.ShadowDecoration.Parent = this.guna2CircleButton1;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(40, 35);
-            this.guna2CircleButton1.TabIndex = 41;
-            this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
             // 
             // hotelNameField
             // 
@@ -113,14 +82,14 @@
             this.hotelNameField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hotelNameField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.hotelNameField.HoverState.Parent = this.hotelNameField;
-            this.hotelNameField.Location = new System.Drawing.Point(770, 92);
+            this.hotelNameField.Location = new System.Drawing.Point(722, 72);
             this.hotelNameField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.hotelNameField.Name = "hotelNameField";
             this.hotelNameField.PasswordChar = '\0';
             this.hotelNameField.PlaceholderText = "";
             this.hotelNameField.SelectedText = "";
             this.hotelNameField.ShadowDecoration.Parent = this.hotelNameField;
-            this.hotelNameField.Size = new System.Drawing.Size(140, 22);
+            this.hotelNameField.Size = new System.Drawing.Size(323, 22);
             this.hotelNameField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.hotelNameField.TabIndex = 40;
             // 
@@ -129,48 +98,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(766, 67);
+            this.label4.Location = new System.Drawing.Point(718, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 19);
             this.label4.TabIndex = 39;
             this.label4.Text = "Hotel Name";
-            // 
-            // hotelIdField
-            // 
-            this.hotelIdField.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.hotelIdField.DefaultText = "";
-            this.hotelIdField.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.hotelIdField.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.hotelIdField.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.hotelIdField.DisabledState.Parent = this.hotelIdField;
-            this.hotelIdField.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.hotelIdField.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.hotelIdField.FocusedState.Parent = this.hotelIdField;
-            this.hotelIdField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hotelIdField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.hotelIdField.HoverState.Parent = this.hotelIdField;
-            this.hotelIdField.Location = new System.Drawing.Point(862, 30);
-            this.hotelIdField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.hotelIdField.Name = "hotelIdField";
-            this.hotelIdField.PasswordChar = '\0';
-            this.hotelIdField.PlaceholderText = "";
-            this.hotelIdField.ReadOnly = true;
-            this.hotelIdField.SelectedText = "";
-            this.hotelIdField.ShadowDecoration.Parent = this.hotelIdField;
-            this.hotelIdField.Size = new System.Drawing.Size(71, 22);
-            this.hotelIdField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.hotelIdField.TabIndex = 38;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label2.Location = new System.Drawing.Point(861, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 19);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "Hotel Id";
             // 
             // contactField
             // 
@@ -186,14 +118,14 @@
             this.contactField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.contactField.HoverState.Parent = this.contactField;
-            this.contactField.Location = new System.Drawing.Point(771, 144);
+            this.contactField.Location = new System.Drawing.Point(723, 124);
             this.contactField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.contactField.Name = "contactField";
             this.contactField.PasswordChar = '\0';
             this.contactField.PlaceholderText = "";
             this.contactField.SelectedText = "";
             this.contactField.ShadowDecoration.Parent = this.contactField;
-            this.contactField.Size = new System.Drawing.Size(139, 22);
+            this.contactField.Size = new System.Drawing.Size(128, 22);
             this.contactField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.contactField.TabIndex = 43;
             // 
@@ -202,7 +134,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label3.Location = new System.Drawing.Point(767, 119);
+            this.label3.Location = new System.Drawing.Point(719, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 19);
             this.label3.TabIndex = 42;
@@ -222,14 +154,14 @@
             this.webField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.webField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.webField.HoverState.Parent = this.webField;
-            this.webField.Location = new System.Drawing.Point(936, 326);
+            this.webField.Location = new System.Drawing.Point(884, 368);
             this.webField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.webField.Name = "webField";
             this.webField.PasswordChar = '\0';
             this.webField.PlaceholderText = "";
             this.webField.SelectedText = "";
             this.webField.ShadowDecoration.Parent = this.webField;
-            this.webField.Size = new System.Drawing.Size(158, 22);
+            this.webField.Size = new System.Drawing.Size(161, 22);
             this.webField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.webField.TabIndex = 45;
             // 
@@ -238,7 +170,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label5.Location = new System.Drawing.Point(927, 302);
+            this.label5.Location = new System.Drawing.Point(875, 344);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 19);
             this.label5.TabIndex = 44;
@@ -258,14 +190,14 @@
             this.floorCountField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.floorCountField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.floorCountField.HoverState.Parent = this.floorCountField;
-            this.floorCountField.Location = new System.Drawing.Point(771, 208);
+            this.floorCountField.Location = new System.Drawing.Point(723, 188);
             this.floorCountField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.floorCountField.Name = "floorCountField";
             this.floorCountField.PasswordChar = '\0';
             this.floorCountField.PlaceholderText = "";
             this.floorCountField.SelectedText = "";
             this.floorCountField.ShadowDecoration.Parent = this.floorCountField;
-            this.floorCountField.Size = new System.Drawing.Size(139, 20);
+            this.floorCountField.Size = new System.Drawing.Size(128, 20);
             this.floorCountField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.floorCountField.TabIndex = 47;
             // 
@@ -274,7 +206,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label6.Location = new System.Drawing.Point(767, 185);
+            this.label6.Location = new System.Drawing.Point(719, 165);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 19);
             this.label6.TabIndex = 46;
@@ -294,14 +226,14 @@
             this.capacityField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.capacityField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.capacityField.HoverState.Parent = this.capacityField;
-            this.capacityField.Location = new System.Drawing.Point(931, 145);
+            this.capacityField.Location = new System.Drawing.Point(879, 187);
             this.capacityField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.capacityField.Name = "capacityField";
             this.capacityField.PasswordChar = '\0';
             this.capacityField.PlaceholderText = "";
             this.capacityField.SelectedText = "";
             this.capacityField.ShadowDecoration.Parent = this.capacityField;
-            this.capacityField.Size = new System.Drawing.Size(158, 20);
+            this.capacityField.Size = new System.Drawing.Size(166, 20);
             this.capacityField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.capacityField.TabIndex = 49;
             // 
@@ -310,7 +242,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label7.Location = new System.Drawing.Point(927, 122);
+            this.label7.Location = new System.Drawing.Point(875, 164);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 19);
             this.label7.TabIndex = 48;
@@ -321,7 +253,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label8.Location = new System.Drawing.Point(770, 244);
+            this.label8.Location = new System.Drawing.Point(722, 224);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(114, 19);
             this.label8.TabIndex = 50;
@@ -341,14 +273,14 @@
             this.addressField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addressField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.addressField.HoverState.Parent = this.addressField;
-            this.addressField.Location = new System.Drawing.Point(771, 267);
+            this.addressField.Location = new System.Drawing.Point(723, 247);
             this.addressField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addressField.Name = "addressField";
             this.addressField.PasswordChar = '\0';
             this.addressField.PlaceholderText = "";
             this.addressField.SelectedText = "";
             this.addressField.ShadowDecoration.Parent = this.addressField;
-            this.addressField.Size = new System.Drawing.Size(139, 22);
+            this.addressField.Size = new System.Drawing.Size(128, 22);
             this.addressField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.addressField.TabIndex = 51;
             // 
@@ -357,7 +289,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label9.Location = new System.Drawing.Point(933, 181);
+            this.label9.Location = new System.Drawing.Point(881, 223);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 19);
             this.label9.TabIndex = 52;
@@ -377,14 +309,14 @@
             this.cityField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cityField.HoverState.Parent = this.cityField;
-            this.cityField.Location = new System.Drawing.Point(936, 204);
+            this.cityField.Location = new System.Drawing.Point(884, 246);
             this.cityField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cityField.Name = "cityField";
             this.cityField.PasswordChar = '\0';
             this.cityField.PlaceholderText = "";
             this.cityField.SelectedText = "";
             this.cityField.ShadowDecoration.Parent = this.cityField;
-            this.cityField.Size = new System.Drawing.Size(153, 22);
+            this.cityField.Size = new System.Drawing.Size(161, 22);
             this.cityField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.cityField.TabIndex = 53;
             // 
@@ -393,7 +325,7 @@
             this.sad.AutoSize = true;
             this.sad.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.sad.Location = new System.Drawing.Point(771, 298);
+            this.sad.Location = new System.Drawing.Point(723, 278);
             this.sad.Name = "sad";
             this.sad.Size = new System.Drawing.Size(58, 19);
             this.sad.TabIndex = 54;
@@ -413,14 +345,14 @@
             this.streetField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.streetField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.streetField.HoverState.Parent = this.streetField;
-            this.streetField.Location = new System.Drawing.Point(771, 326);
+            this.streetField.Location = new System.Drawing.Point(723, 306);
             this.streetField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.streetField.Name = "streetField";
             this.streetField.PasswordChar = '\0';
             this.streetField.PlaceholderText = "";
             this.streetField.SelectedText = "";
             this.streetField.ShadowDecoration.Parent = this.streetField;
-            this.streetField.Size = new System.Drawing.Size(139, 23);
+            this.streetField.Size = new System.Drawing.Size(128, 23);
             this.streetField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.streetField.TabIndex = 55;
             // 
@@ -429,7 +361,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label11.Location = new System.Drawing.Point(933, 243);
+            this.label11.Location = new System.Drawing.Point(881, 285);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 19);
             this.label11.TabIndex = 56;
@@ -449,14 +381,14 @@
             this.countryField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.countryField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.countryField.HoverState.Parent = this.countryField;
-            this.countryField.Location = new System.Drawing.Point(937, 266);
+            this.countryField.Location = new System.Drawing.Point(885, 308);
             this.countryField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.countryField.Name = "countryField";
             this.countryField.PasswordChar = '\0';
             this.countryField.PlaceholderText = "";
             this.countryField.SelectedText = "";
             this.countryField.ShadowDecoration.Parent = this.countryField;
-            this.countryField.Size = new System.Drawing.Size(153, 23);
+            this.countryField.Size = new System.Drawing.Size(160, 23);
             this.countryField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.countryField.TabIndex = 57;
             // 
@@ -465,7 +397,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label12.Location = new System.Drawing.Point(770, 365);
+            this.label12.Location = new System.Drawing.Point(722, 345);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 19);
             this.label12.TabIndex = 58;
@@ -485,14 +417,14 @@
             this.zipField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.zipField.HoverState.Parent = this.zipField;
-            this.zipField.Location = new System.Drawing.Point(773, 388);
+            this.zipField.Location = new System.Drawing.Point(725, 368);
             this.zipField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.zipField.Name = "zipField";
             this.zipField.PasswordChar = '\0';
             this.zipField.PlaceholderText = "";
             this.zipField.SelectedText = "";
             this.zipField.ShadowDecoration.Parent = this.zipField;
-            this.zipField.Size = new System.Drawing.Size(137, 23);
+            this.zipField.Size = new System.Drawing.Size(126, 23);
             this.zipField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.zipField.TabIndex = 59;
             // 
@@ -507,89 +439,20 @@
             this.updateButton.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateButton.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.updateButton.HoverState.Parent = this.updateButton;
-            this.updateButton.Location = new System.Drawing.Point(947, 459);
+            this.updateButton.Location = new System.Drawing.Point(813, 467);
             this.updateButton.Name = "updateButton";
             this.updateButton.ShadowDecoration.Parent = this.updateButton;
-            this.updateButton.Size = new System.Drawing.Size(96, 45);
+            this.updateButton.Size = new System.Drawing.Size(126, 45);
             this.updateButton.TabIndex = 62;
             this.updateButton.Text = "UPDATE";
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.BackColor = System.Drawing.Color.Transparent;
-            this.deleteButton.BorderRadius = 20;
-            this.deleteButton.BorderThickness = 1;
-            this.deleteButton.CheckedState.Parent = this.deleteButton;
-            this.deleteButton.CustomImages.Parent = this.deleteButton;
-            this.deleteButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.deleteButton.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.deleteButton.HoverState.Parent = this.deleteButton;
-            this.deleteButton.Location = new System.Drawing.Point(947, 510);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.ShadowDecoration.Parent = this.deleteButton;
-            this.deleteButton.Size = new System.Drawing.Size(96, 45);
-            this.deleteButton.TabIndex = 61;
-            this.deleteButton.Text = "DELETE";
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // addButton
-            // 
-            this.addButton.BackColor = System.Drawing.Color.Transparent;
-            this.addButton.BorderRadius = 20;
-            this.addButton.BorderThickness = 1;
-            this.addButton.CheckedState.Parent = this.addButton;
-            this.addButton.CustomImages.Parent = this.addButton;
-            this.addButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.addButton.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.addButton.HoverState.Parent = this.addButton;
-            this.addButton.Location = new System.Drawing.Point(815, 459);
-            this.addButton.Name = "addButton";
-            this.addButton.ShadowDecoration.Parent = this.addButton;
-            this.addButton.Size = new System.Drawing.Size(96, 45);
-            this.addButton.TabIndex = 60;
-            this.addButton.Text = "ADD";
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label13.Location = new System.Drawing.Point(933, 358);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(130, 19);
-            this.label13.TabIndex = 64;
-            this.label13.Text = "Hotel Chain ID";
-            // 
-            // chainIdField
-            // 
-            this.chainIdField.BackColor = System.Drawing.Color.Transparent;
-            this.chainIdField.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.chainIdField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.chainIdField.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chainIdField.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chainIdField.FocusedState.Parent = this.chainIdField;
-            this.chainIdField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chainIdField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.chainIdField.HoverState.Parent = this.chainIdField;
-            this.chainIdField.ItemHeight = 30;
-            this.chainIdField.ItemsAppearance.Parent = this.chainIdField;
-            this.chainIdField.Location = new System.Drawing.Point(932, 383);
-            this.chainIdField.Name = "chainIdField";
-            this.chainIdField.ShadowDecoration.Parent = this.chainIdField;
-            this.chainIdField.Size = new System.Drawing.Size(160, 36);
-            this.chainIdField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.chainIdField.TabIndex = 65;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label14.Location = new System.Drawing.Point(769, 426);
+            this.label14.Location = new System.Drawing.Point(721, 406);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(106, 19);
             this.label14.TabIndex = 66;
@@ -609,76 +472,16 @@
             this.descriptionFIeld.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionFIeld.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.descriptionFIeld.HoverState.Parent = this.descriptionFIeld;
-            this.descriptionFIeld.Location = new System.Drawing.Point(882, 426);
+            this.descriptionFIeld.Location = new System.Drawing.Point(834, 406);
             this.descriptionFIeld.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.descriptionFIeld.Name = "descriptionFIeld";
             this.descriptionFIeld.PasswordChar = '\0';
             this.descriptionFIeld.PlaceholderText = "";
             this.descriptionFIeld.SelectedText = "";
             this.descriptionFIeld.ShadowDecoration.Parent = this.descriptionFIeld;
-            this.descriptionFIeld.Size = new System.Drawing.Size(208, 23);
+            this.descriptionFIeld.Size = new System.Drawing.Size(211, 23);
             this.descriptionFIeld.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.descriptionFIeld.TabIndex = 67;
-            // 
-            // hotelsTable
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.hotelsTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.hotelsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.hotelsTable.BackgroundColor = System.Drawing.Color.White;
-            this.hotelsTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.hotelsTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.hotelsTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hotelsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.hotelsTable.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.hotelsTable.DefaultCellStyle = dataGridViewCellStyle3;
-            this.hotelsTable.EnableHeadersVisualStyles = false;
-            this.hotelsTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.hotelsTable.Location = new System.Drawing.Point(21, 64);
-            this.hotelsTable.Name = "hotelsTable";
-            this.hotelsTable.ReadOnly = true;
-            this.hotelsTable.RowHeadersVisible = false;
-            this.hotelsTable.RowTemplate.Height = 35;
-            this.hotelsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.hotelsTable.Size = new System.Drawing.Size(731, 491);
-            this.hotelsTable.TabIndex = 78;
-            this.hotelsTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.hotelsTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.hotelsTable.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.hotelsTable.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.hotelsTable.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.hotelsTable.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.hotelsTable.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.hotelsTable.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.hotelsTable.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.hotelsTable.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.hotelsTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hotelsTable.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.hotelsTable.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.hotelsTable.ThemeStyle.HeaderStyle.Height = 40;
-            this.hotelsTable.ThemeStyle.ReadOnly = true;
-            this.hotelsTable.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.hotelsTable.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.hotelsTable.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hotelsTable.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.hotelsTable.ThemeStyle.RowsStyle.Height = 35;
-            this.hotelsTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.hotelsTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.hotelsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.hotelsTable_CellContentClick);
             // 
             // emailField
             // 
@@ -694,14 +497,14 @@
             this.emailField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.emailField.HoverState.Parent = this.emailField;
-            this.emailField.Location = new System.Drawing.Point(927, 92);
+            this.emailField.Location = new System.Drawing.Point(875, 134);
             this.emailField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.emailField.Name = "emailField";
             this.emailField.PasswordChar = '\0';
             this.emailField.PlaceholderText = "";
             this.emailField.SelectedText = "";
             this.emailField.ShadowDecoration.Parent = this.emailField;
-            this.emailField.Size = new System.Drawing.Size(137, 23);
+            this.emailField.Size = new System.Drawing.Size(170, 23);
             this.emailField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.emailField.TabIndex = 80;
             // 
@@ -710,47 +513,42 @@
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.label32.Location = new System.Drawing.Point(928, 67);
+            this.label32.Location = new System.Drawing.Point(876, 109);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(56, 19);
             this.label32.TabIndex = 79;
             this.label32.Text = "Email";
             // 
-            // clearButton
+            // guna2Button1
             // 
-            this.clearButton.BackColor = System.Drawing.Color.Transparent;
-            this.clearButton.BorderRadius = 20;
-            this.clearButton.BorderThickness = 1;
-            this.clearButton.CheckedState.Parent = this.clearButton;
-            this.clearButton.CustomImages.Parent = this.clearButton;
-            this.clearButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            this.clearButton.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.clearButton.HoverState.Parent = this.clearButton;
-            this.clearButton.Location = new System.Drawing.Point(815, 510);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.ShadowDecoration.Parent = this.clearButton;
-            this.clearButton.Size = new System.Drawing.Size(96, 45);
-            this.clearButton.TabIndex = 81;
-            this.clearButton.Text = "CLEAR";
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderRadius = 20;
+            this.guna2Button1.BorderThickness = 1;
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Location = new System.Drawing.Point(255, 467);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.Size = new System.Drawing.Size(190, 45);
+            this.guna2Button1.TabIndex = 81;
+            this.guna2Button1.Text = "OFFER DISCOUNTS";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // HotelsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 560);
-            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.emailField);
             this.Controls.Add(this.label32);
-            this.Controls.Add(this.hotelsTable);
             this.Controls.Add(this.descriptionFIeld);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.chainIdField);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.updateButton);
-            this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.addButton);
             this.Controls.Add(this.zipField);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.countryField);
@@ -769,11 +567,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.contactField);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.hotelNameField);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.hotelIdField);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(118, 123);
@@ -781,7 +576,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "HotelsScreen";
             this.Load += new System.EventHandler(this.HotelsScreen_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.hotelsTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -790,11 +584,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
         private Guna.UI2.WinForms.Guna2TextBox hotelNameField;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2TextBox hotelIdField;
-        private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2TextBox contactField;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2TextBox webField;
@@ -814,15 +605,10 @@
         private System.Windows.Forms.Label label12;
         private Guna.UI2.WinForms.Guna2TextBox zipField;
         private Guna.UI2.WinForms.Guna2Button updateButton;
-        private Guna.UI2.WinForms.Guna2Button deleteButton;
-        private Guna.UI2.WinForms.Guna2Button addButton;
-        private System.Windows.Forms.Label label13;
-        private Guna.UI2.WinForms.Guna2ComboBox chainIdField;
         private System.Windows.Forms.Label label14;
         private Guna.UI2.WinForms.Guna2TextBox descriptionFIeld;
-        private Guna.UI2.WinForms.Guna2DataGridView hotelsTable;
         private Guna.UI2.WinForms.Guna2TextBox emailField;
         private System.Windows.Forms.Label label32;
-        private Guna.UI2.WinForms.Guna2Button clearButton;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
