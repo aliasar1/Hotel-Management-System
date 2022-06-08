@@ -13,7 +13,8 @@ namespace Hotel_Management_System
     {
         public SqlConnection getConnection()
         {
-            SqlConnection connection = new SqlConnection("Data Source=DESKTOP-9GED25C;Initial Catalog=HotelManagementSystem;Integrated Security=True");
+            String connectionString = "Data Source=DESKTOP-9GED25C;Initial Catalog=HotelManagementSystem;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }
 
@@ -42,7 +43,8 @@ namespace Hotel_Management_System
             cmd.ExecuteNonQuery();
             connection.Close();
 
-            MessageBox.Show("'" + message + "'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if(message != "")
+                MessageBox.Show("'" + message + "'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
     }

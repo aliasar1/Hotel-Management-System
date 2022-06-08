@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_Management_System.Screens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,11 +12,11 @@ using System.Windows.Forms;
 
 namespace Hotel_Management_System.Controllers
 {
-    public partial class HotelsScreen : Form
+    public partial class AdminHotelsView : Form
     {
+
         String query;
         DatabaseConnection dc = new DatabaseConnection();
-
         private int id;
         private String name;
         private String contact;
@@ -27,14 +28,21 @@ namespace Hotel_Management_System.Controllers
         private int capacity;
         private int floors;
         private String street;
-        private int chainId;
         private String description;
         private String email;
-        public HotelsScreen()
+        private int maxId;
+
+        public AdminHotelsView()
         {
             InitializeComponent();
             hotelIdField.ReadOnly = false;
-            chainIdField.Enabled = true;
+        }
+
+        private void guna2CircleButton2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SuperAdminLogin superAdmin = new SuperAdminLogin();
+            superAdmin.Show();
         }
 
         private void populateTable()
@@ -50,15 +58,45 @@ namespace Hotel_Management_System.Controllers
             con.Close();
         }
 
-        private void guna2CircleButton2_Click(object sender, EventArgs e)
+        private String getDescription()
         {
-            this.Hide();
+            SqlConnection con = dc.getConnection();
+            String str = "";
+            con.Open();
+            query = "SELECT Description from Hotels.Hotel WHERE HotelId = " + int.Parse(hotelIdField.Text);
+            SqlCommand cmd = new SqlCommand(query, con);
+            str = cmd.ExecuteScalar().ToString();
+            con.Close();
+            return str;
         }
+
+
+        private void clearFields()
+        {
+            hotelIdField.Text = "";
+            hotelNameField.Text = "";
+            contactField.Text = "";
+            zipField.Text = "";
+            addressField.Text = "";
+            cityField.Text = "";
+            countryField.Text = "";
+            capacityField.Text = "";
+            floorCountField.Text = "";
+            webField.Text = "";
+            streetField.Text = "";
+            descriptionFIeld.Text = "";
+            emailField.Text = "";
+        }
+
+        private void HotelChainPage_Load(object sender, EventArgs e)
+        {
+            populateTable();
+        }
+
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
             addButton.Enabled = false;
-            chainIdField.Enabled = false;
             if (hotelIdField.Text == "")
             {
                 MessageBox.Show("Please enter id to search record.", "Missing Info", MessageBoxButtons.OK);
@@ -93,9 +131,22 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
-        private void HotelsScreen_Load(object sender, EventArgs e)
+        private void hotelsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            populateTable();
+            hotelIdField.Text = hotelsTable.SelectedRows[0].Cells[0].Value.ToString();
+            hotelNameField.Text = hotelsTable.SelectedRows[0].Cells[1].Value.ToString();
+            contactField.Text = hotelsTable.SelectedRows[0].Cells[2].Value.ToString();
+            emailField.Text = hotelsTable.SelectedRows[0].Cells[3].Value.ToString();
+            webField.Text = hotelsTable.SelectedRows[0].Cells[4].Value.ToString();
+            floorCountField.Text = hotelsTable.SelectedRows[0].Cells[5].Value.ToString();
+            capacityField.Text = hotelsTable.SelectedRows[0].Cells[6].Value.ToString();
+            addressField.Text = hotelsTable.SelectedRows[0].Cells[7].Value.ToString();
+            streetField.Text = hotelsTable.SelectedRows[0].Cells[8].Value.ToString();
+            cityField.Text = hotelsTable.SelectedRows[0].Cells[9].Value.ToString();
+            zipField.Text = hotelsTable.SelectedRows[0].Cells[10].Value.ToString();
+            countryField.Text = hotelsTable.SelectedRows[0].Cells[11].Value.ToString();
+            String str = getDescription();
+            descriptionFIeld.Text = str;
         }
 
         private void getFieldsData()
@@ -114,49 +165,22 @@ namespace Hotel_Management_System.Controllers
             email = emailField.Text;
         }
 
-        private void clearFields()
-        {
-            hotelIdField.Text = "";
-            hotelNameField.Text = "";
-            contactField.Text = "";
-            zipField.Text = "";
-            addressField.Text = "";
-            cityField.Text = "";
-            countryField.Text = "";
-            capacityField.Text = "";
-            floorCountField.Text = "";
-            webField.Text = "";
-            streetField.Text = "";
-            descriptionFIeld.Text = "";
-            emailField.Text = "";
-            addButton.Enabled = true;
-            chainIdField.Enabled = true;
-        }
-
-
-        private String getDescription()
-        {
-            SqlConnection con = dc.getConnection();
-            String str = "";
-            con.Open();
-            query = "SELECT Description from Hotels.Hotel WHERE HotelId = " + int.Parse(hotelIdField.Text);
-            SqlCommand cmd = new SqlCommand(query, con);
-            str = cmd.ExecuteScalar().ToString();
-            con.Close();
-            return str;
-        }
-
-        private void addButton_Click(object sender, EventArgs e)
+        private void addButton_Click_2(object sender, EventArgs e)
         {
             if (hotelIdField.Text != "" || hotelNameField.Text != "" || contactField.Text != "" || zipField.Text != "" || addressField.Text != "" ||
                  cityField.Text != "" || countryField.Text != "" || webField.Text != "" || emailField.Text != "" || capacityField.Text != "" ||
-                 floorCountField.Text != "" || streetField.Text != "" || chainIdField.Text != "" || descriptionFIeld.Text != "" || emailField.Text != "")
+                 floorCountField.Text != "" || streetField.Text != "" || descriptionFIeld.Text != "" || emailField.Text != "")
             {
                 getFieldsData();
-                query = "INSERT INTO Hotels.Hotel (Name, ContactNumber, Email, Website, Description, FloorCount, TotalRooms, AddressLine, Street, City, Zip, HotelChainId, Country) VALUES ('" + name + "' , '" + contact + "', '" + email + "' , '" + web + "' , '" + description + "' , " + floors + ", " + capacity + ", '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' , " + chainId + ", '" + country + "')";
+                query = "INSERT INTO Hotels.Hotel (Name, ContactNumber, Email, Website, Description, FloorCount, TotalRooms, AddressLine, Street, City, Zip, Country) VALUES ('" + name + "' , '" + contact + "', '" + email + "' , '" + web + "' , '" + description + "' , " + floors + ", " + capacity + ", '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "', '" + country + "')";
                 dc.setData(query, "Hotel inserted successfully!");
+                getRecentHotelId();
+                Statics.hotelNameId(maxId, name);
+                Statics.setHotelId(maxId);
                 clearFields();
                 populateTable();
+                ShowDefaultScreen defaultScreen = new ShowDefaultScreen();
+                defaultScreen.Show();
             }
             else
             {
@@ -164,29 +188,29 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
-        private void hotelsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void getRecentHotelId()
         {
-            addButton.Enabled = false;
-            chainIdField.Enabled = false;
-            hotelIdField.Text = hotelsTable.SelectedRows[0].Cells[0].Value.ToString();
-            hotelNameField.Text = hotelsTable.SelectedRows[0].Cells[1].Value.ToString();
-            contactField.Text = hotelsTable.SelectedRows[0].Cells[2].Value.ToString();
-            emailField.Text = hotelsTable.SelectedRows[0].Cells[3].Value.ToString();
-            webField.Text = hotelsTable.SelectedRows[0].Cells[4].Value.ToString();
-            floorCountField.Text = hotelsTable.SelectedRows[0].Cells[5].Value.ToString();
-            capacityField.Text = hotelsTable.SelectedRows[0].Cells[6].Value.ToString();
-            addressField.Text = hotelsTable.SelectedRows[0].Cells[7].Value.ToString();
-            streetField.Text = hotelsTable.SelectedRows[0].Cells[8].Value.ToString();
-            cityField.Text = hotelsTable.SelectedRows[0].Cells[9].Value.ToString();
-            zipField.Text = hotelsTable.SelectedRows[0].Cells[10].Value.ToString();
-            chainIdField.Text = hotelsTable.SelectedRows[0].Cells[11].Value.ToString();
-            countryField.Text = hotelsTable.SelectedRows[0].Cells[12].Value.ToString();
-            String str = getDescription();
-            descriptionFIeld.Text = str;
+            query = "SELECT MAX(HotelId) FROM Hotels.Hotel";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                maxId = dr.GetInt32(0);
+            }
+
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void deleteHotelLogin()
         {
+            query = "DELETE FROM Authentication.Login WHERE HotelId = " + int.Parse(hotelIdField.Text);
+            dc.setData(query, "");
+        }
+
+        private void clearButton_Click_1(object sender, EventArgs e)
+        {
+            addButton.Enabled = true;
             clearFields();
         }
 
@@ -199,6 +223,7 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
+                deleteHotelLogin();
                 query = "DELETE FROM Hotels.Hotel WHERE HotelId = " + int.Parse(hotelIdField.Text);
                 dc.setData(query, "Record deleted successfully.");
                 clearFields();
@@ -216,7 +241,7 @@ namespace Hotel_Management_System.Controllers
             else
             {
                 getFieldsData();
-                query = "UPDATE Hotels.Hotel SET Name = '" + name + "', ContactNumber = '" + contact + "', Email= '" + email + "', Website = '" + web + "', Description = '" + description + "', FloorCount = " + floors + ", TotalRooms = " +  capacity + ", AddressLine = '" + address + "', Street = '" + street + "', City = '" + city + "' , Country = '" + country + "', Zip = '" + zip + "' WHERE HotelChainId = " + int.Parse(hotelIdField.Text);
+                query = "UPDATE Hotels.Hotel SET Name = '" + name + "', ContactNumber = '" + contact + "', Email= '" + email + "', Website = '" + web + "', Description = '" + description + "', FloorCount = " + floors + ", TotalRooms = " + capacity + ", AddressLine = '" + address + "', Street = '" + street + "', City = '" + city + "' , Country = '" + country + "', Zip = '" + zip + "' WHERE HotelId = " + int.Parse(hotelIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
                 populateTable();

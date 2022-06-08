@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RegexValidators.cs" />
     <Compile Include="Screens\CheckoutScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,11 +90,17 @@
     <Compile Include="Screens\GuestsScreen.Designer.cs">
       <DependentUpon>GuestsScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\HotelChainPage.cs">
+    <Compile Include="Screens\AdminHotelsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\HotelChainPage.Designer.cs">
-      <DependentUpon>HotelChainPage.cs</DependentUpon>
+    <Compile Include="Screens\AdminHotelsView.Designer.cs">
+      <DependentUpon>AdminHotelsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\HotelIntroScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\HotelIntroScreen.Designer.cs">
+      <DependentUpon>HotelIntroScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\HotelsScreen.cs">
       <SubType>Form</SubType>
@@ -106,6 +113,12 @@
     </Compile>
     <Compile Include="Screens\BookingsScreen.Designer.cs">
       <DependentUpon>BookingsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PasswordResetScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PasswordResetScreen.Designer.cs">
+      <DependentUpon>PasswordResetScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\RoomsScreen.cs">
       <SubType>Form</SubType>
@@ -124,6 +137,12 @@
     </Compile>
     <Compile Include="Screens\ServicesScreen.Designer.cs">
       <DependentUpon>ServicesScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ShowDefaultScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\ShowDefaultScreen.Designer.cs">
+      <DependentUpon>ShowDefaultScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\SuperAdminLogin.cs">
       <SubType>Form</SubType>
@@ -168,14 +187,20 @@
     <EmbeddedResource Include="Screens\GuestsScreen.resx">
       <DependentUpon>GuestsScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\HotelChainPage.resx">
-      <DependentUpon>HotelChainPage.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\AdminHotelsView.resx">
+      <DependentUpon>AdminHotelsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\HotelIntroScreen.resx">
+      <DependentUpon>HotelIntroScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\HotelsScreen.resx">
       <DependentUpon>HotelsScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\BookingsScreen.resx">
       <DependentUpon>BookingsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PasswordResetScreen.resx">
+      <DependentUpon>PasswordResetScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\RoomsScreen.resx">
       <DependentUpon>RoomsScreen.cs</DependentUpon>
@@ -185,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\ServicesScreen.resx">
       <DependentUpon>ServicesScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\ShowDefaultScreen.resx">
+      <DependentUpon>ShowDefaultScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\SuperAdminLogin.resx">
       <DependentUpon>SuperAdminLogin.cs</DependentUpon>

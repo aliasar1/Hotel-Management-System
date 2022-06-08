@@ -14,13 +14,6 @@ namespace Hotel_Management_System
 {
     public partial class Dashboard : Form
     {
-        HotelsScreen hs = new HotelsScreen();
-        RoomsScreen rs = new RoomsScreen();
-        BookingsScreen resScreen = new BookingsScreen();
-        CheckoutScreen cs = new CheckoutScreen();
-        GuestsScreen gs = new GuestsScreen();
-        EmployeesScreen es = new EmployeesScreen();
-        ServicesScreen ss = new ServicesScreen();
         public Dashboard()
         {
             InitializeComponent();
@@ -31,94 +24,63 @@ namespace Hotel_Management_System
             Application.Exit();
         }
 
+        private void loadForm(Object form)
+        {
+            if (this.mainPanel.Controls.Count > 0)
+                this.mainPanel.Controls.RemoveAt(0);
+            Form f = form as Form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(f);
+            this.mainPanel.Tag = f;
+            f.Show();
+        }
+
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            hs.Hide();
-            resScreen.Hide();
-            cs.Hide();
-            gs.Hide();
-            ss.Hide();
-            es.Hide();
-            rs.Show();
+            loadForm(new RoomsScreen());
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            rs.Hide();
-            resScreen.Hide();
-            cs.Hide();
-            es.Hide();
-            gs.Hide();
-            ss.Hide();
-            hs.Show();
+            loadForm(new HotelsScreen());
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            rs.Hide();
-            ss.Hide();
-            hs.Hide();
-            gs.Hide();
-            cs.Hide();
-            resScreen.Show();
+            loadForm(new BookingsScreen());
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
-            rs.Hide();
-            hs.Hide();
-            es.Hide();
-            ss.Hide();
-            gs.Hide();
-            resScreen.Hide();
-            cs.Show();
+            loadForm(new CheckoutScreen());
         }
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            rs.Hide();
-            hs.Hide();
-            es.Hide();
-            gs.Hide();
-            cs.Hide();
-            ss.Hide();
-            resScreen.Hide();
             Login l = new Login();
             l.Show();
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
-            rs.Hide();
-            hs.Hide();
-            es.Hide();
-            ss.Hide();
-            gs.Hide();
-            resScreen.Hide();
-            gs.Show();
+            loadForm(new GuestsScreen());
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            rs.Hide();
-            hs.Hide();
-            gs.Hide();
-            ss.Hide();
-            resScreen.Hide();
-            gs.Hide();
-            es.Show();
+            loadForm(new EmployeesScreen());
         }
 
         private void servicesBtn_Click(object sender, EventArgs e)
         {
-            rs.Hide();
-            hs.Hide();
-            gs.Hide();
-            resScreen.Hide();
-            gs.Hide();
-            es.Hide();
-            ss.Show();
+            loadForm(new ServicesScreen());
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            loadForm(new HotelIntroScreen());
         }
     }
 }

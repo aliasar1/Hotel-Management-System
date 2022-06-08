@@ -29,12 +29,10 @@ namespace Hotel_Management_System.Controllers
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            query = "SELECT AdminId FROM Authentication.Admin WHERE Username = @username AND Password = @password";
+            query = "SELECT AdminId FROM Authentication.Admin WHERE Username = '" + usernameTextField.Text + "' AND Password = '" + passwordTextField.Text +"'";
             SqlConnection connection = dc.getConnection();
             connection.Open();
             SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@username", usernameTextField.Text);
-            cmd.Parameters.AddWithValue("@password", passwordTextField.Text);
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
 
@@ -52,8 +50,8 @@ namespace Hotel_Management_System.Controllers
             {
                 errorLabel.Visible = false;
                 this.Hide();
-                HotelChainPage hotelChain = new HotelChainPage();
-                hotelChain.Show();
+                AdminHotelsView view = new AdminHotelsView();
+                view.Show();
             }
             connection.Close();
         }

@@ -1,4 +1,5 @@
 ﻿using Hotel_Management_System.Controllers;
+using Hotel_Management_System.Screens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,8 +41,26 @@ namespace Hotel_Management_System
             Application.Exit();
         }
 
+        private String checkNewUser()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT NewUser FROM Authentication.Login WHERE username = '" + usernameTextField.Text + "' AND password = '" + passwordTextField.Text + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            String str = "";
+            while (dr.Read())
+            {
+                str = dr.GetString(0);
+            }
+            con.Close();
+            return str;
+        }
+
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            String isNewUser = checkNewUser().Trim();
+            Console.WriteLine(isNewUser);
             query = "SELECT LoginId FROM Authentication.Login WHERE Username = @username AND Password = @password";
             SqlConnection connection = dc.getConnection();
             connection.Open();
@@ -50,7 +69,10 @@ namespace Hotel_Management_System
             cmd.Parameters.AddWithValue("@password", passwordTextField.Text);
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
-
+            TokenHotelIdHOTEL();
+            Statics.setHotelId(hotelIdToken);
+            TokenEployeeId();
+            Statics.setEmployeeId(employeeIdToken);
             if (String.IsNullOrEmpty(usernameTextField.Text) || String.IsNullOrEmpty(passwordTextField.Text))
             {
                 errorLabel.Text = "        All fields are required.";
@@ -61,13 +83,21 @@ namespace Hotel_Management_System
                 errorLabel.Text = "Incorrect username or password.";
                 errorLabel.Visible = true;
             }
-            else
+            else if(isNewUser.Equals("Yes"))
             {
+                Console.WriteLine(reader.HasRows);
+                Console.WriteLine(isNewUser.Equals("Yes"));
+                Statics.setUname(usernameTextField.Text);
+                Statics.setPass(passwordTextField.Text);
+                PasswordResetScreen reset = new PasswordResetScreen();
+                reset.Show();
+                this.Hide();
+            }
+            else if (isNewUser.Equals("NO"))
+            {
+                Console.WriteLine(reader.HasRows);
+                Console.WriteLine(isNewUser.Equals("NO"));
                 errorLabel.Visible = false;
-                TokenHotelId();
-                Statics.setHotelId(hotelIdToken);
-                TokenEployeeId();
-                Statics.setEmployeeId(employeeIdToken);
                 this.Hide();
                 Dashboard db = new Dashboard();
                 db.Show();
@@ -84,11 +114,27 @@ namespace Hotel_Management_System
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                employeeIdToken = dr.GetInt32(0);
+                if(dr.GetValue(0) != DBNull.Value)
+                {
+                    employeeIdToken = dr.GetInt32(0);
+                }
             }
         }
 
-        private void TokenHotelId()
+        private void TokenHotelIdHOTEL()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT HotelId FROM Authentication.Login WHERE Username = '" + usernameTextField.Text + "' AND Password = '" + passwordTextField.Text + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                hotelIdToken = dr.GetInt32(0);
+            }
+        }
+
+        private void TokenHotelIdEMP()
         {
             SqlConnection con = dc.getConnection();
             con.Open();
@@ -103,6 +149,7 @@ namespace Hotel_Management_System
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
+            this.Hide();
             SuperAdminLogin superAdmin = new SuperAdminLogin();
             superAdmin.Show();
         }
