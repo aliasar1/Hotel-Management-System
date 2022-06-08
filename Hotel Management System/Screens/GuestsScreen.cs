@@ -88,8 +88,8 @@ namespace Hotel_Management_System.Controllers
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (guestIdField.Text != "" || fnameField.Text != "" || lnameField.Text != "" || emailField.Text != "" || numberField.Text != "" || passportField.Text != "" || zipField.Text != ""
-                || addressField.Text != "" || cityField.Text != "" || streetField.Text != "")
+            if (guestIdField.Text != "" && fnameField.Text != "" && lnameField.Text != "" && emailField.Text != "" && numberField.Text != "" && passportField.Text != "" && zipField.Text != ""
+                || addressField.Text != "" && cityField.Text != "" && streetField.Text != "")
             {
                 String cnic = cnicField.Text == "" ? "NULL" : cnicField.Text;
                 String passNum = passportField.Text == "" ? "NULL" : passportField.Text;
@@ -115,7 +115,7 @@ namespace Hotel_Management_System.Controllers
                 bool temp = false;
                 SqlConnection con = dc.getConnection();
                 con.Open();
-                query = "SELECT * FROM Hotels.Guests WHERE GuestId = " + id;
+                query = "SELECT * FROM Hotels.Guests WHERE GuestId = " + id + "AND HotelId = " +Statics.hotelIdTKN;
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 this.id = id;

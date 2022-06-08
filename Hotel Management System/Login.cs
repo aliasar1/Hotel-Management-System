@@ -129,19 +129,6 @@ namespace Hotel_Management_System
             }
         }
 
-        private void TokenHotelIdEMP()
-        {
-            SqlConnection con = dc.getConnection();
-            con.Open();
-            query = "SELECT HotelId FROM Hotels.Employees WHERE EmployeeId = (SELECT EmployeeId FROM Authentication.Login WHERE username = '" + usernameTextField.Text + "' AND password = '" + passwordTextField.Text + "')";
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                hotelIdToken = dr.GetInt32(0);
-            }
-        }
-
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
             this.Hide();

@@ -34,7 +34,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT DISTINCT(ServiceName) from HotelService.Services";
+            query = "SELECT DISTINCT(ServiceName) from HotelService.Services WHERE HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -48,7 +48,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT GuestId from Hotels.Guests";
+            query = "SELECT GuestId from Hotels.Guests WHERE HotelId = " + Statics.hotelIdTKN + " AND Status = 'NOT RESERVED'";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -62,7 +62,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT RoomId from Rooms.Room WHERE RoomTypeId = " + roomId;
+            query = "SELECT RoomId from Rooms.Room WHERE RoomTypeId = " + roomId + " AND RoomStatus = 'Available'";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -120,7 +120,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT DISTINCT(Name) from Rooms.RoomType";
+            query = "SELECT DISTINCT(Name) from Rooms.RoomType WHERE HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -134,7 +134,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            String query = "SELECT BookingId AS ID, BookingDate AS BookingDate, CheckInDate, CheckOutDate, GuestId, DiscountId, EmployeeId FROM Bookings.Booking WHERE HotelId = " + 4;
+            String query = "SELECT BookingId AS ID, BookingDate AS BookingDate, CheckInDate, CheckOutDate, GuestId, DiscountId, EmployeeId FROM Bookings.Booking WHERE HotelId = " + Statics.hotelIdTKN;
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
@@ -183,8 +183,8 @@ namespace Hotel_Management_System.Controllers
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (bookingIdField.Text != "" || guestIdCMBox.SelectedIndex != -1 || amountField.Text != "" || checkinPicker.Text != "" || checkoutPicker.Text != "" ||
-                roomIdCMBox.SelectedIndex != -1 || roomTypeCMBox.SelectedIndex != -1 || promoIdCMBox.SelectedIndex != -1)
+            if (guestIdCMBox.SelectedIndex != -1 && amountField.Text != "" && checkinPicker.Text != "" && checkoutPicker.Text != "" &&
+                roomIdCMBox.SelectedIndex != -1 && roomTypeCMBox.SelectedIndex != -1 && promoIdCMBox.SelectedIndex != -1)
             {
                 int bookingAmount = getAmount();
                 query = "INSERT INTO Bookings.Booking (BookingDate, StayDuration, CheckInDate, CheckOutDate, BookingAmount, HotelId, EmployeeId, GuestId, DiscountId) VALUES (FORMAT(GETDATE(), 'yyyy-MM-dd'), DATEDIFF(day, '" + checkinPicker.Text + "', '" + checkoutPicker.Text + "'),'" + checkinPicker.Text + "', '" + checkoutPicker.Text + "', " + bookingAmount + ", " + Statics.hotelIdTKN + ", " + Statics.employeeIdTKN + ", " + guestIdCMBox.Text + ", " + promoIdCMBox.Text +")";
@@ -286,7 +286,7 @@ namespace Hotel_Management_System.Controllers
         private int getDiscountRate()
         {
             int rate = 0;
-            if (promoIdCMBox.SelectedIndex != -1 || promoIdCMBox.Text != "")
+            if (promoIdCMBox.SelectedIndex != -1 && promoIdCMBox.Text != "")
             {
                 SqlConnection con = dc.getConnection();
                 con.Open();
