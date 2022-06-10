@@ -21,6 +21,15 @@ namespace Hotel_Management_System.Controllers
         {
             InitializeComponent();
             paymentIdField.ReadOnly = false;
+            checkIfEmployee();
+        }
+
+        private void checkIfEmployee()
+        {
+            if (Statics.employeeIdTKN.Equals(0))
+            {
+                payButton.Enabled = false;
+            }
         }
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
@@ -44,7 +53,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            String query = "SELECT PaymentId AS ID, PaymentStatus AS Status, PaymentType AS TYPE, PaymentAmount AS Amount, BookingId FROM Bookings.Payments WHERE BookingId IN (SELECT BookingId FROM Bookings.Booking WHERE HotelId = " + 4 + ")";
+            String query = "SELECT PaymentId AS ID, PaymentStatus AS Status, PaymentType AS TYPE, PaymentAmount AS Amount, BookingId FROM Bookings.Payments WHERE BookingId IN (SELECT BookingId FROM Bookings.Booking WHERE HotelId = " + Statics.hotelIdTKN + ")";
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();

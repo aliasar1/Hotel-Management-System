@@ -50,7 +50,7 @@ namespace Hotel_Management_System.Screens
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (serviceIdField.Text != "" && serviceNameField.Text != "" && descriptionField.Text != "" && costField.Text != "")
+            if (serviceNameField.Text != "" && descriptionField.Text != "" && costField.Text != "")
             {
                 query = "INSERT INTO HotelService.Services (ServiceName, ServiceDescription, ServiceCost, HotelId) VALUES ('" + serviceNameField.Text + "' , '" + descriptionField.Text + "', " + costField.Text + "," + Statics.hotelIdTKN + ")";
                 dc.setData(query, "Services inserted successfully!");

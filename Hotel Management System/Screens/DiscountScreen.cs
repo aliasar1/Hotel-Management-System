@@ -19,7 +19,21 @@ namespace Hotel_Management_System.Screens
         {
             InitializeComponent();
             discountIdField.ReadOnly = false;
+            checkIfEmployee();
         }
+
+        private void checkIfEmployee()
+        {
+            if (Statics.employeeIdTKN.Equals(0))
+            {
+
+                Console.WriteLine(Statics.employeeIdTKN.Equals(""));
+                addButton.Enabled = false;
+                updateButton.Enabled = false;
+                deleteButton.Enabled = false;
+            }
+        }
+
 
         private void populateTable()
         {

@@ -33,7 +33,19 @@ namespace Hotel_Management_System.Controllers
         {
             InitializeComponent();
             guestIdField.ReadOnly = false;
+            checkIfEmployee();
         }
+
+        private void checkIfEmployee()
+        {
+            if (Statics.employeeIdTKN.Equals(0))
+            {
+                addButton.Enabled = false;
+                updateButton.Enabled = false;
+                deleteButton.Enabled = false;
+            }
+        }
+
 
         private void populateTable()
         {
@@ -93,7 +105,7 @@ namespace Hotel_Management_System.Controllers
             {
                 String cnic = cnicField.Text == "" ? "NULL" : cnicField.Text;
                 String passNum = passportField.Text == "" ? "NULL" : passportField.Text;
-                query = "INSERT INTO Hotels.Guests (GuestFirstName, GuestLastName, GuestEmailAddress, GuestContactNumber, GuestPassportNumber, AddressLine, Street, City, Zip, GuestCnic, HotelId) VALUES ('" + fnameField.Text + "' , '" + lnameField.Text + "', '" + emailField.Text + "', '" + numberField.Text + "', '" + passNum + "', '" + addressField.Text + "', '" + streetField.Text + "', '" + cityField.Text + "', '" + zipField.Text + "', '" + cnic + "', " + Statics.hotelIdTKN + ")";
+                query = "INSERT INTO Hotels.Guests (GuestFirstName, GuestLastName, GuestEmailAddress, GuestContactNumber, GuestPassportNumber, AddressLine, Street, City, Zip, GuestCnic, HotelId, Status) VALUES ('" + fnameField.Text + "' , '" + lnameField.Text + "', '" + emailField.Text + "', '" + numberField.Text + "', '" + passNum + "', '" + addressField.Text + "', '" + streetField.Text + "', '" + cityField.Text + "', '" + zipField.Text + "', '" + cnic + "', " + Statics.hotelIdTKN + ", 'Not Reserved'" + ")";
                 dc.setData(query, "Guest inserted successfully!");
                 clearFields();
                 populateTable();

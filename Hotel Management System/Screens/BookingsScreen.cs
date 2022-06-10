@@ -21,6 +21,19 @@ namespace Hotel_Management_System.Controllers
         {
             InitializeComponent();
             bookingIdField.ReadOnly = false;
+            checkIfEmployee();
+        }
+
+        private void checkIfEmployee()
+        {
+            if (Statics.employeeIdTKN.Equals(0))
+            {
+                
+                Console.WriteLine(Statics.employeeIdTKN.Equals(""));
+                addButton.Enabled = false;
+                updateButton.Enabled = false;
+                deleteButton.Enabled = false;
+            }
         }
 
         private void guna2CircleButton2_Click(object sender, EventArgs e)
@@ -48,7 +61,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT GuestId from Hotels.Guests WHERE HotelId = " + Statics.hotelIdTKN + " AND Status = 'NOT RESERVED'";
+            query = "SELECT GuestId from Hotels.Guests WHERE HotelId = " + Statics.hotelIdTKN + " AND Status = 'Not Reserved'";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -62,7 +75,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT RoomId from Rooms.Room WHERE RoomTypeId = " + roomId + " AND RoomStatus = 'Available'";
+            query = "SELECT RoomId from Rooms.Room WHERE RoomTypeId = " + roomId + " AND Available = 'Yes'";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -188,8 +201,12 @@ namespace Hotel_Management_System.Controllers
             {
                 int bookingAmount = getAmount();
                 query = "INSERT INTO Bookings.Booking (BookingDate, StayDuration, CheckInDate, CheckOutDate, BookingAmount, HotelId, EmployeeId, GuestId, DiscountId) VALUES (FORMAT(GETDATE(), 'yyyy-MM-dd'), DATEDIFF(day, '" + checkinPicker.Text + "', '" + checkoutPicker.Text + "'),'" + checkinPicker.Text + "', '" + checkoutPicker.Text + "', " + bookingAmount + ", " + Statics.hotelIdTKN + ", " + Statics.employeeIdTKN + ", " + guestIdCMBox.Text + ", " + promoIdCMBox.Text +")";
-                dc.setData(query, "Hotel inserted successfully!");
+                dc.setData(query, "Booking inserted successfully!");
                 int j = getRecentBookingId();
+                query = "UPDATE Hotels.Guests SET Status = 'Reserved' WHERE GuestId = " + guestIdCMBox.Text;
+                dc.setData(query, "");
+                query = "UPDATE Rooms.Room SET Available = 'No' WHERE RoomId = " + int.Parse(roomIdCMBox.Text);
+                dc.setData(query, "");
                 insertInRoomBooked(j, int.Parse(roomIdCMBox.Text));
                 readServiceCmbox(j);
                 clearFields();
@@ -205,8 +222,24 @@ namespace Hotel_Management_System.Controllers
         {
             foreach(var item in checkListBox.CheckedItems)
             {
-                insertServiceUsed(a, int.Parse(item.ToString()));
+                Console.WriteLine(item.ToString());
+                insertServiceUsed(a, getServiceIdFromName(item.ToString()));
             }
+        }
+
+        private int getServiceIdFromName(String s)
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT ServiceId FROM HotelService.Services WHERE ServiceName = '" + s + "' AND HotelId = " + Statics.hotelIdTKN;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int sId = 0;
+            while (dr.Read())
+            {
+                sId = dr.GetInt32(0);
+            }
+            return sId;
         }
 
         private void insertServiceUsed(int a, int b)
@@ -215,6 +248,8 @@ namespace Hotel_Management_System.Controllers
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
+            Console.WriteLine(a);
+            Console.WriteLine(b);
             String q = "INSERT INTO HotelService.ServicesUsed VALUES (" + a + ", " + b + ")";
             cmd.CommandText = q;
             cmd.ExecuteNonQuery();
@@ -452,6 +487,8 @@ namespace Hotel_Management_System.Controllers
             {
                 query = "DELETE FROM Bookings.Booking WHERE BookingId = " + int.Parse(bookingIdField.Text);
                 dc.setData(query, "Record deleted successfully.");
+                query = "UPDATE Rooms.Room SET Available = 'Yes' WHERE RoomId = " + int.Parse(roomIdCMBox.Text);
+                dc.setData(query, "");
                 clearFields();
                 populateTable();
             }
