@@ -136,6 +136,8 @@ namespace Hotel_Management_System.Screens
         private void guna2CircleButton2_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Dashboard ds = new Dashboard();
+            ds.Show();
         }
     }
 }

@@ -106,5 +106,12 @@ namespace Hotel_Management_System.Controllers
             DiscountScreen ds = new DiscountScreen();
             ds.Show();
         }
+
+        private void guna2CircleButton2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Dashboard d = new Dashboard();
+            d.Show();
+        }
     }
 }
