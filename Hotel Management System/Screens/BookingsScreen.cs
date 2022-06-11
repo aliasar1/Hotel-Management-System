@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_Management_System.Screens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,7 @@ namespace Hotel_Management_System.Controllers
             InitializeComponent();
             bookingIdField.ReadOnly = false;
             checkIfEmployee();
+            addButton.Enabled = false;
         }
 
         private void checkIfEmployee()
@@ -34,13 +36,6 @@ namespace Hotel_Management_System.Controllers
                 updateButton.Enabled = false;
                 deleteButton.Enabled = false;
             }
-        }
-
-        private void guna2CircleButton2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Dashboard db = new Dashboard();
-            db.Show();
         }
 
         private void populateCheckBox()
@@ -382,6 +377,7 @@ namespace Hotel_Management_System.Controllers
         private void guna2CircleButton3_Click(object sender, EventArgs e)
         {
             amountField.Text = getAmount().ToString();
+            addButton.Enabled = true;
         }
 
         private void updateButton_Click(object sender, EventArgs e)

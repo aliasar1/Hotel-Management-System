@@ -176,9 +176,8 @@ namespace Hotel_Management_System.Controllers
 
         private void guna2CircleButton2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Dashboard ds = new Dashboard();
-            ds.Show();
+            Dashboard d = new Dashboard();
+            d.loadForm(new HotelIntroScreen());
         }
 
         private void guna2GradientButton1_Click(object sender, EventArgs e)

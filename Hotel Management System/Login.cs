@@ -86,7 +86,7 @@ namespace Hotel_Management_System
             {
                 Statics.setUname(usernameTextField.Text);
                 Statics.setPass(passwordTextField.Text);
-                PasswordResetScreen reset = new PasswordResetScreen();
+                CreatePassword reset = new CreatePassword();
                 reset.Show();
                 this.Hide();
             }
@@ -134,6 +134,35 @@ namespace Hotel_Management_System
             this.Hide();
             SuperAdminLogin superAdmin = new SuperAdminLogin();
             superAdmin.Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            if(usernameTextField.Text == "")
+            {
+                MessageBox.Show("Please enter username.", "Missing Info", MessageBoxButtons.OK);
+            }
+            else
+            {
+                query = "SELECT LoginId FROM Authentication.Login WHERE Username = @username";
+                SqlConnection connection = dc.getConnection();
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@username", usernameTextField.Text);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    Statics.setTempUname(usernameTextField.Text);
+                    this.Hide();
+                    ResetPassword rp = new ResetPassword();
+                    rp.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Username not found.", "Incorrect Info", MessageBoxButtons.OK);
+                }
+            }
         }
     }
 }

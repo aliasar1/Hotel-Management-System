@@ -114,11 +114,17 @@
     <Compile Include="Screens\BookingsScreen.Designer.cs">
       <DependentUpon>BookingsScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\PasswordResetScreen.cs">
+    <Compile Include="Screens\CreatePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\PasswordResetScreen.Designer.cs">
-      <DependentUpon>PasswordResetScreen.cs</DependentUpon>
+    <Compile Include="Screens\CreatePassword.Designer.cs">
+      <DependentUpon>CreatePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\RoomsScreen.cs">
       <SubType>Form</SubType>
@@ -199,8 +205,11 @@
     <EmbeddedResource Include="Screens\BookingsScreen.resx">
       <DependentUpon>BookingsScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\PasswordResetScreen.resx">
-      <DependentUpon>PasswordResetScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\CreatePassword.resx">
+      <DependentUpon>CreatePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\RoomsScreen.resx">
       <DependentUpon>RoomsScreen.cs</DependentUpon>

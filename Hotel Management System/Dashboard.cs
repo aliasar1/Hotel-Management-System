@@ -24,7 +24,7 @@ namespace Hotel_Management_System
             Application.Exit();
         }
 
-        private void loadForm(Object form)
+        public void loadForm(Object form)
         {
             if (this.mainPanel.Controls.Count > 0)
                 this.mainPanel.Controls.RemoveAt(0);
@@ -81,6 +81,13 @@ namespace Hotel_Management_System
         private void Dashboard_Load(object sender, EventArgs e)
         {
             loadForm(new HotelIntroScreen());
+        }
+
+        private void guna2CircleButton2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Dashboard d = new Dashboard();
+            d.Show();
         }
     }
 }

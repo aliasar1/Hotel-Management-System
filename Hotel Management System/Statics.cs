@@ -16,6 +16,12 @@ namespace Hotel_Management_System
         public static String uname;
         public static String pass;
         public static int tempEmpId;
+        public static String tempUname;
+
+        public static void setTempUname(String s)
+        {
+            tempUname = s;
+        }
 
         public static void setHotelId(int id)
         {

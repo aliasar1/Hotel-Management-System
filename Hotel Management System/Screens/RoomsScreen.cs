@@ -88,9 +88,8 @@ namespace Hotel_Management_System.Controllers
 
         private void guna2CircleButton2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Dashboard db = new Dashboard();
-            db.Show();
+            Dashboard d = new Dashboard();
+            d.loadForm(new HotelIntroScreen());
         }
 
         private void guna2GradientButton1_Click(object sender, EventArgs e)
@@ -213,10 +212,40 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
-                query = "DELETE FROM Rooms.Room WHERE RoomId = " + int.Parse(roomIdField.Text);
-                dc.setData(query, "Record deleted successfully.");
-                clearFields();
-                populateTable();
+                bool b = checkIfFree(int.Parse(roomIdField.Text));
+                if(b == true)
+                {
+                    query = "DELETE FROM Rooms.Room WHERE RoomId = " + int.Parse(roomIdField.Text);
+                    dc.setData(query, "Record deleted successfully.");
+                    clearFields();
+                    populateTable();
+                }
+                else
+                {
+                    MessageBox.Show("You cannot delete a room if its in use.", "Warning", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private bool checkIfFree(int id)
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT Available FROM Rooms.Room WHERE RoomId = " + id + " AND HotelId = " + Statics.hotelIdTKN;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            String s = "";
+            while (dr.Read())
+            {
+                s = dr.GetString(0).Trim();
+            }
+            if (s.Equals("Yes"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
