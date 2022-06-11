@@ -67,7 +67,7 @@ namespace Hotel_Management_System.Controllers
             paymentIdField.Text = "";
             bookingIdCMBox.Text = "";
             paymentTypeCmbox.Text = "";
-            statusPaid.Text = "";
+            statusField.Text = "";
             amountField.Text = "";
         }
 
@@ -108,10 +108,19 @@ namespace Hotel_Management_System.Controllers
 
         private void payButton_Click(object sender, EventArgs e)
         {
-            if (bookingIdCMBox.SelectedIndex != -1 || paymentTypeCmbox.SelectedIndex != -1 || amountField.Text != "" || statusPaid.SelectedIndex != -1)
+            if (bookingIdCMBox.SelectedIndex != -1 || paymentTypeCmbox.SelectedIndex != -1 || amountField.Text != "")
             {
-                query = "INSERT INTO Bookings.Payments VALUES ('" + statusPaid.Text + "', '" + paymentTypeCmbox.Text + "', " + amountField.Text + ", " + bookingIdCMBox.Text + ")";
+                int bId = int.Parse(bookingIdCMBox.Text);
+                int gId = getGuestIdS(bId);
+                query = "UPDATE Hotels.Guests SET Status = 'Not Reserved' WHERE GuestId = " + gId;
+                dc.setData(query, "");
+                int a = getRoomId(bId);
+                query = "UPDATE Rooms.Room SET Available = 'Yes' WHERE RoomId = " + a;
+                dc.setData(query, "");
+                delServiceUsed(bId);
+                query = "INSERT INTO Bookings.Payments VALUES ('" + statusField.Text + "', '" + paymentTypeCmbox.Text + "', " + amountField.Text + ", " + bookingIdCMBox.Text + ")";
                 dc.setData(query, "Checkout Data inserted successfully!");
+                deleteBooking();
                 clearFields();
                 populateTable();
             }
@@ -119,6 +128,49 @@ namespace Hotel_Management_System.Controllers
             {
                 MessageBox.Show("All fields must be filled.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void delServiceUsed(int id)
+        {
+            query = "DELETE FROM HotelService.ServicesUsed WHERE BookingId = " + id;
+            dc.setData(query, "");
+        }
+
+        private int getRoomId(int bid)
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT RoomId from Rooms.RoomBooked WHERE BookingId = " + bid;
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            return id;
+        }
+
+        private int getGuestIdS(int bid)
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT GuestId from Bookings.Booking WHERE BookingId = " + bid;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            return id;
+        }
+
+        private void deleteBooking()
+        {
+            query = "DELETE From Bookings.Booking WHERE BookingId = " + bookingIdCMBox.Text;
+            dc.setData(query, "");
         }
 
         private void checkoutTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -156,7 +208,7 @@ namespace Hotel_Management_System.Controllers
                 while (dr.Read())
                 {
                     paymentIdField.Text = dr.GetInt32(0).ToString();
-                    statusPaid.Text = dr.GetString(1);
+                    statusField.Text = dr.GetString(1);
                     paymentTypeCmbox.Text = dr.GetString(2);
                     amountField.Text = dr.GetInt32(3).ToString();
                     bookingIdCMBox.Text = dr.GetInt32(4).ToString();

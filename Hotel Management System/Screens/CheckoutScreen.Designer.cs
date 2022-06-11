@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckoutScreen));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2CircleButton2 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.label1 = new System.Windows.Forms.Label();
             this.bookingIdCMBox = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -41,13 +41,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.paymentTypeCmbox = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.statusPaid = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.amountField = new Guna.UI2.WinForms.Guna2TextBox();
             this.payButton = new Guna.UI2.WinForms.Guna2Button();
             this.searchButton = new Guna.UI2.WinForms.Guna2Button();
             this.checkoutTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.statusField = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.checkoutTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,29 +201,6 @@
             this.paymentTypeCmbox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.paymentTypeCmbox.TabIndex = 73;
             // 
-            // statusPaid
-            // 
-            this.statusPaid.BackColor = System.Drawing.Color.Transparent;
-            this.statusPaid.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.statusPaid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.statusPaid.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.statusPaid.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.statusPaid.FocusedState.Parent = this.statusPaid;
-            this.statusPaid.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.statusPaid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.statusPaid.HoverState.Parent = this.statusPaid;
-            this.statusPaid.ItemHeight = 30;
-            this.statusPaid.Items.AddRange(new object[] {
-            "Paid",
-            "Unpaid"});
-            this.statusPaid.ItemsAppearance.Parent = this.statusPaid;
-            this.statusPaid.Location = new System.Drawing.Point(764, 321);
-            this.statusPaid.Name = "statusPaid";
-            this.statusPaid.ShadowDecoration.Parent = this.statusPaid;
-            this.statusPaid.Size = new System.Drawing.Size(136, 36);
-            this.statusPaid.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.statusPaid.TabIndex = 75;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -312,30 +289,30 @@
             // 
             // checkoutTable
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.checkoutTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.checkoutTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.checkoutTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.checkoutTable.BackgroundColor = System.Drawing.Color.White;
             this.checkoutTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkoutTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.checkoutTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.checkoutTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.checkoutTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.checkoutTable.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.checkoutTable.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.checkoutTable.DefaultCellStyle = dataGridViewCellStyle3;
             this.checkoutTable.EnableHeadersVisualStyles = false;
             this.checkoutTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.checkoutTable.Location = new System.Drawing.Point(31, 53);
@@ -370,17 +347,43 @@
             this.checkoutTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.checkoutTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.checkoutTable_CellContentClick);
             // 
+            // statusField
+            // 
+            this.statusField.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.statusField.DefaultText = "Paid";
+            this.statusField.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.statusField.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.statusField.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.statusField.DisabledState.Parent = this.statusField;
+            this.statusField.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.statusField.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.statusField.FocusedState.Parent = this.statusField;
+            this.statusField.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.statusField.HoverState.Parent = this.statusField;
+            this.statusField.Location = new System.Drawing.Point(767, 311);
+            this.statusField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statusField.Name = "statusField";
+            this.statusField.PasswordChar = '\0';
+            this.statusField.PlaceholderText = "";
+            this.statusField.ReadOnly = true;
+            this.statusField.SelectedText = "";
+            this.statusField.ShadowDecoration.Parent = this.statusField;
+            this.statusField.Size = new System.Drawing.Size(186, 36);
+            this.statusField.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.statusField.TabIndex = 117;
+            // 
             // CheckoutScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 560);
+            this.Controls.Add(this.statusField);
             this.Controls.Add(this.checkoutTable);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.payButton);
             this.Controls.Add(this.amountField);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.statusPaid);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.paymentTypeCmbox);
             this.Controls.Add(this.label3);
@@ -414,12 +417,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2ComboBox paymentTypeCmbox;
-        private Guna.UI2.WinForms.Guna2ComboBox statusPaid;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private Guna.UI2.WinForms.Guna2TextBox amountField;
         private Guna.UI2.WinForms.Guna2Button payButton;
         private Guna.UI2.WinForms.Guna2Button searchButton;
         private Guna.UI2.WinForms.Guna2DataGridView checkoutTable;
+        private Guna.UI2.WinForms.Guna2TextBox statusField;
     }
 }
