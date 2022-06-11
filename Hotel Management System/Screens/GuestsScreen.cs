@@ -176,6 +176,11 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
+        private void deleteBookingId()
+        {
+            query = "DELETE FROM Bookings.Booking WHERE GuestId = " + guestIdField.Text;
+        }
+
         private void updateButton_Click(object sender, EventArgs e)
         {
             if (guestIdField.Text == "")

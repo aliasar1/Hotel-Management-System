@@ -75,7 +75,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT RoomId from Rooms.Room WHERE RoomTypeId = " + roomId + " AND Available = 'Yes'";
+            query = "SELECT RoomId from Rooms.Room WHERE RoomTypeId = " + roomId + " AND Available = 'Yes' AND HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -105,7 +105,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT RoomTypeId from Rooms.RoomType WHERE Name = '" + roomTypeCMBox.Text + "'";
+            query = "SELECT RoomTypeId from Rooms.RoomType WHERE Name = '" + roomTypeCMBox.Text + "' AND HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -119,7 +119,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT ServiceId from HotelService.Services WHERE ServiceName = '" + str + "'";
+            query = "SELECT ServiceId from HotelService.Services WHERE ServiceName = '" + str + "' AND HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -197,10 +197,18 @@ namespace Hotel_Management_System.Controllers
         private void addButton_Click(object sender, EventArgs e)
         {
             if (guestIdCMBox.SelectedIndex != -1 && amountField.Text != "" && checkinPicker.Text != "" && checkoutPicker.Text != "" &&
-                roomIdCMBox.SelectedIndex != -1 && roomTypeCMBox.SelectedIndex != -1 && promoIdCMBox.SelectedIndex != -1)
+                roomIdCMBox.SelectedIndex != -1 && roomTypeCMBox.SelectedIndex != -1)
             {
                 int bookingAmount = getAmount();
-                query = "INSERT INTO Bookings.Booking (BookingDate, StayDuration, CheckInDate, CheckOutDate, BookingAmount, HotelId, EmployeeId, GuestId, DiscountId) VALUES (FORMAT(GETDATE(), 'yyyy-MM-dd'), DATEDIFF(day, '" + checkinPicker.Text + "', '" + checkoutPicker.Text + "'),'" + checkinPicker.Text + "', '" + checkoutPicker.Text + "', " + bookingAmount + ", " + Statics.hotelIdTKN + ", " + Statics.employeeIdTKN + ", " + guestIdCMBox.Text + ", " + promoIdCMBox.Text +")";
+                String disId = promoIdCMBox.Text == "" ? "NULL" : promoIdCMBox.Text;
+                if (disId.Equals("NULL"))
+                {
+                    query = "INSERT INTO Bookings.Booking (BookingDate, StayDuration, CheckInDate, CheckOutDate, BookingAmount, HotelId, EmployeeId, GuestId) VALUES (FORMAT(GETDATE(), 'yyyy-MM-dd'), DATEDIFF(day, '" + checkinPicker.Text + "', '" + checkoutPicker.Text + "'),'" + checkinPicker.Text + "', '" + checkoutPicker.Text + "', " + bookingAmount + ", " + Statics.hotelIdTKN + ", " + Statics.employeeIdTKN + ", " + guestIdCMBox.Text + ")";
+                }
+                else
+                {
+                    query = "INSERT INTO Bookings.Booking (BookingDate, StayDuration, CheckInDate, CheckOutDate, BookingAmount, HotelId, EmployeeId, GuestId, DiscountId) VALUES (FORMAT(GETDATE(), 'yyyy-MM-dd'), DATEDIFF(day, '" + checkinPicker.Text + "', '" + checkoutPicker.Text + "'),'" + checkinPicker.Text + "', '" + checkoutPicker.Text + "', " + bookingAmount + ", " + Statics.hotelIdTKN + ", " + Statics.employeeIdTKN + ", " + guestIdCMBox.Text + ", " + int.Parse(disId) + ")";
+                }
                 dc.setData(query, "Booking inserted successfully!");
                 int j = getRecentBookingId();
                 query = "UPDATE Hotels.Guests SET Status = 'Reserved' WHERE GuestId = " + guestIdCMBox.Text;
@@ -222,7 +230,6 @@ namespace Hotel_Management_System.Controllers
         {
             foreach(var item in checkListBox.CheckedItems)
             {
-                Console.WriteLine(item.ToString());
                 insertServiceUsed(a, getServiceIdFromName(item.ToString()));
             }
         }
@@ -248,9 +255,7 @@ namespace Hotel_Management_System.Controllers
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            Console.WriteLine(a);
-            Console.WriteLine(b);
-            String q = "INSERT INTO HotelService.ServicesUsed VALUES (" + a + ", " + b + ")";
+            String q = "INSERT INTO HotelService.ServicesUsed (ServiceId, BookingId) VALUES (" + b + ", " + a + ")";
             cmd.CommandText = q;
             cmd.ExecuteNonQuery();
             connection.Close();
@@ -275,9 +280,7 @@ namespace Hotel_Management_System.Controllers
         {
             int i = 0;
             int diff = getDateDifference() + 1;
-            Console.WriteLine(diff);
             int cost = getCost();
-            Console.WriteLine(cost);
             float rate = getDiscountRate();
             if (rate != 0)
             {
@@ -434,8 +437,8 @@ namespace Hotel_Management_System.Controllers
                     //checkoutPicker.Text = DateTime.Parse(dr.GetString(4)).ToString();
                     bookingIdField.Text = bId;
                     guestIdCMBox.Text = dr.GetSqlInt32(8).ToString();
-                    int id = getRoomId(int.Parse(bId));
-                    roomIdCMBox.Text = id.ToString();
+                    getRoomId();
+                    int id = getRoomId();
                     roomTypeCMBox.Text = getTypeNameFromId(id);
                     promoIdCMBox.Text = dr.GetSqlInt32(9).ToString();
                     amountField.Text = dr.GetSqlInt32(5).ToString();
@@ -445,6 +448,23 @@ namespace Hotel_Management_System.Controllers
                     MessageBox.Show("No record found.");
                 con.Close();
             }
+        }
+
+        private int getRoomId()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT RoomId from Rooms.RoomBooked WHERE BookingId = " + bookingIdField.Text;
+            
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            roomIdCMBox.Text = id.ToString();
+            return id;
         }
 
         private String getTypeNameFromId(int id)
@@ -462,21 +482,6 @@ namespace Hotel_Management_System.Controllers
             return roomType;
         }
 
-        private int getRoomId(int id)
-        {
-            SqlConnection connection = dc.getConnection();
-            connection.Open();
-            String q = "SELECT RoomId FROM Rooms.RoomBooked WHERE BookingId = " + id;
-            SqlCommand cmd = new SqlCommand(query, connection);
-            SqlDataReader dr = cmd.ExecuteReader();
-            int id1 = 0;
-            while (dr.Read())
-            {
-                id1 = dr.GetInt32(0);
-            }
-            return id1;
-        }
-
         private void deleteButton_Click(object sender, EventArgs e)
         {
             if (bookingIdField.Text == "")
@@ -485,13 +490,41 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
-                query = "DELETE FROM Bookings.Booking WHERE BookingId = " + int.Parse(bookingIdField.Text);
-                dc.setData(query, "Record deleted successfully.");
-                query = "UPDATE Rooms.Room SET Available = 'Yes' WHERE RoomId = " + int.Parse(roomIdCMBox.Text);
+                int bId = int.Parse(bookingIdField.Text);
+                int gId = getGuestIdS(bId);
+                query = "UPDATE Hotels.Guests SET Status = 'Not Reserved' WHERE GuestId = " + gId;
                 dc.setData(query, "");
+                int a = getRoomId();
+                query = "UPDATE Rooms.Room SET Available = 'Yes' WHERE RoomId = " + a;
+                dc.setData(query, "");
+                delServiceUsed();
+                query = "DELETE FROM Bookings.Booking WHERE BookingId = " + bId;
+                dc.setData(query, "Record deleted successfully.");
                 clearFields();
                 populateTable();
             }
+        }
+
+        private int getGuestIdS(int bid)
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT GuestId from Bookings.Booking WHERE BookingId = " + bid;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            guestIdCMBox.Text = id.ToString();
+            return id;
+        }
+
+        private void delServiceUsed()
+        {
+            query = "DELETE FROM HotelService.ServicesUsed WHERE BookingId = " + bookingIdField.Text;
+            dc.setData(query, "");
         }
     }
 }

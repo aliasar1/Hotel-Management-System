@@ -111,7 +111,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT Name from Rooms.RoomType";
+            query = "SELECT Name from Rooms.RoomType WHERE HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -125,7 +125,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT RoomTypeId from Rooms.RoomType WHERE Name = '" + typeCmbox.Text + "'";
+            query = "SELECT RoomTypeId from Rooms.RoomType WHERE Name = '" + typeCmbox.Text + "' AND HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -141,7 +141,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT Name from Rooms.RoomType WHERE RoomTypeId = " + id + "";
+            query = "SELECT Name from Rooms.RoomType WHERE RoomTypeId = " + id + " AND HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -177,7 +177,7 @@ namespace Hotel_Management_System.Controllers
             SqlConnection con = dc.getConnection();
             con.Open();
             int cost = 0; ;
-            query = "SELECT Cost from Rooms.RoomType WHERE Name = '" + typeCmbox.Text + "'";
+            query = "SELECT Cost from Rooms.RoomType WHERE Name = '" + typeCmbox.Text + "' AND HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
