@@ -66,8 +66,7 @@ namespace Hotel_Management_System.Controllers
         {
             paymentIdField.Text = "";
             bookingIdCMBox.Text = "";
-            paymentTypeCmbox.Text = "";
-            statusField.Text = "";
+            paymentTypeCmbox.SelectedIndex = -1;
             amountField.Text = "";
         }
 
@@ -75,7 +74,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT BookingId FROM Bookings.Booking WHERE HotelId = " + Statics.hotelIdTKN;
+            query = "SELECT BookingId FROM Bookings.Booking WHERE Status = 'Checkin' AND HotelId = " + Statics.hotelIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -118,16 +117,25 @@ namespace Hotel_Management_System.Controllers
                 query = "UPDATE Rooms.Room SET Available = 'Yes' WHERE RoomId = " + a;
                 dc.setData(query, "");
                 delServiceUsed(bId);
-                query = "INSERT INTO Bookings.Payments VALUES ('" + statusField.Text + "', '" + paymentTypeCmbox.Text + "', " + amountField.Text + ", " + bookingIdCMBox.Text + ")";
+                query = "INSERT INTO Bookings.Payments (PaymentStatus, PaymentType, PaymentAmount, BookingId) VALUES ('" + statusField.Text + "', '" + paymentTypeCmbox.Text + "', " + amountField.Text + ", " + bookingIdCMBox.Text +")";
                 dc.setData(query, "Checkout Data inserted successfully!");
-                deleteBooking();
+                changeBookingStatus(bId);
                 clearFields();
+                bookingIdCMBox.Items.Clear();
+                populateBookingIdCmbox();
                 populateTable();
             }
             else
             {
                 MessageBox.Show("All fields must be filled.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+
+        private void changeBookingStatus(int bid)
+        {
+            query = "UPDATE Bookings.Booking SET Status = 'Checkout' WHERE BookingId = " + bid;
+            dc.setData(query, "");
         }
 
         private void delServiceUsed(int id)
@@ -167,14 +175,9 @@ namespace Hotel_Management_System.Controllers
             return id;
         }
 
-        private void deleteBooking()
-        {
-            query = "DELETE From Bookings.Booking WHERE BookingId = " + bookingIdCMBox.Text;
-            dc.setData(query, "");
-        }
-
         private void checkoutTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            populateTable();
             fetchData(1);
         }
 

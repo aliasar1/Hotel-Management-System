@@ -77,5 +77,28 @@ namespace Hotel_Management_System.Screens
                 passwordTextField.Text = password;
             }
         }
+
+        public String getUsername()
+        {
+            if (isEmployee)
+            {
+                uname = Statics.employeeNameAndId;
+                uname = uname.Replace(" ", String.Empty);
+                return uname;
+            }
+            else
+            {
+                uname = Statics.hotelNameAndId;
+                uname = uname.Replace(" ", String.Empty);
+                return uname;
+            }
+        }
+
+        public String getPassword()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, 8)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
     }
 }

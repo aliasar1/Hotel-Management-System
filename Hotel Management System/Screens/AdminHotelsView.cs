@@ -6,6 +6,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -177,6 +179,7 @@ namespace Hotel_Management_System.Controllers
                 getRecentHotelId();
                 Statics.hotelNameId(maxId, name);
                 Statics.setHotelId(maxId);
+                //sendMail();
                 clearFields();
                 populateTable();
                 ShowDefaultScreen defaultScreen = new ShowDefaultScreen();
@@ -186,6 +189,37 @@ namespace Hotel_Management_System.Controllers
             {
                 MessageBox.Show("All fields must be filled.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void sendMail()
+        {
+            String fromAddress = "";
+            String toAddress = emailField.Text;
+            String password = "";
+
+            MailMessage mail = new MailMessage();
+
+            mail.Subject = "Hotel default username and password.";
+            mail.From = new MailAddress(fromAddress);
+            ShowDefaultScreen sds = new ShowDefaultScreen();
+            String uName = sds.getUsername();
+            String uPass = sds.getPassword();
+            mail.Body = "Hello, Here is your hotel username: " + uName + " and password: " + uPass;
+            mail.To.Add(new MailAddress(toAddress));
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.EnableSsl = true;
+
+            NetworkCredential nec = new NetworkCredential(fromAddress, password);
+            smtp.Credentials = nec;
+            smtp.Send(mail);
+
+            MessageBox.Show("Account details send successfully.");
+
+
         }
 
         private void getRecentHotelId()
@@ -226,6 +260,18 @@ namespace Hotel_Management_System.Controllers
             clearFields();
         }
 
+        private void deleteRoomsBooked()
+        {
+            query = "DELETE FROM Rooms.RoomBooked WHERE RoomId IN (SELECT RoomId FROM Rooms.Room WHERE HotelId = " + hotelIdField.Text + ")";
+            dc.setData(query, "");
+        }
+
+        private void deleteServicesUsed()
+        {
+            query = "DELETE FROM HotelService.ServicesUsed WHERE BookingId IN (SELECT BookingId FROM Bookings.Booking WHERE HotelId = " + hotelIdField.Text + ")";
+            dc.setData(query, "");
+        }
+
         private void deleteButton_Click(object sender, EventArgs e)
         {
             addButton.Enabled = true;
@@ -237,14 +283,23 @@ namespace Hotel_Management_System.Controllers
             {
                 deleteHotelLogin();
                 deleteDepartments();
-                deleteEmployees();
-                deleteRoomType();
+                deleteServicesUsed();
+                deleteRoomsBooked();
                 deleteRooms();
+                deleteRoomType();
+                deleteHotelBookings();
+                deleteEmployees();
                 query = "DELETE FROM Hotels.Hotel WHERE HotelId = " + int.Parse(hotelIdField.Text);
                 dc.setData(query, "Record deleted successfully.");
                 clearFields();
                 populateTable();
             }
+        }
+
+        private void deleteHotelBookings()
+        {
+            query = "DELETE FROM Bookings.Booking WHERE HotelId = " + int.Parse(hotelIdField.Text);
+            dc.setData(query, "");
         }
 
         private void deleteEmployees()

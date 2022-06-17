@@ -120,6 +120,11 @@
     <Compile Include="Screens\CreatePassword.Designer.cs">
       <DependentUpon>CreatePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Reports.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reports.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Screens\ResetPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +259,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Reports\Reports.xsc">
+      <DependentUpon>Reports.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\Reports.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Reports.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\Reports.xss">
+      <DependentUpon>Reports.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

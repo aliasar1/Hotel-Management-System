@@ -39,9 +39,22 @@ namespace Hotel_Management_System.Controllers
             this.Hide();
         }
 
+        private void checkIfEmployee()
+        {
+            if (!Statics.employeeIdTKN.Equals(0))
+            {
+                p1.Hide();
+            }
+        }
+
         private void HotelsScreen_Load(object sender, EventArgs e)
         {
+            checkIfEmployee();
             getHotelDetails();
+            getEmpCounts();
+            getGuestCount();
+            getRoomsCount();
+            getTotalEarning();
         }
 
         private void getFieldsData()
@@ -107,5 +120,72 @@ namespace Hotel_Management_System.Controllers
             ds.Show();
         }
 
+        private void guna2CustomGradientPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void getEmpCounts()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT COUNT(EmployeeId) from Hotels.Employees WHERE HotelId = " + Statics.hotelIdTKN;
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            empLabel.Text = id.ToString();
+        }
+
+        private void getRoomsCount()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT COUNT(RoomId) from Rooms.Room WHERE HotelId = " + Statics.hotelIdTKN;
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            roomsLabel.Text = id.ToString();
+        }
+
+        private void getGuestCount()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT COUNT(GuestId) from Hotels.Guests WHERE HotelId = " + Statics.hotelIdTKN;
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            guestLabel.Text = id.ToString();
+        }
+
+        private void getTotalEarning()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT SUM(PaymentAmount) FROM Bookings.Payments WHERE BookingId IN (SELECT BookingId FROM Bookings.Booking WHERE HotelId =" + Statics.hotelIdTKN +  ")";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            earningLabel.Text = id.ToString();
+        }
     }
 }

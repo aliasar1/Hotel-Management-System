@@ -55,6 +55,23 @@
             this.emailField = new Guna.UI2.WinForms.Guna2TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.p1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.empLabel = new System.Windows.Forms.Label();
+            this.guestLabel = new System.Windows.Forms.Label();
+            this.roomsLabel = new System.Windows.Forms.Label();
+            this.earningLabel = new System.Windows.Forms.Label();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2CustomGradientPanel1.SuspendLayout();
+            this.guna2CustomGradientPanel2.SuspendLayout();
+            this.guna2CustomGradientPanel3.SuspendLayout();
+            this.p1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -538,12 +555,189 @@
             this.guna2Button1.Text = "OFFER DISCOUNTS";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
+            // guna2CustomGradientPanel1
+            // 
+            this.guna2CustomGradientPanel1.BorderRadius = 30;
+            this.guna2CustomGradientPanel1.Controls.Add(this.empLabel);
+            this.guna2CustomGradientPanel1.Controls.Add(this.label2);
+            this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(103, 99);
+            this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
+            this.guna2CustomGradientPanel1.ShadowDecoration.Parent = this.guna2CustomGradientPanel1;
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(342, 70);
+            this.guna2CustomGradientPanel1.TabIndex = 82;
+            this.guna2CustomGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2CustomGradientPanel1_Paint);
+            // 
+            // guna2CustomGradientPanel2
+            // 
+            this.guna2CustomGradientPanel2.BorderRadius = 30;
+            this.guna2CustomGradientPanel2.Controls.Add(this.guestLabel);
+            this.guna2CustomGradientPanel2.Controls.Add(this.label10);
+            this.guna2CustomGradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(103, 183);
+            this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
+            this.guna2CustomGradientPanel2.ShadowDecoration.Parent = this.guna2CustomGradientPanel2;
+            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(342, 70);
+            this.guna2CustomGradientPanel2.TabIndex = 83;
+            // 
+            // guna2CustomGradientPanel3
+            // 
+            this.guna2CustomGradientPanel3.BorderRadius = 30;
+            this.guna2CustomGradientPanel3.Controls.Add(this.roomsLabel);
+            this.guna2CustomGradientPanel3.Controls.Add(this.label13);
+            this.guna2CustomGradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel3.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel3.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(103, 266);
+            this.guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
+            this.guna2CustomGradientPanel3.ShadowDecoration.Parent = this.guna2CustomGradientPanel3;
+            this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(342, 70);
+            this.guna2CustomGradientPanel3.TabIndex = 83;
+            // 
+            // p1
+            // 
+            this.p1.BorderRadius = 30;
+            this.p1.Controls.Add(this.earningLabel);
+            this.p1.Controls.Add(this.label15);
+            this.p1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.p1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.p1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.p1.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.p1.Location = new System.Drawing.Point(103, 348);
+            this.p1.Name = "p1";
+            this.p1.ShadowDecoration.Parent = this.p1;
+            this.p1.Size = new System.Drawing.Size(342, 70);
+            this.p1.TabIndex = 83;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(20, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 19);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Total Employees:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label10.Location = new System.Drawing.Point(20, 31);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 19);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Total Guests:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label13.Location = new System.Drawing.Point(20, 26);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(110, 19);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Total Rooms:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label15.Location = new System.Drawing.Point(20, 23);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(117, 19);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Total Earning:";
+            // 
+            // empLabel
+            // 
+            this.empLabel.AutoSize = true;
+            this.empLabel.BackColor = System.Drawing.Color.Transparent;
+            this.empLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empLabel.ForeColor = System.Drawing.Color.Silver;
+            this.empLabel.Location = new System.Drawing.Point(182, 23);
+            this.empLabel.Name = "empLabel";
+            this.empLabel.Size = new System.Drawing.Size(0, 24);
+            this.empLabel.TabIndex = 1;
+            // 
+            // guestLabel
+            // 
+            this.guestLabel.AutoSize = true;
+            this.guestLabel.BackColor = System.Drawing.Color.Transparent;
+            this.guestLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestLabel.ForeColor = System.Drawing.Color.Silver;
+            this.guestLabel.Location = new System.Drawing.Point(182, 26);
+            this.guestLabel.Name = "guestLabel";
+            this.guestLabel.Size = new System.Drawing.Size(0, 24);
+            this.guestLabel.TabIndex = 2;
+            // 
+            // roomsLabel
+            // 
+            this.roomsLabel.AutoSize = true;
+            this.roomsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.roomsLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomsLabel.ForeColor = System.Drawing.Color.Silver;
+            this.roomsLabel.Location = new System.Drawing.Point(182, 26);
+            this.roomsLabel.Name = "roomsLabel";
+            this.roomsLabel.Size = new System.Drawing.Size(0, 24);
+            this.roomsLabel.TabIndex = 3;
+            // 
+            // earningLabel
+            // 
+            this.earningLabel.AutoSize = true;
+            this.earningLabel.BackColor = System.Drawing.Color.Transparent;
+            this.earningLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.earningLabel.ForeColor = System.Drawing.Color.Silver;
+            this.earningLabel.Location = new System.Drawing.Point(182, 23);
+            this.earningLabel.Name = "earningLabel";
+            this.earningLabel.Size = new System.Drawing.Size(0, 24);
+            this.earningLabel.TabIndex = 4;
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.BackColor = System.Drawing.Color.Gainsboro;
+            this.guna2Button2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2Button2.BorderRadius = 25;
+            this.guna2Button2.BorderThickness = 4;
+            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
+            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
+            this.guna2Button2.FillColor = System.Drawing.Color.Gainsboro;
+            this.guna2Button2.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.guna2Button2.HoverState.Parent = this.guna2Button2;
+            this.guna2Button2.Location = new System.Drawing.Point(478, 224);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
+            this.guna2Button2.Size = new System.Drawing.Size(183, 59);
+            this.guna2Button2.TabIndex = 84;
+            this.guna2Button2.Text = "GENERATE REPORTS";
+            // 
             // HotelsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1133, 560);
+            this.Controls.Add(this.guna2Button2);
+            this.Controls.Add(this.guna2CustomGradientPanel2);
+            this.Controls.Add(this.guna2CustomGradientPanel3);
+            this.Controls.Add(this.p1);
+            this.Controls.Add(this.guna2CustomGradientPanel1);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.emailField);
             this.Controls.Add(this.label32);
@@ -577,6 +771,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "HotelsScreen";
             this.Load += new System.EventHandler(this.HotelsScreen_Load);
+            this.guna2CustomGradientPanel1.ResumeLayout(false);
+            this.guna2CustomGradientPanel1.PerformLayout();
+            this.guna2CustomGradientPanel2.ResumeLayout(false);
+            this.guna2CustomGradientPanel2.PerformLayout();
+            this.guna2CustomGradientPanel3.ResumeLayout(false);
+            this.guna2CustomGradientPanel3.PerformLayout();
+            this.p1.ResumeLayout(false);
+            this.p1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -611,5 +813,18 @@
         private Guna.UI2.WinForms.Guna2TextBox emailField;
         private System.Windows.Forms.Label label32;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
+        private System.Windows.Forms.Label empLabel;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel2;
+        private System.Windows.Forms.Label guestLabel;
+        private System.Windows.Forms.Label label10;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
+        private System.Windows.Forms.Label roomsLabel;
+        private System.Windows.Forms.Label label13;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel p1;
+        private System.Windows.Forms.Label earningLabel;
+        private System.Windows.Forms.Label label15;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }
