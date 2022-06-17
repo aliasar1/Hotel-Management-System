@@ -59,6 +59,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.guna2CircleButton3 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.bookingTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.filterCMBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bookingTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -535,12 +537,50 @@
             this.bookingTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.bookingTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bookingTable_CellContentClick);
             // 
+            // filterCMBox
+            // 
+            this.filterCMBox.BackColor = System.Drawing.Color.Transparent;
+            this.filterCMBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.filterCMBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filterCMBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.filterCMBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.filterCMBox.FocusedState.Parent = this.filterCMBox;
+            this.filterCMBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.filterCMBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.filterCMBox.HoverState.Parent = this.filterCMBox;
+            this.filterCMBox.ItemHeight = 30;
+            this.filterCMBox.Items.AddRange(new object[] {
+            "All",
+            "Checkin",
+            "Checkout"});
+            this.filterCMBox.ItemsAppearance.Parent = this.filterCMBox;
+            this.filterCMBox.Location = new System.Drawing.Point(352, 12);
+            this.filterCMBox.Name = "filterCMBox";
+            this.filterCMBox.ShadowDecoration.Parent = this.filterCMBox;
+            this.filterCMBox.Size = new System.Drawing.Size(136, 36);
+            this.filterCMBox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.filterCMBox.TabIndex = 116;
+            this.filterCMBox.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
+            this.label12.Location = new System.Drawing.Point(292, 19);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 19);
+            this.label12.TabIndex = 117;
+            this.label12.Text = "Filter";
+            // 
             // BookingsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1133, 560);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.filterCMBox);
             this.Controls.Add(this.bookingTable);
             this.Controls.Add(this.guna2CircleButton3);
             this.Controls.Add(this.roomTypeCMBox);
@@ -609,5 +649,7 @@
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton3;
         private Guna.UI2.WinForms.Guna2DataGridView bookingTable;
+        private Guna.UI2.WinForms.Guna2ComboBox filterCMBox;
+        private System.Windows.Forms.Label label12;
     }
 }

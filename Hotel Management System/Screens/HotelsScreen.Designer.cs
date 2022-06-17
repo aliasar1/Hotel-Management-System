@@ -56,17 +56,17 @@
             this.label32 = new System.Windows.Forms.Label();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.p1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.empLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guestLabel = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.roomsLabel = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.p1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.earningLabel = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.guna2CustomGradientPanel2.SuspendLayout();
@@ -571,6 +571,29 @@
             this.guna2CustomGradientPanel1.TabIndex = 82;
             this.guna2CustomGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2CustomGradientPanel1_Paint);
             // 
+            // empLabel
+            // 
+            this.empLabel.AutoSize = true;
+            this.empLabel.BackColor = System.Drawing.Color.Transparent;
+            this.empLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empLabel.ForeColor = System.Drawing.Color.Silver;
+            this.empLabel.Location = new System.Drawing.Point(182, 23);
+            this.empLabel.Name = "empLabel";
+            this.empLabel.Size = new System.Drawing.Size(0, 24);
+            this.empLabel.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(20, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 19);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Total Employees:";
+            // 
             // guna2CustomGradientPanel2
             // 
             this.guna2CustomGradientPanel2.BorderRadius = 30;
@@ -585,6 +608,29 @@
             this.guna2CustomGradientPanel2.ShadowDecoration.Parent = this.guna2CustomGradientPanel2;
             this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(342, 70);
             this.guna2CustomGradientPanel2.TabIndex = 83;
+            // 
+            // guestLabel
+            // 
+            this.guestLabel.AutoSize = true;
+            this.guestLabel.BackColor = System.Drawing.Color.Transparent;
+            this.guestLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestLabel.ForeColor = System.Drawing.Color.Silver;
+            this.guestLabel.Location = new System.Drawing.Point(182, 26);
+            this.guestLabel.Name = "guestLabel";
+            this.guestLabel.Size = new System.Drawing.Size(0, 24);
+            this.guestLabel.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label10.Location = new System.Drawing.Point(20, 31);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 19);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Total Guests:";
             // 
             // guna2CustomGradientPanel3
             // 
@@ -601,6 +647,29 @@
             this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(342, 70);
             this.guna2CustomGradientPanel3.TabIndex = 83;
             // 
+            // roomsLabel
+            // 
+            this.roomsLabel.AutoSize = true;
+            this.roomsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.roomsLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomsLabel.ForeColor = System.Drawing.Color.Silver;
+            this.roomsLabel.Location = new System.Drawing.Point(182, 26);
+            this.roomsLabel.Name = "roomsLabel";
+            this.roomsLabel.Size = new System.Drawing.Size(0, 24);
+            this.roomsLabel.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label13.Location = new System.Drawing.Point(20, 26);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(110, 19);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Total Rooms:";
+            // 
             // p1
             // 
             this.p1.BorderRadius = 30;
@@ -616,41 +685,16 @@
             this.p1.Size = new System.Drawing.Size(342, 70);
             this.p1.TabIndex = 83;
             // 
-            // label2
+            // earningLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(20, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 19);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Total Employees:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(20, 31);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(108, 19);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Total Guests:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label13.Location = new System.Drawing.Point(20, 26);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(110, 19);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Total Rooms:";
+            this.earningLabel.AutoSize = true;
+            this.earningLabel.BackColor = System.Drawing.Color.Transparent;
+            this.earningLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.earningLabel.ForeColor = System.Drawing.Color.Silver;
+            this.earningLabel.Location = new System.Drawing.Point(182, 23);
+            this.earningLabel.Name = "earningLabel";
+            this.earningLabel.Size = new System.Drawing.Size(0, 24);
+            this.earningLabel.TabIndex = 4;
             // 
             // label15
             // 
@@ -663,50 +707,6 @@
             this.label15.Size = new System.Drawing.Size(117, 19);
             this.label15.TabIndex = 3;
             this.label15.Text = "Total Earning:";
-            // 
-            // empLabel
-            // 
-            this.empLabel.AutoSize = true;
-            this.empLabel.BackColor = System.Drawing.Color.Transparent;
-            this.empLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empLabel.ForeColor = System.Drawing.Color.Silver;
-            this.empLabel.Location = new System.Drawing.Point(182, 23);
-            this.empLabel.Name = "empLabel";
-            this.empLabel.Size = new System.Drawing.Size(0, 24);
-            this.empLabel.TabIndex = 1;
-            // 
-            // guestLabel
-            // 
-            this.guestLabel.AutoSize = true;
-            this.guestLabel.BackColor = System.Drawing.Color.Transparent;
-            this.guestLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guestLabel.ForeColor = System.Drawing.Color.Silver;
-            this.guestLabel.Location = new System.Drawing.Point(182, 26);
-            this.guestLabel.Name = "guestLabel";
-            this.guestLabel.Size = new System.Drawing.Size(0, 24);
-            this.guestLabel.TabIndex = 2;
-            // 
-            // roomsLabel
-            // 
-            this.roomsLabel.AutoSize = true;
-            this.roomsLabel.BackColor = System.Drawing.Color.Transparent;
-            this.roomsLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomsLabel.ForeColor = System.Drawing.Color.Silver;
-            this.roomsLabel.Location = new System.Drawing.Point(182, 26);
-            this.roomsLabel.Name = "roomsLabel";
-            this.roomsLabel.Size = new System.Drawing.Size(0, 24);
-            this.roomsLabel.TabIndex = 3;
-            // 
-            // earningLabel
-            // 
-            this.earningLabel.AutoSize = true;
-            this.earningLabel.BackColor = System.Drawing.Color.Transparent;
-            this.earningLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.earningLabel.ForeColor = System.Drawing.Color.Silver;
-            this.earningLabel.Location = new System.Drawing.Point(182, 23);
-            this.earningLabel.Name = "earningLabel";
-            this.earningLabel.Size = new System.Drawing.Size(0, 24);
-            this.earningLabel.TabIndex = 4;
             // 
             // guna2Button2
             // 
@@ -726,6 +726,7 @@
             this.guna2Button2.Size = new System.Drawing.Size(183, 59);
             this.guna2Button2.TabIndex = 84;
             this.guna2Button2.Text = "GENERATE REPORTS";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // HotelsScreen
             // 

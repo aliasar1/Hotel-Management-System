@@ -1,12 +1,12 @@
 ﻿using Hotel_Management_System.Screens;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -183,9 +183,46 @@ namespace Hotel_Management_System.Controllers
             int id = 0;
             while (dr.Read())
             {
-                id = dr.GetInt32(0);
+                id = dr.IsDBNull(0) ? 0 : dr.GetInt32(0);
             }
             earningLabel.Text = id.ToString();
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            makeFile();
+        }
+
+        private void makeFile()
+        {
+            checkIfExist();
+            var file = new FileInfo(@"C:\Users\Ali Asar\Desktop\Hotel Report\Report.xlsx");
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            using (ExcelPackage excel = new ExcelPackage(file))
+            {
+                query = "SELECT Bookings.Booking.BookingId, Bookings.Booking.BookingDate, Bookings.Booking.StayDuration, Bookings.Booking.CheckInDate, Bookings.Booking.CheckOutDate, Bookings.Booking.Status, Hotels.Guests.GuestId, Hotels.Guests.GuestFirstName, Hotels.Guests.GuestLastName, Hotels.Guests.GuestContactNumber, Hotels.Guests.GuestPassportNumber, Hotels.Guests.HotelId, Hotels.Employees.EmployeeId, Hotels.Employees.EmployeeFirstName, Hotels.Employees.EmployeeLastName, Hotels.Employees.EmployeeContactNumber, Bookings.Payments.PaymentId, Bookings.Payments.PaymentStatus,Bookings.Payments.PaymentAmount FROM Bookings.Booking INNER JOIN Hotels.Employees ON Bookings.Booking.EmployeeId = Hotels.Employees.EmployeeId WHERE WHERE Bookings.Booking.HotelId = " + Statics.hotelIdTKN + " FULL JOIN Hotels.Guests ON Bookings.Booking.GuestId = Hotels.Guests.GuestId WHERE Bookings.Booking.HotelId = " + Statics.hotelIdTKN + " FULL JOIN Bookings.Payments ON Bookings.Booking.BookingId = Bookings.Payments.BookingId WHERE Bookings.Booking.HotelId = " + Statics.hotelIdTKN;
+                ExcelWorksheet sheet = excel.Workbook.Worksheets["sheet1"];
+                SqlConnection con = dc.getConnection();
+                con.Open();
+                var command = new SqlCommand(query, con);
+                SqlDataAdapter sda = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                int count = dt.Rows.Count;
+                sheet.Cells.LoadFromDataTable(dt,true);
+                FileInfo excelFile = new FileInfo(@"C:\Users\Ali Asar\Desktop\Hotel Report\Report.xlsx");
+                excel.SaveAs(excelFile);
+                MessageBox.Show("Excel file is downloaded on desktop.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void checkIfExist()
+        {
+            FileInfo file = new FileInfo(@"C:\Users\Ali Asar\Desktop\Hotel Report\HotelReport.xlsx");
+            if (file.Exists)
+            {
+                file.Delete();
+            }
         }
     }
 }

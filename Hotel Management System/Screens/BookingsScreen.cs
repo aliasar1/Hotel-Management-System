@@ -490,17 +490,45 @@ namespace Hotel_Management_System.Controllers
             {
                 int bId = int.Parse(bookingIdField.Text);
                 int gId = getGuestIdS(bId);
-                query = "UPDATE Hotels.Guests SET Status = 'Not Reserved' WHERE GuestId = " + gId;
-                dc.setData(query, "");
-                int a = getRoomId();
-                query = "UPDATE Rooms.Room SET Available = 'Yes' WHERE RoomId = " + a;
-                dc.setData(query, "");
-                delServiceUsed();
-                query = "DELETE FROM Bookings.Booking WHERE BookingId = " + bId;
-                dc.setData(query, "Record deleted successfully.");
-                clearFields();
-                populateTable();
+                bool check = checkBookingStatus(bId);
+                if (check == true)
+                {
+                    query = "UPDATE Hotels.Guests SET Status = 'Not Reserved' WHERE GuestId = " + gId;
+                    dc.setData(query, "");
+                    int a = getRoomId();
+                    query = "UPDATE Rooms.Room SET Available = 'Yes' WHERE RoomId = " + a;
+                    dc.setData(query, "");
+                    delServiceUsed();
+                    query = "DELETE FROM Bookings.Booking WHERE BookingId = " + bId;
+                    dc.setData(query, "Record deleted successfully.");
+                    clearFields();
+                    populateTable();
+                }
+                else
+                {
+                    MessageBox.Show("You cannot delete a booking if guest has already checkout.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
             }
+        }
+
+        private bool checkBookingStatus(int bid)
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT Status from Bookings.Booking WHERE BookingId = " + bid;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            String st = "";
+            while (dr.Read())
+            {
+                st = dr.GetString(0);
+            }
+            if(st == "Checkout")
+            {
+                return false;
+            }
+            return true;
         }
 
         private int getGuestIdS(int bid)
@@ -523,6 +551,48 @@ namespace Hotel_Management_System.Controllers
         {
             query = "DELETE FROM HotelService.ServicesUsed WHERE BookingId = " + bookingIdField.Text;
             dc.setData(query, "");
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(filterCMBox.Text == "All") {
+                populateTable();
+            }
+            else if(filterCMBox.Text == "Checkin")
+            {
+                populateWithCheckIn();
+            }
+            else if(filterCMBox.Text == "Checkout")
+            {
+                populateWithCheckOut();
+            }
+        }
+
+        private void populateWithCheckIn()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            String query = "SELECT BookingId AS ID, BookingDate AS BookingDate, CheckInDate, CheckOutDate, GuestId, DiscountId, EmployeeId, Status FROM Bookings.Booking WHERE Status = 'Checkin' AND HotelId = " + Statics.hotelIdTKN;
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+            var ds = new DataSet();
+            sda.Fill(ds);
+            bookingTable.DataSource = ds.Tables[0];
+            con.Close();
+        }
+
+        private void populateWithCheckOut()
+        {
+
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            String query = "SELECT BookingId AS ID, BookingDate AS BookingDate, CheckInDate, CheckOutDate, GuestId, DiscountId, EmployeeId, Status FROM Bookings.Booking WHERE Status = 'Checkout' AND HotelId = " + Statics.hotelIdTKN;
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+            var ds = new DataSet();
+            sda.Fill(ds);
+            bookingTable.DataSource = ds.Tables[0];
+            con.Close();
         }
     }
 }
