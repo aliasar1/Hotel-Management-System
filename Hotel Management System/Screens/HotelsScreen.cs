@@ -196,11 +196,12 @@ namespace Hotel_Management_System.Controllers
         private void makeFile()
         {
             checkIfExist();
+            createEmptyFile();
             var file = new FileInfo(@"C:\Users\Ali Asar\Desktop\Hotel Report\Report.xlsx");
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using (ExcelPackage excel = new ExcelPackage(file))
             {
-                query = "SELECT Bookings.Booking.BookingId, Bookings.Booking.BookingDate, Bookings.Booking.StayDuration, Bookings.Booking.CheckInDate, Bookings.Booking.CheckOutDate, Bookings.Booking.Status, Hotels.Guests.GuestId, Hotels.Guests.GuestFirstName, Hotels.Guests.GuestLastName, Hotels.Guests.GuestContactNumber, Hotels.Guests.GuestPassportNumber, Hotels.Guests.HotelId, Hotels.Employees.EmployeeId, Hotels.Employees.EmployeeFirstName, Hotels.Employees.EmployeeLastName, Hotels.Employees.EmployeeContactNumber, Bookings.Payments.PaymentId, Bookings.Payments.PaymentStatus,Bookings.Payments.PaymentAmount FROM Bookings.Booking INNER JOIN Hotels.Employees ON Bookings.Booking.EmployeeId = Hotels.Employees.EmployeeId WHERE WHERE Bookings.Booking.HotelId = " + Statics.hotelIdTKN + " FULL JOIN Hotels.Guests ON Bookings.Booking.GuestId = Hotels.Guests.GuestId WHERE Bookings.Booking.HotelId = " + Statics.hotelIdTKN + " FULL JOIN Bookings.Payments ON Bookings.Booking.BookingId = Bookings.Payments.BookingId WHERE Bookings.Booking.HotelId = " + Statics.hotelIdTKN;
+                query = "SELECT Bookings.Booking.BookingId, Bookings.Booking.BookingDate, Bookings.Booking.StayDuration, Bookings.Booking.CheckInDate, Bookings.Booking.CheckOutDate, Bookings.Booking.Status, Hotels.Guests.GuestId, Hotels.Guests.GuestFirstName, Hotels.Guests.GuestLastName, Hotels.Guests.GuestContactNumber, Hotels.Guests.GuestPassportNumber, Hotels.Guests.HotelId, Hotels.Employees.EmployeeId, Hotels.Employees.EmployeeFirstName, Hotels.Employees.EmployeeLastName, Hotels.Employees.EmployeeContactNumber, Bookings.Payments.PaymentId, Bookings.Payments.PaymentStatus,Bookings.Payments.PaymentAmount FROM Bookings.Booking INNER JOIN Hotels.Employees ON Bookings.Booking.EmployeeId = Hotels.Employees.EmployeeId FULL JOIN Hotels.Guests ON Bookings.Booking.GuestId = Hotels.Guests.GuestId FULL JOIN Bookings.Payments ON Bookings.Booking.BookingId = Bookings.Payments.BookingId WHERE Bookings.Booking.HotelId = " + Statics.hotelIdTKN;
                 ExcelWorksheet sheet = excel.Workbook.Worksheets["sheet1"];
                 SqlConnection con = dc.getConnection();
                 con.Open();
@@ -216,11 +217,21 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
+        private void createEmptyFile()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var app = new Microsoft.Office.Interop.Excel.Application();
+            var wb = app.Workbooks.Add();
+            wb.SaveAs(@"C:\Users\Ali Asar\Desktop\Hotel Report\Report.xlsx");
+            wb.Close();
+        }
+
         private void checkIfExist()
         {
-            FileInfo file = new FileInfo(@"C:\Users\Ali Asar\Desktop\Hotel Report\HotelReport.xlsx");
+            FileInfo file = new FileInfo(@"C:\Users\Ali Asar\Desktop\Hotel Report\Report.xlsx");
             if (file.Exists)
             {
+                Console.WriteLine("Yes");
                 file.Delete();
             }
         }
