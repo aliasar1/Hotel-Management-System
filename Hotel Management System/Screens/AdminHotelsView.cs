@@ -169,12 +169,167 @@ namespace Hotel_Management_System.Controllers
             email = emailField.Text;
         }
 
+        private bool checkUniqueName()
+        {
+            query = "SELECT HotelId FROM Hotels.Hotel WHERE Name = '" + hotelNameField.Text + "'";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+               id = dr.GetInt32(0);
+            }
+            if(id == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool checkUniqueContact()
+        {
+            query = "SELECT HotelId FROM Hotels.Hotel WHERE ContactNumber = '" + contactField.Text + "'";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            if (id == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool checkUniqueEmail()
+        {
+            query = "SELECT HotelId FROM Hotels.Hotel WHERE Email = '" + emailField.Text + "'";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            if (id == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool checkUniqueWeb()
+        {
+            query = "SELECT HotelId FROM Hotels.Hotel WHERE Website = '" + webField.Text + "'";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            if (id == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool checkUniqueAddress()
+        {
+            query = "SELECT HotelId FROM Hotels.Hotel WHERE AddressLine = '" + addressField.Text + "'";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            if (id == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool checkUnique()
+        {
+            bool c1 = checkUniqueName();
+            if (c1 == false)
+            {
+                MessageBox.Show("Hotel with same name already exists.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                hotelNameField.Focus();
+                return false;
+            }
+            bool c2 = checkUniqueContact();
+            if (c2 == false)
+            {
+                MessageBox.Show("A Hotel with same contact number already exists.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                contactField.Focus();
+                return false;
+            }
+            bool c3 = checkUniqueEmail();
+            if (c3 == false)
+            {
+                MessageBox.Show("A Hotel with same email already exists.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                emailField.Focus();
+                return false;
+            }
+            bool c4 = checkUniqueWeb();
+            if (c4 == false)
+            {
+                MessageBox.Show("A Hotel with same website already exists.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                webField.Focus();
+                return false;
+            }
+            bool c5 = checkUniqueAddress();
+            if (c5 == false)
+            {
+                MessageBox.Show("A Hotel with same address already exists.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                addressField.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void addButton_Click_2(object sender, EventArgs e)
         {
-            if (hotelIdField.Text != "" || hotelNameField.Text != "" || contactField.Text != "" || zipField.Text != "" || addressField.Text != "" ||
-                 cityField.Text != "" || countryField.Text != "" || webField.Text != "" || emailField.Text != "" || capacityField.Text != "" ||
-                 floorCountField.Text != "" || streetField.Text != "" || descriptionFIeld.Text != "" || emailField.Text != "")
+            if (hotelNameField.Text != "" && contactField.Text != "" && zipField.Text != "" && addressField.Text != "" &&
+                 cityField.Text != "" && countryField.Text != "" && webField.Text != "" && emailField.Text != "" && capacityField.Text != "" &&
+                 floorCountField.Text != "" && streetField.Text != "" && descriptionFIeld.Text != "" && emailField.Text != "")
             {
+                bool check = checkUnique();
+                if(check == false)
+                {
+                    return;
+                }
                 getFieldsData();
                 query = "INSERT INTO Hotels.Hotel (Name, ContactNumber, Email, Website, Description, FloorCount, TotalRooms, AddressLine, Street, City, Zip, Country) VALUES ('" + name + "' , '" + contact + "', '" + email + "' , '" + web + "' , '" + description + "' , " + floors + ", " + capacity + ", '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "', '" + country + "')";
                 dc.setData(query, "Hotel inserted successfully!");

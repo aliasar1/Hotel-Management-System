@@ -106,15 +106,82 @@ namespace Hotel_Management_System.Controllers
             con.Close();
         }
 
+        private bool checkUniqueEmail()
+        {
+            query = "SELECT EmployeeId FROM Hotels.Employees WHERE EmployeeEmailAddress = '" + emailField.Text + "'";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            if (id == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool checkUniqueCnic()
+        {
+            query = "SELECT EmployeeId FROM Hotels.Employees WHERE CNIC = '" + cnicField.Text + "'";
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = 0;
+            while (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            if (id == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool checkUnique()
+        {
+            bool c1 = checkUniqueEmail();
+            if (c1 == false)
+            {
+                MessageBox.Show("Employee with same email already exists.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                emailField.Focus();
+                return false;
+            }
+            bool c2 = checkUniqueCnic();
+            if (c2 == false)
+            {
+                MessageBox.Show("Employee with same cnic already exists.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cnicField.Focus();
+                return false;
+            }
+            return true;
+        }
+
+
         private void guna2CircleButton6_Click(object sender, EventArgs e)
         {
-            if (employeeIdField.Text != "" || fnameField.Text != "" || lnameField.Text != "" || emailField.Text != "" || depIdCMBox.SelectedIndex != -1 ||
-                cnicField.Text != "" || zipField.Text != "" || addressField.Text != "" || cityField.Text != "" || streetField.Text != ""
-                || designationCMBox.SelectedIndex != -1 || contactField.Text != "")
+            if (fnameField.Text != "" && lnameField.Text != "" && emailField.Text != "" && depIdCMBox.SelectedIndex != -1 &&
+                cnicField.Text != "" && zipField.Text != "" && addressField.Text != "" && cityField.Text != "" && streetField.Text != ""
+                && designationCMBox.SelectedIndex != -1 && contactField.Text != "")
             {
+                bool check = checkUnique();
+                if (check == false)
+                {
+                    return;
+                }
                 if (designationCMBox.Text == "Manager" || depIdCMBox.Text == "HR" || depIdCMBox.Text == "Accounts")
                 {
-                    Console.WriteLine(Statics.hotelIdTKN);
                     getFieldsData();
                     query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoiningDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + Statics.hotelIdTKN + ", '" + cnic + "')";
                     dc.setData(query, "You are required to create account in order to register.!");
