@@ -319,6 +319,47 @@ namespace Hotel_Management_System.Controllers
             return true;
         }
 
+        private bool regexChecker()
+        {
+            if (!Regex.Match(contactField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                contactField.Focus();
+                return false;
+            }
+            if (!Regex.Match(zipField.Text, @"^\d{5}$").Success)
+            {
+                MessageBox.Show("Zipcode must only contain numbers with length of 5.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                zipField.Focus();
+                return false;
+            }
+            if (!Regex.Match(cityField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("City field must contain alpabets or space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cityField.Focus();
+                return false;
+            }
+            if (!Regex.Match(countryField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("Country field must contain alpabets or space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                countryField.Focus();
+                return false;
+            }
+            if (!Regex.Match(capacityField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Capacity field can only have numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                capacityField.Focus();
+                return false;
+            }
+            if (!Regex.Match(floorCountField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Floors field can only have numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                floorCountField.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void addButton_Click_2(object sender, EventArgs e)
         {
             if (hotelNameField.Text != "" && contactField.Text != "" && zipField.Text != "" && addressField.Text != "" &&
@@ -327,6 +368,11 @@ namespace Hotel_Management_System.Controllers
             {
                 bool check = checkUnique();
                 if(check == false)
+                {
+                    return;
+                }
+                bool regCheck = regexChecker();
+                if (regCheck == false)
                 {
                     return;
                 }
@@ -480,6 +526,11 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
+                bool regCheck = regexChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 getFieldsData();
                 query = "UPDATE Hotels.Hotel SET Name = '" + name + "', ContactNumber = '" + contact + "', Email= '" + email + "', Website = '" + web + "', Description = '" + description + "', FloorCount = " + floors + ", TotalRooms = " + capacity + ", AddressLine = '" + address + "', Street = '" + street + "', City = '" + city + "' , Country = '" + country + "', Zip = '" + zip + "' WHERE HotelId = " + int.Parse(hotelIdField.Text);
                 dc.setData(query, "Record updated successfully.");

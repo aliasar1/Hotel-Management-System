@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -73,6 +74,47 @@ namespace Hotel_Management_System.Controllers
             email = emailField.Text;
         }
 
+        private bool regexChecker()
+        {
+            if (!Regex.Match(contactField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                contactField.Focus();
+                return false;
+            }
+            if (!Regex.Match(zipField.Text, @"^\d{5}$").Success)
+            {
+                MessageBox.Show("Zipcode must only contain numbers with length of 5.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                zipField.Focus();
+                return false;
+            }
+            if (!Regex.Match(cityField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("City field must contain alpabets or space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cityField.Focus();
+                return false;
+            }
+            if (!Regex.Match(countryField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("Country field must contain alpabets or space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                countryField.Focus();
+                return false;
+            }
+            if (!Regex.Match(capacityField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Capacity field can only have numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                capacityField.Focus();
+                return false;
+            }
+            if (!Regex.Match(floorCountField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Floors field can only have numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                floorCountField.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void updateButton_Click(object sender, EventArgs e)
         {
             if (hotelNameField.Text == "" || contactField.Text == "" || zipField.Text == "" || addressField.Text == "" ||
@@ -83,6 +125,11 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
+                bool regCheck = regexChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 getFieldsData();
                 query = "UPDATE Hotels.Hotel SET Name = '" + name + "', ContactNumber = '" + contact + "', Email= '" + email + "', Website = '" + web + "', Description = '" + description + "', FloorCount = " + floors + ", TotalRooms = " +  capacity + ", AddressLine = '" + address + "', Street = '" + street + "', City = '" + city + "' , Country = '" + country + "', Zip = '" + zip + "' WHERE HotelId = " + Statics.hotelIdTKN;
                 dc.setData(query, "Record updated successfully.");
