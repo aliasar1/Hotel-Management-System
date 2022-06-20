@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -50,10 +51,32 @@ namespace Hotel_Management_System.Screens
             smokeCMBox.SelectedIndex = -1;
         }
 
+        private bool regChecker()
+        {
+            if (!Regex.Match(typeNameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("City field must contain alpabets or space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                typeNameField.Focus();
+                return false;
+            }
+            if (!Regex.Match(costField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                costField.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             if (typeNameField.Text != "" && costField.Text != "" && smokeCMBox.SelectedIndex != -1 && petCMBox.SelectedIndex != -1)
             {
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 query = "INSERT INTO Rooms.RoomType (Name, Cost, SmokeFriendly, PetFriendly, HotelId) VALUES ('" + typeNameField.Text + "' , " + costField.Text + ", '" + smokeCMBox.Text + "', '" + petCMBox.Text + "', " + Statics.hotelIdTKN + ")";
                 Console.WriteLine(query);
                 dc.setData(query, "RoomType inserted successfully!");
@@ -81,6 +104,11 @@ namespace Hotel_Management_System.Screens
             }
             else
             {
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 query = "UPDATE Rooms.RoomType SET Name = '" + typeNameField.Text + "', Cost = " + costField.Text + ", PetFriendly = '" + petCMBox.Text + "', SmokeFriendly = '" + smokeCMBox.Text + "' WHERE RoomTypeId = " + int.Parse(typeIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();

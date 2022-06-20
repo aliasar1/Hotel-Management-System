@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -150,12 +151,34 @@ namespace Hotel_Management_System.Controllers
             return name;
         }
 
+        private bool regChecker()
+        {
+            if (!Regex.Match(roomNoField.Text, @"^[a-zA-Z0-9]*$").Success)
+            {
+                MessageBox.Show("Room number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                roomNoField.Focus();
+                return false;
+            }
+            if (!Regex.Match(costField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                costField.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             int id = getIdFromTypeName();
-            if (roomIdField.Text != "" || roomNoField.Text != "" || typeCmbox.Text != "" || costField.Text != "" || availableField.Text != "")
+            if (roomNoField.Text != "" && typeCmbox.Text != "" && costField.Text != "" && availableField.Text != "")
             {
-                query = "INSERT INTO Rooms.Room (RoomNumber, HotelId, RoomTypeId, Available) VALUES (" + roomNoField.Text + ", " + Statics.hotelIdTKN + ", " + id + ", '" + availableField.Text + "')";
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
+                query = "INSERT INTO Rooms.Room (RoomNumber, HotelId, RoomTypeId, Available) VALUES ('" + roomNoField.Text + "', " + Statics.hotelIdTKN + ", " + id + ", '" + availableField.Text + "')";
                 dc.setData(query, "Room inserted successfully!");
                 clearFields();
                 populateTable();
@@ -195,8 +218,13 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 getIdFromTypeName();
-                query = "UPDATE Rooms.Room SET RoomNumber = " + roomNoField.Text + ", RoomTypeId = " + roomId + ", Available = '" + availableField.Text + "' WHERE RoomId = " + int.Parse(roomIdField.Text);
+                query = "UPDATE Rooms.Room SET RoomNumber = '" + roomNoField.Text + "', RoomTypeId = " + roomId + ", Available = '" + availableField.Text + "' WHERE RoomId = " + int.Parse(roomIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
                 populateTable();

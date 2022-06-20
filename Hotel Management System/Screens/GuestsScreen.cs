@@ -136,7 +136,7 @@ namespace Hotel_Management_System.Controllers
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (guestIdField.Text != "" && fnameField.Text != "" && lnameField.Text != "" && emailField.Text != "" && numberField.Text != "" && passportField.Text != "" && zipField.Text != ""
+            if (fnameField.Text != "" && lnameField.Text != "" && emailField.Text != "" && numberField.Text != "" && passportField.Text != "" && zipField.Text != ""
                 && addressField.Text != "" && cityField.Text != "" && streetField.Text != "")
             {
                 bool regCheck = regChecker();

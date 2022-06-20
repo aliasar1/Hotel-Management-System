@@ -113,7 +113,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RegexValidators.cs" />
     <Compile Include="Screens\CheckoutScreen.cs">
       <SubType>Form</SubType>
     </Compile>

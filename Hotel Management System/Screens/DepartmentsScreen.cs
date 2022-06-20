@@ -130,7 +130,7 @@ namespace Hotel_Management_System.Screens
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (depIdField.Text != "" && departmentNameField.Text != "" && descriptionField.Text != "" && salaryField.Text != "")
+            if (departmentNameField.Text != "" && descriptionField.Text != "" && salaryField.Text != "")
             {
                 bool regCheck = checker();
                 if (regCheck == false)

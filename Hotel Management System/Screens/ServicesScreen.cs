@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,10 +49,31 @@ namespace Hotel_Management_System.Screens
             costField.Text = "";
         }
 
+        private bool regChecker()
+        {
+            if (!Regex.Match(serviceNameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("Service name must contain alpabets or space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                serviceNameField.Focus();
+                return false;
+            }
+            if (!Regex.Match(costField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Cost must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                costField.Focus();
+                return false;
+            }
+            return true;
+        }
         private void addButton_Click(object sender, EventArgs e)
         {
             if (serviceNameField.Text != "" && descriptionField.Text != "" && costField.Text != "")
             {
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 query = "INSERT INTO HotelService.Services (ServiceName, ServiceDescription, ServiceCost, HotelId) VALUES ('" + serviceNameField.Text + "' , '" + descriptionField.Text + "', " + costField.Text + "," + Statics.hotelIdTKN + ")";
                 dc.setData(query, "Services inserted successfully!");
                 clearFields();
@@ -84,6 +106,11 @@ namespace Hotel_Management_System.Screens
             }
             else
             {
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 query = "UPDATE HotelService.Services SET ServiceName = '" + serviceNameField.Text + "', ServiceDescription = '" + descriptionField.Text + "', ServiceCost = " + costField.Text + " WHERE ServiceId = " + int.Parse(serviceIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
