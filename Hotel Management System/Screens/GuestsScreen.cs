@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -98,11 +99,51 @@ namespace Hotel_Management_System.Controllers
             retrieveData(id);
         }
 
+        private bool regChecker()
+        {
+            if (!Regex.Match(numberField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                numberField.Focus();
+                return false;
+            }
+            if (!Regex.Match(zipField.Text, @"^\d{5}$").Success)
+            {
+                MessageBox.Show("Zipcode must only contain numbers with length of 5.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                zipField.Focus();
+                return false;
+            }
+            if (!Regex.Match(fnameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("First name can only contain alphabets and spaces if required.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                fnameField.Focus();
+                return false;
+            }
+            if (!Regex.Match(lnameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("Last name can only contain alphabets and spaces if required.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lnameField.Focus();
+                return false;
+            }
+            if (!Regex.Match(cityField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("City field must contain alpabets or space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cityField.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             if (guestIdField.Text != "" && fnameField.Text != "" && lnameField.Text != "" && emailField.Text != "" && numberField.Text != "" && passportField.Text != "" && zipField.Text != ""
-                || addressField.Text != "" && cityField.Text != "" && streetField.Text != "")
+                && addressField.Text != "" && cityField.Text != "" && streetField.Text != "")
             {
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 String cnic = cnicField.Text == "" ? "NULL" : cnicField.Text;
                 String passNum = passportField.Text == "" ? "NULL" : passportField.Text;
                 query = "INSERT INTO Hotels.Guests (GuestFirstName, GuestLastName, GuestEmailAddress, GuestContactNumber, GuestPassportNumber, AddressLine, Street, City, Zip, GuestCnic, HotelId, Status) VALUES ('" + fnameField.Text + "' , '" + lnameField.Text + "', '" + emailField.Text + "', '" + numberField.Text + "', '" + passNum + "', '" + addressField.Text + "', '" + streetField.Text + "', '" + cityField.Text + "', '" + zipField.Text + "', '" + cnic + "', " + Statics.hotelIdTKN + ", 'Not Reserved'" + ")";
@@ -189,6 +230,11 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 query = "UPDATE Hotels.Guests SET GuestFirstName = '" + fnameField.Text + "', GuestLastName = '" + lnameField.Text + "', GuestEmailAddress = '" + emailField.Text + "', GuestContactNumber = '" + numberField.Text + "', GuestCnic = '" + cnicField.Text + "', GuestPassportNumber = '" + passportField.Text + "', AddressLine = '" + addressField.Text + "', Street = '" + streetField.Text + "', City = '" + cityField.Text + "', Zip = '" + zipField.Text + "' WHERE GuestId = " + int.Parse(guestIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();

@@ -213,6 +213,21 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
+
+        private bool IsValid(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
         private bool checkUniqueEmail()
         {
             query = "SELECT HotelId FROM Hotels.Hotel WHERE Email = '" + emailField.Text + "'";
@@ -357,6 +372,12 @@ namespace Hotel_Management_System.Controllers
                 floorCountField.Focus();
                 return false;
             }
+            if (!Regex.Match(contactField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                contactField.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -374,6 +395,12 @@ namespace Hotel_Management_System.Controllers
                 bool regCheck = regexChecker();
                 if (regCheck == false)
                 {
+                    return;
+                }
+                bool emailCheck = IsValid(emailField.Text);
+                if (emailCheck == false)
+                {
+                    MessageBox.Show("Invalid email format entered.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 getFieldsData();

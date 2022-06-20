@@ -6,7 +6,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -168,6 +170,54 @@ namespace Hotel_Management_System.Controllers
             return true;
         }
 
+        private bool IsValid(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+        private bool regChecker()
+        {
+            if (!Regex.Match(contactField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                contactField.Focus();
+                return false;
+            }
+            if (!Regex.Match(zipField.Text, @"^\d{5}$").Success)
+            {
+                MessageBox.Show("Zipcode must only contain numbers with length of 5.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                zipField.Focus();
+                return false;
+            }
+            if (!Regex.Match(fnameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("First name can only contain alphabets and spaces if required.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                fnameField.Focus();
+                return false;
+            }
+            if (!Regex.Match(lnameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("Last name can only contain alphabets and spaces if required.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lnameField.Focus();
+                return false;
+            }
+            if (!Regex.Match(cityField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("City field must contain alpabets or space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cityField.Focus();
+                return false;
+            }
+            return true;
+        }
 
         private void guna2CircleButton6_Click(object sender, EventArgs e)
         {
@@ -177,6 +227,17 @@ namespace Hotel_Management_System.Controllers
             {
                 bool check = checkUnique();
                 if (check == false)
+                {
+                    return;
+                }
+                bool emailCheck = IsValid(emailField.Text);
+                if (emailCheck == false)
+                {
+                    MessageBox.Show("Invalid email format entered.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                bool regCheck = regChecker();
+                if (regCheck == false)
                 {
                     return;
                 }
@@ -334,6 +395,11 @@ namespace Hotel_Management_System.Controllers
             }
             else
             {
+                bool regCheck = regChecker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 query = "UPDATE Hotels.Employees SET EmployeeFirstName = '" + fnameField.Text + "', EmployeeLastName = '" + lnameField.Text + "', EmployeeDesignation = '" + designationCMBox.Text + "', EmployeeContactNumber = '" + contactField.Text + "', EmployeeEmailAddress = '" + emailField.Text + "', EmployeeJoiningDate = '" + joiningDatePicker.Text + "', AddressLine = '" + addressField.Text + "', Street = '" + streetField.Text + "', City = '" + cityField.Text + "', Zip = '" + zipField.Text + "', CNIC = '" + cnicField.Text + "' WHERE EmployeeId = " + int.Parse(employeeIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();

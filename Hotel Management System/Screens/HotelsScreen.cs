@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -74,6 +75,20 @@ namespace Hotel_Management_System.Controllers
             email = emailField.Text;
         }
 
+        private bool IsValid(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
         private bool regexChecker()
         {
             if (!Regex.Match(contactField.Text, @"^[0-9]+$").Success)
@@ -130,6 +145,12 @@ namespace Hotel_Management_System.Controllers
                 {
                     return;
                 }
+                bool emailCheck = IsValid(emailField.Text);
+                if(emailCheck == false)
+                {
+                    MessageBox.Show("Please enter valid email.", "Missing Info", MessageBoxButtons.OK);
+                    return;
+                }
                 getFieldsData();
                 query = "UPDATE Hotels.Hotel SET Name = '" + name + "', ContactNumber = '" + contact + "', Email= '" + email + "', Website = '" + web + "', Description = '" + description + "', FloorCount = " + floors + ", TotalRooms = " +  capacity + ", AddressLine = '" + address + "', Street = '" + street + "', City = '" + city + "' , Country = '" + country + "', Zip = '" + zip + "' WHERE HotelId = " + Statics.hotelIdTKN;
                 dc.setData(query, "Record updated successfully.");
@@ -171,6 +192,7 @@ namespace Hotel_Management_System.Controllers
         {
 
         }
+
 
         private void getEmpCounts()
         {
