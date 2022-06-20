@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -65,6 +66,12 @@ namespace Hotel_Management_System.Screens
         {
             if (rateCMBox.SelectedIndex != -1 && nameField.Text != "" && detailsFIeld.Text != "")
             {
+                if (!Regex.Match(nameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+                {
+                    MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    nameField.Focus();
+                    return;
+                }
                 query = "INSERT INTO Bookings.Discount  (DiscountName, DiscountDescription, DiscountRate, EmployeeId) VALUES ('" + nameField.Text + "' , '" + detailsFIeld.Text + "', " + rateCMBox.Text + "," + 1 + ")";
                 dc.setData(query, "Discount inserted successfully!");
                 clearFields();
@@ -89,6 +96,12 @@ namespace Hotel_Management_System.Screens
             }
             else
             {
+                if (!Regex.Match(nameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+                {
+                    MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    nameField.Focus();
+                    return;
+                }
                 query = "UPDATE Bookings.Discount SET DiscountName = '" + nameField.Text + "', DiscountDescription = '" + detailsFIeld.Text + "', DiscountRate = " + rateCMBox.Text + ", EmployeeId = " + 1 + " WHERE DiscountId = " + int.Parse(discountIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();

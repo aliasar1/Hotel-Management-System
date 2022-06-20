@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -110,10 +111,32 @@ namespace Hotel_Management_System.Screens
             descriptionField.Text = "";
         }
 
+        private bool checker()
+        {
+            if (!Regex.Match(departmentNameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("Department name must contain alpabets and space only.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                departmentNameField.Focus();
+                return false;
+            }
+            if (!Regex.Match(salaryField.Text, @"^[0-9]+$").Success)
+            {
+                MessageBox.Show("Salary field must contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                salaryField.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (depIdField.Text != "" || departmentNameField.Text != "" || descriptionField.Text != "" || salaryField.Text != "")
+            if (depIdField.Text != "" && departmentNameField.Text != "" && descriptionField.Text != "" && salaryField.Text != "")
             {
+                bool regCheck = checker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 getFieldsData();
                 query = "INSERT INTO Hotels.Departments (DepartmentName, DepartmentDescription, InitialSalary, HotelId) VALUES ('" + name + "' , '" + description + "', " + salary + ", " + Statics.hotelIdTKN + ")";
                 dc.setData(query, "Department inserted successfully!");
@@ -165,6 +188,11 @@ namespace Hotel_Management_System.Screens
             }
             else
             {
+                bool regCheck = checker();
+                if (regCheck == false)
+                {
+                    return;
+                }
                 getFieldsData();
                 query = "UPDATE Hotels.Departments SET DepartmentName = '" + name + "', DepartmentDescription = '" + description + "', InitialSalary= " + salary + " WHERE DepartmentId = " + int.Parse(depIdField.Text) + " AND HotelId = " + Statics.hotelIdTKN;
                 dc.setData(query, "Record updated successfully.");

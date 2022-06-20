@@ -107,7 +107,7 @@ namespace Hotel_Management_System.Controllers
 
         private void payButton_Click(object sender, EventArgs e)
         {
-            if (bookingIdCMBox.SelectedIndex != -1 || paymentTypeCmbox.SelectedIndex != -1 || amountField.Text != "")
+            if (bookingIdCMBox.SelectedIndex != -1 && paymentTypeCmbox.SelectedIndex != -1 && amountField.Text != "")
             {
                 int bId = int.Parse(bookingIdCMBox.Text);
                 int gId = getGuestIdS(bId);
