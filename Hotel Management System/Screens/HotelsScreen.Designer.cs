@@ -59,7 +59,7 @@
             this.empLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guestLabel = new System.Windows.Forms.Label();
+            this.bookingLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.roomsLabel = new System.Windows.Forms.Label();
@@ -597,7 +597,7 @@
             // guna2CustomGradientPanel2
             // 
             this.guna2CustomGradientPanel2.BorderRadius = 30;
-            this.guna2CustomGradientPanel2.Controls.Add(this.guestLabel);
+            this.guna2CustomGradientPanel2.Controls.Add(this.bookingLabel);
             this.guna2CustomGradientPanel2.Controls.Add(this.label10);
             this.guna2CustomGradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
             this.guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
@@ -609,16 +609,16 @@
             this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(342, 70);
             this.guna2CustomGradientPanel2.TabIndex = 83;
             // 
-            // guestLabel
+            // bookingLabel
             // 
-            this.guestLabel.AutoSize = true;
-            this.guestLabel.BackColor = System.Drawing.Color.Transparent;
-            this.guestLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guestLabel.ForeColor = System.Drawing.Color.Silver;
-            this.guestLabel.Location = new System.Drawing.Point(182, 26);
-            this.guestLabel.Name = "guestLabel";
-            this.guestLabel.Size = new System.Drawing.Size(0, 24);
-            this.guestLabel.TabIndex = 2;
+            this.bookingLabel.AutoSize = true;
+            this.bookingLabel.BackColor = System.Drawing.Color.Transparent;
+            this.bookingLabel.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bookingLabel.ForeColor = System.Drawing.Color.Silver;
+            this.bookingLabel.Location = new System.Drawing.Point(182, 26);
+            this.bookingLabel.Name = "bookingLabel";
+            this.bookingLabel.Size = new System.Drawing.Size(0, 24);
+            this.bookingLabel.TabIndex = 2;
             // 
             // label10
             // 
@@ -628,9 +628,9 @@
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label10.Location = new System.Drawing.Point(20, 31);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(108, 19);
+            this.label10.Size = new System.Drawing.Size(129, 19);
             this.label10.TabIndex = 1;
-            this.label10.Text = "Total Guests:";
+            this.label10.Text = "Total Bookings:";
             // 
             // guna2CustomGradientPanel3
             // 
@@ -818,7 +818,7 @@
         private System.Windows.Forms.Label empLabel;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel2;
-        private System.Windows.Forms.Label guestLabel;
+        private System.Windows.Forms.Label bookingLabel;
         private System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
         private System.Windows.Forms.Label roomsLabel;

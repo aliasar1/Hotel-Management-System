@@ -60,6 +60,7 @@
             this.passwordTextField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.passwordTextField.HoverState.Parent = this.passwordTextField;
             this.passwordTextField.IconLeft = ((System.Drawing.Image)(resources.GetObject("passwordTextField.IconLeft")));
+            this.passwordTextField.IconRight = ((System.Drawing.Image)(resources.GetObject("passwordTextField.IconRight")));
             this.passwordTextField.Location = new System.Drawing.Point(448, 251);
             this.passwordTextField.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.passwordTextField.Name = "passwordTextField";
@@ -70,6 +71,8 @@
             this.passwordTextField.Size = new System.Drawing.Size(218, 39);
             this.passwordTextField.TabIndex = 13;
             this.passwordTextField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.passwordTextField.UseSystemPasswordChar = true;
+            this.passwordTextField.IconRightClick += new System.EventHandler(this.passwordTextField_IconRightClick);
             // 
             // errorLabel
             // 
@@ -87,7 +90,7 @@
             // 
             this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 25;
+            this.guna2Button1.BorderRadius = 20;
             this.guna2Button1.CheckedState.Parent = this.guna2Button1;
             this.guna2Button1.CustomImages.Parent = this.guna2Button1;
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
@@ -198,7 +201,7 @@
             this.backBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.backBtn.ForeColor = System.Drawing.Color.White;
             this.backBtn.HoverState.Parent = this.backBtn;
-            this.backBtn.Location = new System.Drawing.Point(743, 12);
+            this.backBtn.Location = new System.Drawing.Point(755, 3);
             this.backBtn.Name = "backBtn";
             this.backBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.backBtn.ShadowDecoration.Parent = this.backBtn;

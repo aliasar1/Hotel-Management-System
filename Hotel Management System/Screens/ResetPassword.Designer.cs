@@ -209,6 +209,7 @@
             this.confirmPassField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.confirmPassField.HoverState.Parent = this.confirmPassField;
             this.confirmPassField.IconLeft = ((System.Drawing.Image)(resources.GetObject("confirmPassField.IconLeft")));
+            this.confirmPassField.IconRight = ((System.Drawing.Image)(resources.GetObject("confirmPassField.IconRight")));
             this.confirmPassField.Location = new System.Drawing.Point(380, 330);
             this.confirmPassField.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.confirmPassField.Name = "confirmPassField";
@@ -219,6 +220,8 @@
             this.confirmPassField.Size = new System.Drawing.Size(218, 39);
             this.confirmPassField.TabIndex = 106;
             this.confirmPassField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.confirmPassField.UseSystemPasswordChar = true;
+            this.confirmPassField.IconRightClick += new System.EventHandler(this.confirmPassField_IconRightClick);
             // 
             // newPassField
             // 
@@ -238,6 +241,7 @@
             this.newPassField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.newPassField.HoverState.Parent = this.newPassField;
             this.newPassField.IconLeft = ((System.Drawing.Image)(resources.GetObject("newPassField.IconLeft")));
+            this.newPassField.IconRight = ((System.Drawing.Image)(resources.GetObject("newPassField.IconRight")));
             this.newPassField.Location = new System.Drawing.Point(380, 281);
             this.newPassField.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.newPassField.Name = "newPassField";
@@ -248,6 +252,8 @@
             this.newPassField.Size = new System.Drawing.Size(218, 39);
             this.newPassField.TabIndex = 105;
             this.newPassField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.newPassField.UseSystemPasswordChar = true;
+            this.newPassField.IconRightClick += new System.EventHandler(this.newPassField_IconRightClick);
             // 
             // changeBtn
             // 

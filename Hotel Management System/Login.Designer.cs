@@ -141,7 +141,7 @@
             // 
             this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 25;
+            this.guna2Button1.BorderRadius = 20;
             this.guna2Button1.CheckedState.Parent = this.guna2Button1;
             this.guna2Button1.CustomImages.Parent = this.guna2Button1;
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(35)))), ((int)(((byte)(67)))));
@@ -204,6 +204,7 @@
             this.passwordTextField.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.passwordTextField.HoverState.Parent = this.passwordTextField;
             this.passwordTextField.IconLeft = ((System.Drawing.Image)(resources.GetObject("passwordTextField.IconLeft")));
+            this.passwordTextField.IconRight = ((System.Drawing.Image)(resources.GetObject("passwordTextField.IconRight")));
             this.passwordTextField.Location = new System.Drawing.Point(434, 261);
             this.passwordTextField.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.passwordTextField.Name = "passwordTextField";
@@ -214,6 +215,9 @@
             this.passwordTextField.Size = new System.Drawing.Size(218, 39);
             this.passwordTextField.TabIndex = 8;
             this.passwordTextField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.passwordTextField.UseSystemPasswordChar = true;
+            this.passwordTextField.TextChanged += new System.EventHandler(this.passwordTextField_TextChanged);
+            this.passwordTextField.IconRightClick += new System.EventHandler(this.changeVisibile);
             // 
             // guna2CircleButton1
             // 

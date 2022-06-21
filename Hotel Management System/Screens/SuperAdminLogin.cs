@@ -62,5 +62,24 @@ namespace Hotel_Management_System.Controllers
             Login l = new Login();
             l.Show();
         }
+
+        private void passwordTextField_IconRightClick(object sender, EventArgs e)
+        {
+            Image myimage1 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisoff.png");
+            Image myimage2 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisible.png");
+
+            if (passwordTextField.UseSystemPasswordChar == true)
+            {
+                passwordTextField.UseSystemPasswordChar = false;
+                passwordTextField.IconRight = myimage2;
+            }
+            else if (passwordTextField.UseSystemPasswordChar == false)
+            {
+                passwordTextField.UseSystemPasswordChar = true;
+                passwordTextField.IconRight = myimage1;
+            }
+        }
+
+       
     }
 }

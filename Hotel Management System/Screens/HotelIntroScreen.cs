@@ -22,11 +22,25 @@ namespace Hotel_Management_System.Screens
             InitializeComponent();
         }
 
+        private void setBgImage()
+        {
+            int i = getRandomNum();
+            Image myimage = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\hotel"+i+".jpg");
+            bgPanel.BackgroundImage = myimage;
+        }
+
         private void HotelIntroScreen_Load(object sender, EventArgs e)
         {
+            setBgImage();
             getDetails();
         }
 
+        private int getRandomNum()
+        {
+            Random rnd = new Random();
+            int i = rnd.Next(1, 8);
+            return i;
+        }
         private void getDetails()
         {
             SqlConnection con = dc.getConnection();

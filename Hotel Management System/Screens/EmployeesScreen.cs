@@ -241,7 +241,7 @@ namespace Hotel_Management_System.Controllers
                 {
                     return;
                 }
-                if (designationCMBox.Text == "Manager" || depIdCMBox.Text == "HR" || depIdCMBox.Text == "Accounts")
+                if (designationCMBox.Text == "Manager" || depIdCMBox.Text == "HR" || depIdCMBox.Text == "Accounts" || depIdCMBox.Text == "IT" || depIdCMBox.Text == "Admin")
                 {
                     getFieldsData();
                     query = "INSERT INTO Hotels.Employees (EmployeeFirstName, EmployeeLastName, EmployeeDesignation, EmployeeContactNumber, EmployeeEmailAddress, EmployeeJoiningDate, AddressLine, Street, City, Zip, DepartmentId, HotelId, CNIC) VALUES ('" + fname + "' , '" + lname + "', '" + designationCMBox.Text + "' , '" + contact + "' , '" + email + "' , '" + joiningDatePicker.Text + "' , '" + address + "' , '" + street + "' , '" + city + "' , '" + zip + "' ," + id + ", " + Statics.hotelIdTKN + ", '" + cnic + "')";
@@ -400,7 +400,8 @@ namespace Hotel_Management_System.Controllers
                 {
                     return;
                 }
-                query = "UPDATE Hotels.Employees SET EmployeeFirstName = '" + fnameField.Text + "', EmployeeLastName = '" + lnameField.Text + "', EmployeeDesignation = '" + designationCMBox.Text + "', EmployeeContactNumber = '" + contactField.Text + "', EmployeeEmailAddress = '" + emailField.Text + "', EmployeeJoiningDate = '" + joiningDatePicker.Text + "', AddressLine = '" + addressField.Text + "', Street = '" + streetField.Text + "', City = '" + cityField.Text + "', Zip = '" + zipField.Text + "', CNIC = '" + cnicField.Text + "' WHERE EmployeeId = " + int.Parse(employeeIdField.Text);
+                getFieldsData();
+                query = "UPDATE Hotels.Employees SET EmployeeFirstName = '" + fnameField.Text + "', EmployeeLastName = '" + lnameField.Text + "', EmployeeDesignation = '" + designationCMBox.Text + "', EmployeeContactNumber = '" + contactField.Text + "', EmployeeEmailAddress = '" + emailField.Text + "', EmployeeJoiningDate = '" + joiningDatePicker.Text + "', AddressLine = '" + addressField.Text + "', Street = '" + streetField.Text + "', City = '" + cityField.Text + "', Zip = '" + zipField.Text + "', CNIC = '" + cnicField.Text + "', DepartmentId = '" + id + "' WHERE EmployeeId = " + int.Parse(employeeIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
                 populateTable();

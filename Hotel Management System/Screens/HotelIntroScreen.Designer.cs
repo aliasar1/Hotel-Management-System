@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotelIntroScreen));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.bgPanel = new System.Windows.Forms.Panel();
             this.webLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,14 +40,14 @@
             this.streetLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // panel1
+            // bgPanel
             // 
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.Location = new System.Drawing.Point(554, 94);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(505, 359);
-            this.panel1.TabIndex = 13;
+            this.bgPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bgPanel.BackgroundImage")));
+            this.bgPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bgPanel.Location = new System.Drawing.Point(554, 94);
+            this.bgPanel.Name = "bgPanel";
+            this.bgPanel.Size = new System.Drawing.Size(505, 359);
+            this.bgPanel.TabIndex = 13;
             // 
             // webLabel
             // 
@@ -132,7 +132,7 @@
             this.Controls.Add(this.contactLabel);
             this.Controls.Add(this.streetLabel);
             this.Controls.Add(this.emailLabel);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.bgPanel);
             this.Controls.Add(this.webLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -151,7 +151,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel bgPanel;
         private System.Windows.Forms.Label webLabel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

@@ -28,7 +28,6 @@ namespace Hotel_Management_System.Screens
             if (Statics.employeeIdTKN.Equals(0))
             {
 
-                Console.WriteLine(Statics.employeeIdTKN.Equals(""));
                 addButton.Enabled = false;
                 updateButton.Enabled = false;
                 deleteButton.Enabled = false;
@@ -72,7 +71,7 @@ namespace Hotel_Management_System.Screens
                     nameField.Focus();
                     return;
                 }
-                query = "INSERT INTO Bookings.Discount  (DiscountName, DiscountDescription, DiscountRate, EmployeeId) VALUES ('" + nameField.Text + "' , '" + detailsFIeld.Text + "', " + rateCMBox.Text + "," + 1 + ")";
+                query = "INSERT INTO Bookings.Discount  (DiscountName, DiscountDescription, DiscountRate, EmployeeId) VALUES ('" + nameField.Text + "' , '" + detailsFIeld.Text + "', " + rateCMBox.Text + "," + Statics.employeeIdTKN + ")";
                 dc.setData(query, "Discount inserted successfully!");
                 clearFields();
                 populateTable();
@@ -102,7 +101,7 @@ namespace Hotel_Management_System.Screens
                     nameField.Focus();
                     return;
                 }
-                query = "UPDATE Bookings.Discount SET DiscountName = '" + nameField.Text + "', DiscountDescription = '" + detailsFIeld.Text + "', DiscountRate = " + rateCMBox.Text + ", EmployeeId = " + 1 + " WHERE DiscountId = " + int.Parse(discountIdField.Text);
+                query = "UPDATE Bookings.Discount SET DiscountName = '" + nameField.Text + "', DiscountDescription = '" + detailsFIeld.Text + "', DiscountRate = " + rateCMBox.Text + ", EmployeeId = " + Statics.employeeIdTKN + " WHERE DiscountId = " + int.Parse(discountIdField.Text);
                 dc.setData(query, "Record updated successfully.");
                 clearFields();
                 populateTable();

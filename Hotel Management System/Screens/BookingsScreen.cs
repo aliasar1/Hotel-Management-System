@@ -85,7 +85,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            query = "SELECT DiscountId from Bookings.Discount";
+            query = "SELECT DiscountId from Bookings.Discount WHERE EmployeeId = " + Statics.employeeIdTKN;
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())

@@ -164,5 +164,27 @@ namespace Hotel_Management_System
                 }
             }
         }
+
+        private void passwordTextField_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void changeVisibile(object sender, EventArgs e)
+        {
+            Image myimage1 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisoff.png");
+            Image myimage2 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisible.png");
+
+            if (passwordTextField.UseSystemPasswordChar == true)
+            {
+                passwordTextField.UseSystemPasswordChar = false;
+                passwordTextField.IconRight = myimage2;
+            }
+            else if(passwordTextField.UseSystemPasswordChar == false)
+            {
+                passwordTextField.UseSystemPasswordChar = true;
+                passwordTextField.IconRight = myimage1;
+            }
+        }
     }
 }

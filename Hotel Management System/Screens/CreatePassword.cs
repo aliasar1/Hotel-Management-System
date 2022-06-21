@@ -75,5 +75,39 @@ namespace Hotel_Management_System.Screens
                 MessageBox.Show("Please provide correct information.", "Missing Info", MessageBoxButtons.OK);
             }
         }
+
+        private void newPassField_IconRightClick(object sender, EventArgs e)
+        {
+            Image myimage1 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisoff.png");
+            Image myimage2 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisible.png");
+
+            if (newPassField.UseSystemPasswordChar == true)
+            {
+                newPassField.UseSystemPasswordChar = false;
+                newPassField.IconRight = myimage2;
+            }
+            else if (newPassField.UseSystemPasswordChar == false)
+            {
+                newPassField.UseSystemPasswordChar = true;
+                newPassField.IconRight = myimage1;
+            }
+        }
+
+        private void confirmPassField_IconRightClick(object sender, EventArgs e)
+        {
+            Image myimage1 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisoff.png");
+            Image myimage2 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisible.png");
+
+            if (confirmPassField.UseSystemPasswordChar == true)
+            {
+                confirmPassField.UseSystemPasswordChar = false;
+                confirmPassField.IconRight = myimage2;
+            }
+            else if (confirmPassField.UseSystemPasswordChar == false)
+            {
+                confirmPassField.UseSystemPasswordChar = true;
+                confirmPassField.IconRight = myimage1;
+            }
+        }
     }
 }

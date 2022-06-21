@@ -32,7 +32,7 @@ namespace Hotel_Management_System.Controllers
         {
             SqlConnection con = dc.getConnection();
             con.Open();
-            String query = "SELECT * FROM Rooms.Room WHERE HotelId = " + Statics.hotelIdTKN;
+            String query = "SELECT RoomId, RoomNumber, RoomTypeId, Available FROM Rooms.Room WHERE HotelId = " + Statics.hotelIdTKN;
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
@@ -103,6 +103,7 @@ namespace Hotel_Management_System.Controllers
         {
             roomIdField.Text = "";
             roomNoField.Text = "";
+            availableField.SelectedIndex = -1;
             typeCmbox.SelectedIndex = -1;
             costField.Text = "";
         }
@@ -282,8 +283,8 @@ namespace Hotel_Management_System.Controllers
             addButton.Enabled = false;
             roomIdField.Text = roomsTable.SelectedRows[0].Cells[0].Value.ToString();
             roomNoField.Text = roomsTable.SelectedRows[0].Cells[1].Value.ToString();
-            availableField.Text = roomsTable.SelectedRows[0].Cells[4].Value.ToString();
-            typeCmbox.SelectedItem = getNameFromId(int.Parse(roomsTable.SelectedRows[0].Cells[3].Value.ToString()));
+            availableField.Text = roomsTable.SelectedRows[0].Cells[3].Value.ToString();
+            typeCmbox.SelectedItem = getNameFromId(int.Parse(roomsTable.SelectedRows[0].Cells[2].Value.ToString()));
             findCost();
         }
     }
