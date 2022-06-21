@@ -52,8 +52,12 @@ namespace Hotel_Management_System.Screens
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             bool check = checkUserType();
-            Console.Write(check);
-            if(newPassField.Text == confirmPassField.Text && secQCMBox.SelectedIndex != -1 && answerField.Text != "")
+            if (newPassField.Text.Length < 8 || confirmPassField.Text.Length < 8)
+            {
+                MessageBox.Show("Minimum password length must be 8.", "Incorrect Info", MessageBoxButtons.OK);
+                return;
+            }
+            if (newPassField.Text == confirmPassField.Text && secQCMBox.SelectedIndex != -1 && answerField.Text != "")
             {
                 if(check == true)
                 {

@@ -53,6 +53,11 @@ namespace Hotel_Management_System.Screens
 
         private void changeBtn_Click(object sender, EventArgs e)
         {
+            if(newPassField.Text.Length < 8 || confirmPassField.Text.Length < 8)
+            {
+                MessageBox.Show("Minimum password length must be 8.", "Incorrect Info", MessageBoxButtons.OK);
+                return;
+            }
             if(newPassField.Text == confirmPassField.Text)
             {
                 query = "UPDATE Authentication.Login SET Password = '" + confirmPassField.Text + "' WHERE UserName = '" + Statics.tempUname + "'";
@@ -74,22 +79,7 @@ namespace Hotel_Management_System.Screens
             l.Show();
         }
 
-        private void changeVisibile(object sender, EventArgs e)
-        {
-            Image myimage1 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisoff.png");
-            Image myimage2 = new Bitmap(@"C:\Users\Ali Asar\source\repos\Hotel Management System\Hotel Management System\Icons\eyevisible.png");
 
-            if (newPassField.UseSystemPasswordChar == true)
-            {
-                newPassField.UseSystemPasswordChar = false;
-                newPassField.IconRight = myimage1;
-            }
-            else if (newPassField.UseSystemPasswordChar == false)
-            {
-                newPassField.UseSystemPasswordChar = true;
-                newPassField.IconRight = myimage2;
-            }
-        }
 
         private void newPassField_IconRightClick(object sender, EventArgs e)
         {
