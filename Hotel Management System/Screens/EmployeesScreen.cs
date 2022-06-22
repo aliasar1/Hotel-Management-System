@@ -423,5 +423,10 @@ namespace Hotel_Management_System.Controllers
             }
         }
 
+        private void depIdCMBox_Click(object sender, EventArgs e)
+        {
+            depIdCMBox.Items.Clear();
+            populateDepartmentComboBox();
+        }
     }
 }

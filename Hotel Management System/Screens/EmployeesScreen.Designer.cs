@@ -455,6 +455,7 @@
             this.depIdCMBox.Size = new System.Drawing.Size(136, 36);
             this.depIdCMBox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.depIdCMBox.TabIndex = 104;
+            this.depIdCMBox.Click += new System.EventHandler(this.depIdCMBox_Click);
             // 
             // label15
             // 

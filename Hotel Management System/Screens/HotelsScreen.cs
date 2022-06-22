@@ -262,6 +262,7 @@ namespace Hotel_Management_System.Controllers
             makeFile();
         }
 
+        // Create empty excel file first then provide the directory.
         private void makeFile()
         {
             checkIfExist();
