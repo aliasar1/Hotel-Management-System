@@ -174,15 +174,24 @@ namespace Hotel_Management_System.Controllers
             int id = getIdFromTypeName();
             if (roomNoField.Text != "" && typeCmbox.Text != "" && costField.Text != "" && availableField.Text != "")
             {
-                bool regCheck = regChecker();
-                if (regCheck == false)
+                int capacity = findCapacity();
+                int count = getRoomCount();
+                if (count < capacity)
                 {
-                    return;
+                    bool regCheck = regChecker();
+                    if (regCheck == false)
+                    {
+                        return;
+                    }
+                    query = "INSERT INTO Rooms.Room (RoomNumber, HotelId, RoomTypeId, Available) VALUES ('" + roomNoField.Text + "', " + Statics.hotelIdTKN + ", " + id + ", '" + availableField.Text + "')";
+                    dc.setData(query, "Room inserted successfully!");
+                    clearFields();
+                    populateTable();
                 }
-                query = "INSERT INTO Rooms.Room (RoomNumber, HotelId, RoomTypeId, Available) VALUES ('" + roomNoField.Text + "', " + Statics.hotelIdTKN + ", " + id + ", '" + availableField.Text + "')";
-                dc.setData(query, "Room inserted successfully!");
-                clearFields();
-                populateTable();
+                else
+                {
+                    MessageBox.Show("Hotel room capacity is full to add more rooms.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
@@ -192,7 +201,38 @@ namespace Hotel_Management_System.Controllers
         
         private void typeCmbox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             findCost();
+        }
+
+        private int getRoomCount()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT COUNT(RoomId) from Rooms.Room WHERE HotelId = " + Statics.hotelIdTKN;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int count = 0;
+            while (dr.Read())
+            {
+                count = dr.GetInt32(0);
+            }
+            return count;
+        }
+
+        private int findCapacity()
+        {
+            SqlConnection con = dc.getConnection();
+            con.Open();
+            query = "SELECT TotalRooms from Hotels.Hotel WHERE HotelId = " + Statics.hotelIdTKN;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int cap = 0;
+            while (dr.Read())
+            {
+                cap = dr.GetInt32(0);
+            }
+            return cap;
         }
 
         private void findCost()
@@ -286,6 +326,12 @@ namespace Hotel_Management_System.Controllers
             availableField.Text = roomsTable.SelectedRows[0].Cells[3].Value.ToString();
             typeCmbox.SelectedItem = getNameFromId(int.Parse(roomsTable.SelectedRows[0].Cells[2].Value.ToString()));
             findCost();
+        }
+
+        private void typeCmbox_Click(object sender, EventArgs e)
+        {
+            typeCmbox.Items.Clear();
+            populateTypeComboBox();
         }
     }
 }

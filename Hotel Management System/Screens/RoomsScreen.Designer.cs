@@ -193,6 +193,7 @@
             this.typeCmbox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.typeCmbox.TabIndex = 25;
             this.typeCmbox.SelectedIndexChanged += new System.EventHandler(this.typeCmbox_SelectedIndexChanged);
+            this.typeCmbox.Click += new System.EventHandler(this.typeCmbox_Click);
             // 
             // label5
             // 

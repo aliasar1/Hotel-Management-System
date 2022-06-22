@@ -82,9 +82,9 @@
             // descripLabel
             // 
             this.descripLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descripLabel.Location = new System.Drawing.Point(75, 173);
+            this.descripLabel.Location = new System.Drawing.Point(75, 142);
             this.descripLabel.Name = "descripLabel";
-            this.descripLabel.Size = new System.Drawing.Size(413, 113);
+            this.descripLabel.Size = new System.Drawing.Size(413, 141);
             this.descripLabel.TabIndex = 8;
             // 
             // hotelName
