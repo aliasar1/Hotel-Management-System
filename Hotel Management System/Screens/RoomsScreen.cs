@@ -96,7 +96,7 @@ namespace Hotel_Management_System.Controllers
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
             RoomType rt = new RoomType();
-            rt.Show();
+            rt.ShowDialog(this);
         }
 
         private void clearFields()

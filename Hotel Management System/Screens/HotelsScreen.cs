@@ -203,7 +203,7 @@ namespace Hotel_Management_System.Controllers
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             DiscountScreen ds = new DiscountScreen();
-            ds.Show();
+            ds.ShowDialog(this);
         }
 
         private void guna2CustomGradientPanel1_Paint(object sender, PaintEventArgs e)

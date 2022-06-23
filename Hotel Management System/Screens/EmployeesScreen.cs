@@ -311,7 +311,7 @@ namespace Hotel_Management_System.Controllers
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
             DepartmentsScreen dep = new DepartmentsScreen();
-            dep.Show();
+            dep.ShowDialog(this);
         }
 
         private void EmployeesScreen_Load(object sender, EventArgs e)
