@@ -91,6 +91,12 @@ namespace Hotel_Management_System.Controllers
 
         private bool regexChecker()
         {
+            if (!Regex.Match(hotelNameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                MessageBox.Show("Hotel name can have only alpabets.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                contactField.Focus();
+                return false;
+            }
             if (!Regex.Match(contactField.Text, @"^[0-9]+$").Success)
             {
                 MessageBox.Show("Contact number must only contain numbers.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
