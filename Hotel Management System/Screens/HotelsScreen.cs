@@ -157,11 +157,23 @@ namespace Hotel_Management_System.Controllers
                     MessageBox.Show("Please enter valid email.", "Missing Info", MessageBoxButtons.OK);
                     return;
                 }
+                int a = getDescriptionLength();
+                if (a > 300)
+                {
+                    MessageBox.Show("Description length cannot be greater than 50.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    descriptionFIeld.Focus();
+                    return;
+                }
                 getFieldsData();
                 query = "UPDATE Hotels.Hotel SET Name = '" + name + "', ContactNumber = '" + contact + "', Email= '" + email + "', Website = '" + web + "', Description = '" + description + "', FloorCount = " + floors + ", TotalRooms = " +  capacity + ", AddressLine = '" + address + "', Street = '" + street + "', City = '" + city + "' , Country = '" + country + "', Zip = '" + zip + "' WHERE HotelId = " + Statics.hotelIdTKN;
                 dc.setData(query, "Record updated successfully.");
                 getHotelDetails();
             }
+        }
+
+        private int getDescriptionLength()
+        {
+            return descriptionFIeld.TextLength;
         }
 
         private void getHotelDetails()

@@ -334,13 +334,17 @@ namespace Hotel_Management_System.Controllers
             return true;
         }
 
+        private int getDescriptionLength()
+        {
+            return descriptionFIeld.TextLength;
+        }
 
         private bool regexChecker()
         {
             if (!Regex.Match(hotelNameField.Text, @"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
             {
                 MessageBox.Show("Hotel name can have only alpabets.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                contactField.Focus();
+                hotelNameField.Focus();
                 return false;
             }
             if (!Regex.Match(contactField.Text, @"^[0-9]+$").Success)
@@ -408,6 +412,13 @@ namespace Hotel_Management_System.Controllers
                 if (emailCheck == false)
                 {
                     MessageBox.Show("Invalid email format entered.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                int a = getDescriptionLength();
+                if (a > 300)
+                {
+                    MessageBox.Show("Description length cannot be greater than 50.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    descriptionFIeld.Focus();
                     return;
                 }
                 getFieldsData();
@@ -563,6 +574,13 @@ namespace Hotel_Management_System.Controllers
                 bool regCheck = regexChecker();
                 if (regCheck == false)
                 {
+                    return;
+                }
+                int a = getDescriptionLength();
+                if (a > 300)
+                {
+                    MessageBox.Show("Description length cannot be greater than 50.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    descriptionFIeld.Focus();
                     return;
                 }
                 getFieldsData();
