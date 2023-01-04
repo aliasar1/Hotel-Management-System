@@ -114,4 +114,6 @@ paper work.
 
 FOR MORE DETAILED EXPLANATION, PLEASE REVIEW OUR PROJECT REPORT WHICH CONTAINS UI IMAGES AND MORE VALUABLE INFORMATION!
 
+## Extended Software Documentation Repository Link:
+> https://github.com/aliasar1/Hotel-Management-System-Documentation
 HAPPY CODING! :D
