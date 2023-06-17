@@ -8,6 +8,9 @@ to make our program more efficient. We have provided few services such CRUD oper
 all aspects where required. We have also tried to manage project security and integrity using 
 various constraints and abstracting data.
 
+## HOW TO RUN
+Make sure that you have Microsoft Sql Server installed in your PC. Along with that I have already uploaded the query file which you just have to run to create database. Connect your application from Visual Studio Code with Microsoft Sql Server services of integrating database. You are now good to go! 
+
 ## SCREENSHOTS
 ![image](https://user-images.githubusercontent.com/74453775/194844237-ae852d88-2be9-4d6f-bb05-943125e0e176.png)
 ![image](https://user-images.githubusercontent.com/74453775/194844305-c8a56825-f212-4fa7-a323-99ca57dd7f21.png)
